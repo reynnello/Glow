@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Company Add</title>
+    <link rel="stylesheet" type="text/css" href="companyPage.css">
+</head>
+
+<body>
+<!-- Top bar -->
+<header class="topbar">
+    <a class="brand" href="mainPage.html.php" aria-label="Go to Main Page">
+        <div class="logo">
+            <img src="resources/img/logo.jpeg" alt="Glow Jobs Logo">
+        </div>
+        <div class="brand-text">
+            <div class="brand-title">Glow Jobs</div>
+            <div class="brand-subtitle">Company Management</div>
+        </div>
+    </a>
+
+    <nav class="tabs" aria-label="Primary navigation">
+        <a class="tab" href="#" onclick="return false;">Client</a>
+        <a class="tab" href="#" onclick="return false;">Job</a>
+        <a class="tab" href="#" onclick="return false;">Training Course</a>
+        <a class="tab active" href="#" onclick="return false;">Company</a>
+        <a class="tab" href="#" onclick="return false;">Main Page</a>
+    </nav>
+</header>
+
+<!-- Page content -->
+<main class="page">
+    <section class="card">
+        <h1>Company</h1>
+        <p class="hint">Choose an action below.</p>
+
+        <div class="menu">
+            <a href="CompanyAdd/companyAdd.html">Add a Company</a>
+            <a href="companyDelete.html.php">Delete a Company</a>
+            <a href="ViewAmend/companyPageAmend.html.php">Amend/View Company</a>
+            <a href="companyReport.php">Company Reports</a>
+        </div>
+    </section>
+
+    <section class="info">
+        <div class="info-card">
+            <h2>Tip</h2>
+            <p>
+                Use <b>Amend/View</b> to select a company and update details. Reports will appear in <b>Company Reports</b>.
+            </p>
+        </div>
+
+        <div class="info-card">
+            <h2>Status</h2>
+            <p>
+                Top tabs are placeholders for now. Logo will take you back to <b>Main Page</b>.
+            </p>
+        </div>
+    </section>
+</main>
+
+<footer class="footer">
+    <span>© 2026 Glow Jobs Agency - "We are the best at what we do!"</span>
+</footer>
+</body>
+</html>
