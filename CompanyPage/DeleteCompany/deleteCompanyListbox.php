@@ -2,7 +2,7 @@
 /*
      * Name: Dzheffriei Iheisnulo
      * Student ID: C00311856
-     * Date: 17.02.2026
+     * Date: 05.02.2026
      */
 /** @var mysqli $con */ //connection to db necessary for phpstorm
 require_once __DIR__ . '/../db.inc.php';
@@ -18,7 +18,7 @@ if (!$result = mysqli_query($con, $sql)) //checking db connection
     die('Error in querying the database' . mysqli_error($con));
 }
 
-echo "<br><select name = 'companyListbox' id = 'companyListbox' onclick = 'populate()'>"; //setting id to 'CompanyListbox' and setting the onclick to populate function
+echo "<br><select name = 'deleteCompanyListbox' id = 'deleteCompanyListbox' onclick = 'populate()'>"; //setting id to 'deleteCompanyListbox' and setting the onclick to populate function
 
 while($row = mysqli_fetch_array($result)) //setting the data to variables
 {

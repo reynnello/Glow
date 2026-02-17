@@ -6,16 +6,16 @@
 <head>
     <meta charset="UTF-8">
     <title>Amend/View Company</title>
-    <link rel="stylesheet" type="text/css" href="/companyPage.css">
+    <link rel="stylesheet" type="text/css" href="../companyPage.css">
 </head>
 
 <body>
 
 <header class="topbar">
-    <!-- Logo + brand (logo ведёт на Main Page) -->
+    <!--Logo-->
     <a class="brand" href="mainPage.html.php" aria-label="Go to Main Page">
         <div class="logo">
-            <img src="/resources/img/logo.jpeg" alt="Glow Jobs Logo">
+            <img src="../resources/img/logo.jpeg" alt="Glow Jobs Logo">
         </div>
         <div class="brand-text">
             <div class="brand-title">Glow Jobs</div>
@@ -28,7 +28,7 @@
         <a class="tab" href="#" onclick="return false;">Client</a>
         <a class="tab" href="#" onclick="return false;">Job</a>
         <a class="tab" href="#" onclick="return false;">Training Course</a>
-        <a class="tab active" href="/companyPage.html">Company</a>
+        <a class="tab active" href="../companyPage.html">Company</a>
         <a class="tab" href="#" onclick="return false;">Main Page</a>
     </nav>
 </header>
@@ -105,6 +105,7 @@
 
             <div style="margin-top: 14px;">
                 <input type="submit" value="Save Changes" class="btn primary">
+                <a href="../companyPage.html" class="btn">Back</a>
             </div>
         </form>
 
@@ -135,7 +136,7 @@
 </footer>
 
 <script>
-    function populate()
+    function populate() //populate function is used to fill the html fields with data
     {
         var sel = document.getElementById("companyListbox");
         var result;
@@ -154,7 +155,7 @@
         document.getElementById("amendContactEmail").value = companyDetails[9];
     }
 
-    function toggleLock()
+    function toggleLock()//function that unlock/locks the data and changes the button depending on the button state
     {
         if (document.getElementById("amendViewbutton").value == "Amend Details")
         {
@@ -186,7 +187,7 @@
         }
     }
 
-    function confirmCheck()
+    function confirmCheck() //confirm check function that asks the user for confirmation
     {
         var response;
         response = confirm('Are you sure you want to save these changes?');

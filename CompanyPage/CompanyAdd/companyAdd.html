@@ -1,14 +1,18 @@
+<!--Name: Dzheffriei Ihesinulo-->
+<!--Student ID: C00311856-->
+<!--Date: 17.02.26-->
 <!DOCTYPE html>
 <html lang="en">
-<link rel ="stylesheet" type = "text/css" href = "/companyPage.css">
+<link rel ="stylesheet" type = "text/css" href = "../companyPage.css">
 
 <body>
-
+<!--topbar start-->
 <header class="topbar">
-    <!-- Logo + brand (logo ведёт на Main Page) -->
+    <!--Anchor for main page also classifies brand-->
     <a class="brand" href="mainPage.html.php" aria-label="Go to Main Page">
+        <!--Logo-->
         <div class="logo">
-            <img src="/resources/img/logo.jpeg" alt="Glow Jobs Logo">
+            <img src="../resources/img/logo.jpeg" alt="Glow Jobs Logo">
         </div>
         <div class="brand-text">
             <div class="brand-title">Glow Jobs</div>
@@ -20,16 +24,18 @@
         <a class="tab" href="#" onclick="return false;">Client</a>
         <a class="tab" href="#" onclick="return false;">Job</a>
         <a class="tab" href="#" onclick="return false;">Training Course</a>
-        <a class="tab active" href="/companyPage.html">Company</a>
+        <a class="tab active" href="../companyPage.html">Company</a>
         <a class="tab" href="#" onclick="return false;">Main Page</a>
     </nav>
 </header>
+<!--Main page-->
 <main class="page">
+
 <section class="card">
     <h1>Add Company</h1>
     <p class="hint">Please fill the information and add the Company</p>
 <script>
-function confirmCheck() //function that ask for confirmation
+function confirmCheck() //function that ask for confirmation in case everything is empty or filled with spaces
 {
     var name = document.getElementById("addName").value.trim();
     var address = document.getElementById("addAddress").value.trim();
@@ -50,8 +56,9 @@ function confirmCheck() //function that ask for confirmation
         contactName === "" ||
         contactPhone === "" ||
         contactEmail === ""
-    ) {
-        alert("Please fill out required information");
+    )
+    {
+        alert("Please fill out required information");//if the information is incomplete or empty
         return false;
     }
     else{
@@ -62,8 +69,8 @@ function confirmCheck() //function that ask for confirmation
     }
 }
 </script>
-<p id = "display"> </p>
 
+    <!--fields for data-->
 <form name="addCompanyForm" action="AddCompanyPost.php" onsubmit="return confirmCheck()" method="post"><!--Form submitting-->
     <div class="form-grid">
         <div class="field">
@@ -114,13 +121,15 @@ function confirmCheck() //function that ask for confirmation
     </div>
 
     <br><br>
+    <!--Submit and return buttons -->
 <div style="margin-top: 14px;">
     <input type = "submit" value = "Add Company" class="btn primary">
+    <a href="../companyPage.html" class="btn">Back</a>
 </div>
 </form>
 </section>
 </main>
-
+<!--footer-->
 <footer class="footer">
     <span>© 2026 Glow Jobs Agency - "We are the best at what we do!"</span>
 </footer>
