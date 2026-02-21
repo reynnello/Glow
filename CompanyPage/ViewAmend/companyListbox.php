@@ -18,7 +18,7 @@ if (!$result = mysqli_query($con, $sql)) //checking db connection
     die('Error in querying the database' . mysqli_error($con));
 }
 
-echo "<br><select name = 'companyListbox' id = 'companyListbox' onclick = 'populate()'>"; //setting id to 'CompanyListbox' and setting the onclick to populate function
+echo "<select name = 'companyListbox' id = 'companyListbox' onclick = 'populate()'>"; //setting id to 'CompanyListbox' and setting the onclick to populate function
 
 while($row = mysqli_fetch_array($result)) //setting the data to variables
 {

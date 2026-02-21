@@ -245,3 +245,9 @@ body {
     opacity: 0.65;
     background: rgba(240,240,240,0.8);
 }
+
+.field > select {
+    flex: 1 1 auto;
+  width: 100%;
+  min-width: 0;
+}

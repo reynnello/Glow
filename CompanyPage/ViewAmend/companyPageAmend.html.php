@@ -40,7 +40,7 @@
         <p class="hint">Please select a company and then click the amend button if you wish to update.</p>
 
         <!-- Listbox -->
-        <div style="margin: 10px 0 14px;">
+        <div class="field">
             <?php include 'companyListbox.php'; ?>
         </div>
 

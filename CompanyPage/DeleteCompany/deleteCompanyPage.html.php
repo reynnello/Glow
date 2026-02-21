@@ -39,7 +39,7 @@
         <p class="hint">Please select a company and then click the delete button. Please make sure that you chose the correct company and double-check the information</p>
 
         <!-- Listbox -->
-        <div style="margin: 10px 0 14px;">
+        <div class="field">
             <?php include 'deleteCompanyListbox.php'; ?>
         </div>
 
