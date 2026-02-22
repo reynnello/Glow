@@ -242,6 +242,12 @@ a.btn {
     border-radius: 12px;
     border: 1px solid rgba(0,0,0,0.14);
     background: rgba(255,255,255,0.90);
+    transition: background 150ms ease, border-color 150ms ease;
+}
+
+.field input:hover {
+    background: rgba(255,255,255,0.96);
+    border-color: rgba(0,0,0,0.33);
 }
 
 .field input:disabled{
