@@ -205,8 +205,11 @@ body {
     background: linear-gradient(135deg, rgba(255, 169, 70, 0.25), rgba(169, 90, 255, 0.18));
     font-weight: 800;
     cursor: pointer;
+}
+
+a.btn {
+    color: inherit;
     text-decoration: none;
-    color: black;
 }
 
 .btn.primary{
