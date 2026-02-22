@@ -1,0 +1,139 @@
+<!--Name: Dzheffriei Ihesinulo-->
+<!--Student ID: C00311856-->
+<!--Date: 17.02.26-->
+<!DOCTYPE html>
+<html lang="en">
+<link rel ="stylesheet" type = "text/css" href = "../clientPage.css">
+
+<body>
+<!--topbar start-->
+<header class="topbar">
+    <!--Anchor for main page also classifies brand-->
+    <a class="brand" href="mainPage.html.php" aria-label="Go to Main Page">
+        <!--Logo-->
+        <div class="logo">
+            <img src="../CompanyPage/resources/img/logo.jpeg" alt="Glow Jobs Logo">
+        </div>
+        <div class="brand-text">
+            <div class="brand-title">Glow Jobs</div>
+            <div class="brand-subtitle">Add Client</div>
+        </div>
+    </a>
+    <!-- Tabs placeholders -->
+    <nav class="tabs" aria-label="Primary navigation">
+        <a class="tab active" href="../clientPage.html" onclick="return false;">Client</a>
+        <a class="tab" href="#" onclick="return false;">Job</a>
+        <a class="tab" href="#" onclick="return false;">Training Course</a>
+        <a class="tab" href="../companyPage.html">Company</a>
+        <a class="tab" href="#" onclick="return false;">Main Page</a>
+    </nav>
+</header>
+<!--Main page-->
+<main class="page">
+
+<section class="card">
+    <h1>Add Client</h1>
+    <p class="hint">Please fill the information and add the Client</p>
+<script>
+function confirmCheck() //function that ask for confirmation in case everything is empty or filled with spaces
+{
+    var name = document.getElementById("addName").value.trim();
+    var address = document.getElementById("addAddress").value.trim();
+    var eircode = document.getElementById("addEircode").value.trim();
+    var phone = document.getElementById("addPhone").value.trim();
+    var dob = document.getElementById("addDob").value.trim();
+    var driverLicense = document.getElementById("addDriverLicense").value.trim();
+    var jobTitle = document.getElementById("addJobTitle").value.trim();
+    var qualifications = document.getElementById("addQualifications").value.trim();
+    var minAnnualSalary = document.getElementById("addMinAnnualSalary").value.trim();
+
+    if (
+        name === "" ||
+        address === "" ||
+        eircode === "" ||
+        phone === "" ||
+        dob === "" ||
+        driverLicense === "" ||
+        jobTitle === "" ||
+        qualifications === "" ||
+        minAnnualSalary === ""
+    )
+    {
+        alert("Please fill out required information");//if the information is incomplete or empty
+        return false;
+    }
+    else{
+        var response;
+        response = confirm('Are you sure you want to save these changes?');//asks for confirmation
+        if(response)
+            return response;
+    }
+}
+</script>
+
+    <!--fields for data-->
+<form name="addClientForm" action="AddClientPost.php" onsubmit="return confirmCheck()" method="post"><!--Form submitting-->
+    <div class="form-grid">
+        <div class="field">
+    <label for ="addName">Client Name </label>
+    <input type = "text" name = "addName" id = "addName" required >
+        </div>
+
+        <div class="field">
+    <label for ="addAddress">Client Address</label>
+    <input type = "text" name = "addAddress" id = "addAddress" required>
+        </div>
+
+        <div class="field">
+    <label for ="addEircode">Eircode</label>
+    <input type = "text" name = "addEircode" id = "addEircode" required>
+        </div>
+
+        <div class="field">
+    <label for ="addPhone">Phone Number</label>
+    <input type = "tel" name = "addPhone" id = "addPhone" pattern="[+0-9 ]{7,20}" required>
+        </div>
+
+        <div class="field">
+    <label for="addDob">Date of Birth</label>
+    <input type = "date" name = "addDob" id = "addDob" required>
+        </div>
+
+        <div class="field">
+    <label for="addDriverLicense">Driver License Type</label>
+    <input type="text" name = "addDriverLicense" id = "addDriverLicense" required>
+        </div>
+
+         <div class="field">
+    <label for="addJobTitle">Job Title</label>
+    <input type = "text" name = "addJobTitle" id = "addJobTitle" required><br><br>
+         </div>
+
+        <div class="field">
+    <label for="addQualifications">Qualifications</label>
+    <input type = "text" name = "addQualifications" id = "addQualifications" required><br><br>
+        </div>
+
+        <div class="field">
+    <label for="addMinAnnualSalary">Minimum Annual Salary</label>
+    <input type = "number" name = "addMinAnnualSalary" id = "addMinAnnualSalary" required>
+        </div>
+    </div>
+
+    <br><br>
+    <!--Submit and return buttons -->
+<div style="margin-top: 14px;">
+    <input type = "submit" value = "Add Client" class="btn primary">
+    <a href="../clientPage.html" class="btn">Back</a>
+</div>
+</form>
+</section>
+</main>
+<!--footer-->
+<footer class="footer">
+    <span>© 2026 Glow Jobs Agency - "We are the best at what we do!"</span>
+</footer>
+
+
+</body>
+</html>

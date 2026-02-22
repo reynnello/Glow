@@ -1,9 +1,14 @@
+<!--
+Name: Oleksandr Storozhuk
+ID: C00313344
+Date: 22/02/2026
+-->
 <!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Company Page</title>
-    <link rel="stylesheet" type="text/css" href="companyPage.css">
+    <title>Client Page</title>
+    <link rel="stylesheet" type="text/css" href="clientPage.css">
 </head>
 
 <body>
@@ -11,7 +16,7 @@
 <header class="topbar">
     <a class="brand" href="mainPage.html.php" aria-label="Go to Main Page">
         <div class="logo">
-            <img src="resources/img/logo.jpeg" alt="Glow Jobs Logo">
+            <img src="../CompanyPage/resources/img/logo.jpeg" alt="Glow Jobs Logo">
         </div>
         <div class="brand-text">
             <div class="brand-title">Glow Jobs</div>
@@ -20,10 +25,10 @@
     </a>
 
     <nav class="tabs" aria-label="Primary navigation">
-        <a class="tab" href="#" onclick="return false;">Client</a>
+        <a class="tab active" href="#" onclick="return false;">Client</a>
         <a class="tab" href="#" onclick="return false;">Job</a>
         <a class="tab" href="#" onclick="return false;">Training Course</a>
-        <a class="tab active" href="#" onclick="return false;">Company</a>
+        <a class="tab" href="#" onclick="return false;">Company</a>
         <a class="tab" href="#" onclick="return false;">Main Page</a>
     </nav>
 </header>
@@ -31,14 +36,14 @@
 <!-- Page content -->
 <main class="page">
     <section class="card">
-        <h1>Company</h1>
+        <h1>Client</h1>
         <p class="hint">Choose an action below.</p>
 
         <div class="menu">
-            <a href="CompanyAdd/companyAdd.html">Add a Company</a>
-            <a href="DeleteCompany/deleteCompanyPage.html.php">Delete a Company</a>
-            <a href="ViewAmend/companyPageAmend.html.php">Amend/View Company</a>
-            <a href="TrainingReport/trainingReport.php">Training Courses Reports</a>
+            <a href="ClientAdd/clientAdd.html">Add a Client</a>
+            <a href="DeleteClient/deleteClientPage.html.php">Delete a Client</a>
+            <a href="ClientViewAmend/clientPageAmend.html.php">Amend/View Client</a>
+            <a href="EnrollOnTrainingCourse/">Enroll on a Training Course</a>
         </div>
     </section>
 <!--info-->
@@ -46,9 +51,10 @@
         <div class="info-card">
             <h2>Tip</h2>
             <p>
-                Use <b>Add Company</b> to add a new company record.
-                Use <b>Amend/View</b> to select a company and update details. Reports will appear in <b>Company Reports</b>.
-                Use <b>Delete Company</b> to delete a company record from the list.
+                Use <b>Add Client</b> to add a new client record.
+                Use <b>Amend/View</b> to select a client and update details.
+                Use <b>Delete Client</b> to delete a client record from the list.
+                Use <b>Enroll on a training course</b> to view and enroll on training courses.
             </p>
         </div>
 

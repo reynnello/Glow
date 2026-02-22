@@ -1,8 +1,8 @@
 <?php
 /*
-     * Name: Dzheffriei Iheisnulo
-     * Student ID: C00311856
-     * Date: 05.02.2026
+     * Name: Oleksandr Storozhuk
+     * Student ID: C00313344
+     * Date: 22.02.2026
      */
 $host = "localhost:3306"; //host
 $user = "hui"; //username
