@@ -17,7 +17,7 @@ Date: 22/02/2026
     <!--Logo-->
     <a class="brand" href="mainPage.html.php" aria-label="Go to Main Page">
         <div class="logo">
-            <img src="../CompanyPage/resources/img/logo.jpeg" alt="Glow Jobs Logo">
+            <img src="/resources/img/logo.jpeg" alt="Glow Jobs Logo">
         </div>1
         <div class="brand-text">
             <div class="brand-title">Glow Jobs</div>
@@ -30,7 +30,7 @@ Date: 22/02/2026
         <a class="tab active" href="#" onclick="return false;">Client</a>
         <a class="tab" href="#" onclick="return false;">Job</a>
         <a class="tab" href="#" onclick="return false;">Training Course</a>
-        <a class="tab" href="../companyPage.html">Company</a>
+        <a class="tab" href="/CompanyPage/companyPage.html">Company</a>
         <a class="tab" href="#" onclick="return false;">Main Page</a>
     </nav>
 </header>

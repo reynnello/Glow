@@ -1,13 +1,13 @@
 <?php
 /*
-     * Name: Oleksandr Storozhuk
-     * Student ID: C00313344
-     * Date: 22.02.2026
+     * Name: Dzheffriei Iheisnulo
+     * Student ID: C00311856
+     * Date: 05.02.2026
      */
 $host = "localhost:3306"; //host
-$user = "hui"; //username
-$pass = "Huihuihui123"; //password
-$db   = "EmploymentAgency"; //db name
+$user = "jeff"; //username
+$pass = "StrongPass123!"; //password
+$db   = "Employment Agency System"; //db name
 
 $con = new mysqli($host, $user, $pass, $db); //connection
 
