@@ -29,7 +29,6 @@
         <a class="tab" href="../JobPage/jobpage.html">Job</a>
         <a class="tab" href="../TrainingCoursePage/trainingcoursepage.html">Training Course</a>
         <a class="tab active" href="../companyPage.html">Company</a>
-        <a class="tab" href="../MainPage/mainpage.html">Main Page</a>
     </nav>
 </header>
 
