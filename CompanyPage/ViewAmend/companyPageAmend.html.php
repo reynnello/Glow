@@ -25,7 +25,7 @@
 
     <!-- Tabs placeholders -->
     <nav class="tabs" aria-label="Primary navigation">
-        <a class="tab" href="#" onclick="return false;">Client</a>
+        <a class="tab" href="" onclick="return false;">Client</a>
         <a class="tab" href="#" onclick="return false;">Job</a>
         <a class="tab" href="#" onclick="return false;">Training Course</a>
         <a class="tab active" href="../companyPage.html">Company</a>

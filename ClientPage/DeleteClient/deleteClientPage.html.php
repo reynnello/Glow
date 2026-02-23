@@ -26,11 +26,11 @@ Date: 22/02/2026
 
     <!-- Tabs placeholders -->
     <nav class="tabs" aria-label="Primary navigation">
-        <a class="tab active" href="../clientPage.html" onclick="return false;">Client</a>
-        <a class="tab" href="#" onclick="return false;">Job</a>
-        <a class="tab" href="#" onclick="return false;">Training Course</a>
-        <a class="tab" href="../companyPage.html">Company</a>
-        <a class="tab" href="#" onclick="return false;">Main Page</a>
+        <a class="tab" href="../clientpage.html" onclick="return false;">Client</a>
+        <a class="tab" href=".../JobPage/jobpage.html" onclick="return false;">Job</a>
+        <a class="tab" href=".../TrainingCoursePage/trainingcoursepage.html" onclick="return false;">Training Course</a>
+        <a class="tab active" href=".../CompanyPage/companyPage.html">Company</a>
+        <a class="tab" href=".../MainPage/mainpage.html" onclick="return false;">Main Page</a>
     </nav>
 </header>
 
