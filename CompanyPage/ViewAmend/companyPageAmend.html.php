@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Amend/View Company</title>
-    <link rel="stylesheet" type="text/css" href="../Main.css">
+    <link rel="stylesheet" type="text/css" href="/./Glow/Main.css">
 </head>
 
 <body>

@@ -8,7 +8,7 @@ Date: 22/02/2026
 <head>
     <meta charset="UTF-8">
     <title>Amend/View Client</title>
-    <link rel="stylesheet" type="text/css" href="../Main.css">
+    <link rel="stylesheet" type="text/css" href="/./Glow/Main.css">
 </head>
 
 <body>
