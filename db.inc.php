@@ -1,9 +1,5 @@
 <?php
-/*
-     * Name: Oleksandr Storozhuk
-     * Student ID: C00313344
-     * Date: 22.02.2026
-     */
+
 $host = "localhost:3306"; //host
 $user = "hui"; //username
 $pass = "Huihuihui123"; //password
@@ -14,3 +10,5 @@ $con = new mysqli($host, $user, $pass, $db); //connection
 if ($con->connect_error) { //if connection failed
     die("Connection failed: " . $con->connect_error);// print the error
 }
+
+?>

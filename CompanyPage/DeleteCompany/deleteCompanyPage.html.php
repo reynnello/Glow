@@ -14,7 +14,7 @@
 <header class="topbar">
     <a class="brand" href="mainPage.html.php" aria-label="Go to Main Page">
         <div class="logo">
-            <img src="../resources/img/logo.jpeg" alt="Glow Jobs Logo">
+            <img src="/./Glow/resources/img/logo.jpeg" alt="Glow Jobs Logo">
         </div>
         <div class="brand-text">
             <div class="brand-title">Glow Jobs</div>
@@ -24,11 +24,11 @@
 
     <!-- Tabs placeholders -->
     <nav class="tabs" aria-label="Primary navigation">
-        <a class="tab" href="../ClientPage/clientpage.html" onclick="return false;">Client</a>
-        <a class="tab" href="../JobPage/jobpage.html" onclick="return false;">Job</a>
-        <a class="tab" href="../TrainingCoursePage/trainingcoursepage.html" onclick="return false;">Training Course</a>
+        <a class="tab" href="../ClientPage/clientpage.html">Client</a>
+        <a class="tab" href="../JobPage/jobpage.html">Job</a>
+        <a class="tab" href="../TrainingCoursePage/trainingcoursepage.html">Training Course</a>
         <a class="tab active" href="../companyPage.html">Company</a>
-        <a class="tab" href="../MainPage/mainpage.html" onclick="return false;">Main Page</a>
+        <a class="tab" href="../MainPage/mainpage.html">Main Page</a>
     </nav>
 </header>
 

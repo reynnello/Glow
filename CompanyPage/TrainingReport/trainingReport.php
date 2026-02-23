@@ -5,7 +5,7 @@
      * Date: 17.02.2026
      */
 /** @var mysqli $con */ //connection to db necessary for phpstorm
-require_once __DIR__ . '/../db.inc.php';
+require_once __DIR__ . '/./Glow/db.inc.php';
 mysqli_set_charset($con, "utf8mb4");
 //this query is selecting using alias
 //course_title,client_name,date_enrolled,deposit_amount from enrolment(alias 'e')
