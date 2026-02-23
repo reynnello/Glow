@@ -6,7 +6,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Amend/View Company</title>
-    <link rel="stylesheet" type="text/css" href="/./Glow/Main.css">
+
+    <link rel="stylesheet" type="text/css" href="../../Main.css">
 </head>
 
 <body>
@@ -15,7 +16,7 @@
     <!--Logo-->
     <a class="brand" href="mainPage.html.php" aria-label="Go to Main Page">
         <div class="logo">
-            <img src="/./Glow/resources/img/logo.jpeg" alt="Glow Jobs Logo">
+            <img src="../../resources/img/logo.jpeg" alt="Glow Jobs Logo">
         </div>
         <div class="brand-text">
             <div class="brand-title">Glow Jobs</div>
