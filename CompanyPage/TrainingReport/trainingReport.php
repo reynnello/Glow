@@ -39,7 +39,7 @@ if (!$result) {
 <head>
     <meta charset="UTF-8">
     <title>Training Courses Report</title>
-    <link rel="stylesheet" href="../companyPage.css">
+    <link rel="stylesheet" href="/./Glow/Main.css">
 </head>
 
 <body>
