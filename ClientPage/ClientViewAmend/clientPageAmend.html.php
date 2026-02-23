@@ -18,7 +18,7 @@ Date: 22/02/2026
     <a class="brand" href="mainPage.html.php" aria-label="Go to Main Page">
         <div class="logo">
             <img src="../CompanyPage/resources/img/logo.jpeg" alt="Glow Jobs Logo">
-        </div>1
+        </div>
         <div class="brand-text">
             <div class="brand-title">Glow Jobs</div>
             <div class="brand-subtitle">Amend / View Client</div>
