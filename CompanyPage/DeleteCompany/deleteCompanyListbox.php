@@ -5,7 +5,7 @@
      * Date: 05.02.2026
      */
 /** @var mysqli $con */ //connection to db necessary for phpstorm
-require_once __DIR__ . '/./Glow/db.inc.php';
+require_once __DIR__ . '/../../db.inc.php';
 ini_set('display_errors', 1); //display error
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);

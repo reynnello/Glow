@@ -8,7 +8,7 @@ Date: 22/02/2026
 <head>
     <meta charset="UTF-8">
     <title>Amend/View Client</title>
-    <link rel="stylesheet" type="text/css" href="/./Glow/Main.css">
+    <link rel="stylesheet" type="text/css" href="../../Main.css">
 </head>
 
 <body>
@@ -17,7 +17,7 @@ Date: 22/02/2026
     <!--Logo-->
     <a class="brand" href="mainPage.html.php" aria-label="Go to Main Page">
         <div class="logo">
-            <img src="/./Glow/resources/img/logo.jpeg" alt="Glow Jobs Logo">
+            <img src="../../resources/img/logo.jpeg" alt="Glow Jobs Logo">
         </div>
         <div class="brand-text">
             <div class="brand-title">Glow Jobs</div>
@@ -27,10 +27,10 @@ Date: 22/02/2026
 
     <!-- Tabs placeholders -->
     <nav class="tabs" aria-label="Primary navigation">
-        <a class="tab active" href="../clientpage.html">Client</a>
+        <a class="tab active" href="../clientPage.html">Client</a>
         <a class="tab" href="../JobPage/jobpage.html">Job</a>
         <a class="tab" href="../TrainingCoursePage/trainingcoursepage.html">Training Course</a>
-        <a class="tab" href="../CompanyPage/companyPage.html">Company</a>
+        <a class="tab" href="../../CompanyPage/companyPage.html">Company</a>
     </nav>
 </header>
 

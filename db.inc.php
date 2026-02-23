@@ -1,9 +1,9 @@
 <?php
 
 $host = "localhost:3306"; //host
-$user = "hui"; //username
-$pass = "Huihuihui123"; //password
-$db   = "EmploymentAgency"; //db name
+$user = "jeff"; //username
+$pass = "StrongPass123!"; //password
+$db   = "Employment Agency System"; //db name
 
 $con = new mysqli($host, $user, $pass, $db); //connection
 

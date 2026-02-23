@@ -6,7 +6,7 @@
      */
 
 /** @var mysqli $con */ //connection to db necessary for phpstorm
-require_once __DIR__ . '/./Glow/db.inc.php';
+require_once __DIR__ . '/../../db.inc.php';
 ini_set('display_errors', 1); //display error
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
@@ -54,7 +54,7 @@ else
 
 mysqli_close($con);//close connection
 ?>
-<form action = "companyPageAmend.html.php" method = "post" />
+<form action = "companyPageAmend.html.php" method = "post">
 
 <input type = "submit" value = "Return to Previous Screen"><!--Return to the previous page-->
 </form>
