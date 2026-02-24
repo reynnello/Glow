@@ -8,6 +8,7 @@
     <title>Amend/View Company</title>
 
     <link rel="stylesheet" type="text/css" href="../../Main.css">
+    <script src="../../Main.js"></script>
 </head>
 
 <body>

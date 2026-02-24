@@ -3,136 +3,176 @@
 <!--Date: 17.02.26-->
 <!DOCTYPE html>
 <html lang="en">
-<link rel ="stylesheet" type = "text/css" href = "../../Main.css">
+  <link rel="stylesheet" type="text/css" href="../../Main.css" />
+  <script src="../../Main.js"></script>
 
-<body>
-<!--topbar start-->
-<header class="topbar">
-    <!--Anchor for main page also classifies brand-->
-    <a class="brand" href="mainPage.html.php" aria-label="Go to Main Page">
+  <body>
+    <!--topbar start-->
+    <header class="topbar">
+      <!--Anchor for main page also classifies brand-->
+      <a class="brand" href="mainPage.html.php" aria-label="Go to Main Page">
         <!--Logo-->
         <div class="logo">
-            <img src="../../resources/img/logo.jpeg" alt="Glow Jobs Logo">
+          <img src="../../resources/img/logo.jpeg" alt="Glow Jobs Logo" />
         </div>
         <div class="brand-text">
-            <div class="brand-title">Glow Jobs</div>
-            <div class="brand-subtitle">Add Company</div>
+          <div class="brand-title">Glow Jobs</div>
+          <div class="brand-subtitle">Add Company</div>
         </div>
-    </a>
-    <!-- Tabs placeholders -->
-    <nav class="tabs" aria-label="Primary navigation">
+      </a>
+      <!-- Tabs placeholders -->
+      <nav class="tabs" aria-label="Primary navigation">
         <a class="tab" href="../../ClientPage/clientPage.html">Client</a>
         <a class="tab" href="../JobPage/jobpage.html">Job</a>
-        <a class="tab" href="../TrainingCoursePage/trainingcoursepage.html">Training Course</a>
+        <a class="tab" href="../TrainingCoursePage/trainingcoursepage.html"
+          >Training Course</a
+        >
         <a class="tab active" href="../companyPage.html">Company</a>
-    </nav>
-</header>
-<!--Main page-->
-<main class="page">
+      </nav>
+    </header>
+    <!--Main page-->
+    <main class="page">
+      <section class="card">
+        <h1>Add Company</h1>
+        <p class="hint">Please fill the information and add the Company</p>
+        <script>
+          function confirmCheck() {
+            //function that ask for confirmation in case everything is empty or filled with spaces
+            var name = document.getElementById("addName").value.trim();
+            var address = document.getElementById("addAddress").value.trim();
+            var eircode = document.getElementById("addEircode").value.trim();
+            var phone = document.getElementById("addPhone").value.trim();
+            var website = document.getElementById("addWebsite").value.trim;
+            var description = document
+              .getElementById("addDescription")
+              .value.trim();
+            var contactName = document
+              .getElementById("addContactName")
+              .value.trim();
+            var contactPhone = document
+              .getElementById("addContactPhone")
+              .value.trim();
+            var contactEmail = document
+              .getElementById("addContactEmail")
+              .value.trim();
 
-<section class="card">
-    <h1>Add Company</h1>
-    <p class="hint">Please fill the information and add the Company</p>
-<script>
-function confirmCheck() //function that ask for confirmation in case everything is empty or filled with spaces
-{
-    var name = document.getElementById("addName").value.trim();
-    var address = document.getElementById("addAddress").value.trim();
-    var eircode = document.getElementById("addEircode").value.trim();
-    var phone = document.getElementById("addPhone").value.trim();
-    var website = document.getElementById("addWebsite").value.trim;
-    var description = document.getElementById("addDescription").value.trim();
-    var contactName = document.getElementById("addContactName").value.trim();
-    var contactPhone = document.getElementById("addContactPhone").value.trim();
-    var contactEmail = document.getElementById("addContactEmail").value.trim();
+            if (
+              name === "" ||
+              address === "" ||
+              eircode === "" ||
+              phone === "" ||
+              description === "" ||
+              contactName === "" ||
+              contactPhone === "" ||
+              contactEmail === ""
+            ) {
+              alert("Please fill out required information"); //if the information is incomplete or empty
+              return false;
+            } else {
+              var response;
+              response = confirm(
+                "Are you sure you want to save these changes?"
+              ); //asks for confirmation
+              if (response) return response;
+            }
+          }
+        </script>
 
-    if (
-        name === "" ||
-        address === "" ||
-        eircode === "" ||
-        phone === "" ||
-        description === "" ||
-        contactName === "" ||
-        contactPhone === "" ||
-        contactEmail === ""
-    )
-    {
-        alert("Please fill out required information");//if the information is incomplete or empty
-        return false;
-    }
-    else{
-        var response;
-        response = confirm('Are you sure you want to save these changes?');//asks for confirmation
-        if(response)
-            return response;
-    }
-}
-</script>
+        <!--fields for data-->
+        <form
+          name="addCompanyForm"
+          action="AddCompanyPost.php"
+          onsubmit="return confirmCheck()"
+          method="post"
+        >
+          <!--Form submitting-->
+          <div class="form-grid">
+            <div class="field">
+              <label for="addName">Company Name </label>
+              <input type="text" name="addName" id="addName" required />
+            </div>
 
-    <!--fields for data-->
-<form name="addCompanyForm" action="AddCompanyPost.php" onsubmit="return confirmCheck()" method="post"><!--Form submitting-->
-    <div class="form-grid">
-        <div class="field">
-    <label for ="addName">Company Name </label>
-    <input type = "text" name = "addName" id = "addName" required >
-        </div>
+            <div class="field">
+              <label for="addAddress">Company Address</label>
+              <input type="text" name="addAddress" id="addAddress" required />
+            </div>
 
-        <div class="field">
-    <label for ="addAddress">Company Address</label>
-    <input type = "text" name = "addAddress" id = "addAddress" required>
-        </div>
+            <div class="field">
+              <label for="addEircode">Eircode</label>
+              <input type="text" name="addEircode" id="addEircode" required />
+            </div>
 
-        <div class="field">
-    <label for ="addEircode">Eircode</label>
-    <input type = "text" name = "addEircode" id = "addEircode" required>
-        </div>
+            <div class="field">
+              <label for="addPhone">Phone Number</label>
+              <input
+                type="tel"
+                name="addPhone"
+                id="addPhone"
+                pattern="[+0-9 ]{7,20}"
+                required
+              />
+            </div>
 
-        <div class="field">
-    <label for ="addPhone">Phone Number</label>
-    <input type = "tel" name = "addPhone" id = "addPhone" pattern="[+0-9 ]{7,20}" required>
-        </div>
+            <div class="field">
+              <label for="addWebsite">Company Website</label>
+              <input type="text" name="addWebsite" id="addWebsite" />
+            </div>
 
-        <div class="field">
-    <label for="addWebsite">Company Website</label>
-    <input type = "text" name = "addWebsite" id = "addWebsite">
-        </div>
+            <div class="field">
+              <label for="addDescription">Business Description</label>
+              <input
+                type="text"
+                name="addDescription"
+                id="addDescription"
+                required
+              />
+              <small class="hint-text">Optional field</small>
+            </div>
 
-        <div class="field">
-    <label for="addDescription">Business Description</label>
-    <input type="text" name = "addDescription" id = "addDescription" required>
-    <small class="hint-text">Optional field</small>
-        </div>
+            <div class="field">
+              <label for="addContactName">Contact Name</label>
+              <input
+                type="text"
+                name="addContactName"
+                id="addContactName"
+                required
+              /><br /><br />
+            </div>
 
-         <div class="field">
-    <label for="addContactName">Contact Name</label>
-    <input type = "text" name = "addContactName" id = "addContactName" required><br><br>
-         </div>
+            <div class="field">
+              <label for="addContactPhone">Contact Phone</label>
+              <input
+                type="tel"
+                name="addContactPhone"
+                id="addContactPhone"
+                pattern="[+0-9 ]{7,20}"
+                required
+              /><br /><br />
+            </div>
 
-        <div class="field">
-    <label for="addContactPhone">Contact Phone</label>
-    <input type = "tel" name = "addContactPhone" id ="addContactPhone" pattern="[+0-9 ]{7,20}" required><br><br>
-        </div>
+            <div class="field">
+              <label for="addContactEmail">Contact Email</label>
+              <input
+                type="email"
+                name="addContactEmail"
+                id="addContactEmail"
+                required
+              />
+            </div>
+          </div>
 
-        <div class="field">
-    <label for="addContactEmail">Contact Email</label>
-    <input type = "email" name = "addContactEmail" id = "addContactEmail" required>
-        </div>
-    </div>
-
-    <br><br>
-    <!--Submit and return buttons -->
-<div style="margin-top: 14px;">
-    <input type = "submit" value = "Add Company" class="btn primary">
-    <a href="../companyPage.html" class="btn">Back</a>
-</div>
-</form>
-</section>
-</main>
-<!--footer-->
-<footer class="footer">
-    <span>© 2026 Glow Jobs Agency - "We are the best at what we do!"</span>
-</footer>
-
-
-</body>
+          <br /><br />
+          <!--Submit and return buttons -->
+          <div style="margin-top: 14px">
+            <input type="submit" value="Add Company" class="btn primary" />
+            <a href="../companyPage.html" class="btn">Back</a>
+          </div>
+        </form>
+      </section>
+    </main>
+    <!--footer-->
+    <footer class="footer">
+      <span>© 2026 Glow Jobs Agency - "We are the best at what we do!"</span>
+    </footer>
+  </body>
 </html>

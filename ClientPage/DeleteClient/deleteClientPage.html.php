@@ -9,6 +9,7 @@ Date: 22/02/2026
     <meta charset="UTF-8">
     <title>Delete Client</title>
     <link rel="stylesheet" type="text/css" href="../../Main.css">
+    <script src="../../Main.js"></script>
 </head>
 
 <body>
