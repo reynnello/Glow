@@ -127,53 +127,5 @@
 <footer class="footer">
     <span>© 2026 Glow Jobs Agency - "We are the best at what we do!"</span>
 </footer>
-
-<script>
-    function populate() //populate function for fields of data to be visable
-    {
-        var sel = document.getElementById("deleteCompanyListbox");
-        var result;
-        result = sel.options[sel.selectedIndex].value;
-        var companyDetails = result.split('|');
-
-        document.getElementById("deleteId").value = companyDetails[0];
-        document.getElementById("deleteName").value = companyDetails[1];
-        document.getElementById("deleteAddress").value = companyDetails[2];
-        document.getElementById("deleteEircode").value = companyDetails[3];
-        document.getElementById("deletePhone").value = companyDetails[4];
-        document.getElementById("deleteWebsite").value = companyDetails[5];
-        document.getElementById("deleteDescription").value = companyDetails[6];
-        document.getElementById("deleteContactName").value = companyDetails[7];
-        document.getElementById("deleteContactPhone").value = companyDetails[8];
-        document.getElementById("deleteContactEmail").value = companyDetails[9];
-    }
-
-
-    function confirmCheck() //checking the conformation from user
-    {
-        var companyName = document.getElementById("deleteName").value;
-        var response;
-        response = confirm('Are you sure you want to delete "'+ companyName+'" record from the list?');
-        if (response)
-        {
-            document.getElementById("deleteId").disabled = false;
-            document.getElementById("deleteName").disabled = false;
-            document.getElementById("deleteAddress").disabled = false;
-            document.getElementById("deleteEircode").disabled = false;
-            document.getElementById("deletePhone").disabled = false;
-            document.getElementById("deleteWebsite").disabled = false;
-            document.getElementById("deleteDescription").disabled = false;
-            document.getElementById("deleteContactName").disabled = false;
-            document.getElementById("deleteContactPhone").disabled = false;
-            document.getElementById("deleteContactEmail").disabled = false;
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
-</script>
-
 </body>
 </html>

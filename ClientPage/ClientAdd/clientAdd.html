@@ -34,48 +34,6 @@
       <section class="card">
         <h1>Add Client</h1>
         <p class="hint">Please fill the information and add the Client</p>
-        <script>
-          function confirmCheck() {
-            //function that ask for confirmation in case everything is empty or filled with spaces
-            var name = document.getElementById("addName").value.trim();
-            var address = document.getElementById("addAddress").value.trim();
-            var eircode = document.getElementById("addEircode").value.trim();
-            var phone = document.getElementById("addPhone").value.trim();
-            var dob = document.getElementById("addDob").value.trim();
-            var driverLicense = document
-              .getElementById("addDriverLicense")
-              .value.trim();
-            var jobTitle = document.getElementById("addJobTitle").value.trim();
-            var qualifications = document
-              .getElementById("addQualifications")
-              .value.trim();
-            var minAnnualSalary = document
-              .getElementById("addMinAnnualSalary")
-              .value.trim();
-
-            if (
-              name === "" ||
-              address === "" ||
-              eircode === "" ||
-              phone === "" ||
-              dob === "" ||
-              driverLicense === "" ||
-              jobTitle === "" ||
-              qualifications === "" ||
-              minAnnualSalary === ""
-            ) {
-              alert("Please fill out required information"); //if the information is incomplete or empty
-              return false;
-            } else {
-              var response;
-              response = confirm(
-                "Are you sure you want to save these changes?"
-              ); //asks for confirmation
-              if (response) return response;
-            }
-          }
-        </script>
-
         <!--fields for data-->
         <form
           name="addClientForm"
