@@ -81,9 +81,3 @@ function toggleLock() {
     document.getElementById("amendViewbutton").value = "Amend Details";
   }
 }
-
-const dateInput = document.getElementById("date");
-if (dateInput) {
-  const today = new Date().toISOString().substr(0, 10); // [web:8]
-  dateInput.value = today; // [web:8]
-}
