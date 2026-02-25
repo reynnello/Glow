@@ -12,6 +12,9 @@ body {
 }
 
 body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
   margin: 0; /* Removes default browser margin */
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; /* Modern font stack */
   color: #1b1b1b; /* Default text color */
@@ -61,7 +64,6 @@ body {
   gap: 12px; /* Space between logo and text */
   text-decoration: none; /* Removes underline */
   color: #fff; /* White text */
-  min-width: 260px; /* Prevents collapsing */
 }
 
 .logo {
@@ -128,7 +130,7 @@ body {
 
 .page {
   max-width: 1100px; /* Maximum content width */
-  margin: 0 auto; /* Center horizontally */
+  margin: 100px auto; /* Center horizontally */
   padding: 28px 18px 34px; /* Spacing */
   display: grid; /* Grid layout */
   grid-template-columns: 1.1fr 0.9fr; /* Two columns */
@@ -216,7 +218,7 @@ body {
 
 .footer {
   max-width: 1100px;
-  margin: 0 auto;
+  margin: auto auto 0;
   padding: 0 18px 22px;
   color: rgba(255, 255, 255, 0.75);
   font-size: 12px;
