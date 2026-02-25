@@ -1,0 +1,77 @@
+<!--
+Name: Anton Opria
+ID: C00309433
+Date: 25/02/2026
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Job Page</title>
+    <link rel="stylesheet" type="text/css" href="../Main.css" />
+  </head>
+
+  <body>
+    <!-- Top bar -->
+    <header class="topbar">
+      <a class="brand" href="mainPage.html.php" aria-label="Go to Main Page">
+        <div class="logo">
+          <img src="../resources/img/logo.jpeg" alt="Glow Jobs Logo" />
+        </div>
+        <div class="brand-text">
+          <div class="brand-title">Glow Jobs</div>
+          <div class="brand-subtitle">Job Management</div>
+        </div>
+      </a>
+
+      <nav class="tabs" aria-label="Primary navigation">
+        <a class="tab" href="../ClientPage/clientPage.html">Client</a>
+        <a class="tab active" href="#">Job</a>
+        <a class="tab" href="../TrainingCoursePage/trainingcoursepage.html"
+          >Training Course</a
+        >
+        <a class="tab" href="../CompanyPage/companyPage.html">Company</a>
+      </nav>
+    </header>
+
+    <!-- Page content -->
+    <main class="page">
+      <section class="card">
+        <h1>Job</h1>
+        <p class="hint">Choose an action below.</p>
+
+        <div class="menu">
+          <a href="JobAdd/jobAdd.html">Add a New Job</a>
+          <a href="DeleteJob/deleteJobPage.html.php">Delete a Job</a>
+          <a href="JobViewAmend/jobPageAmend.html.php">Amend/View a Job</a>
+          <a href="FillJob/">Fill a Job</a>
+        </div>
+      </section>
+      <!--info-->
+      <section class="info">
+        <div class="info-card">
+          <h2>Tip</h2>
+          <p>
+            Use <b>Add Job</b> to add a new job record. Use <b>Amend/View</b> to
+            select a job and update details. Use <b>Delete Job</b> to delete a
+            job record from the list. Use <b>Fill a Job</b> to sign a client up
+            for a job and mark it as filled.
+          </p>
+        </div>
+
+        <div class="info-card">
+          <h2>Status</h2>
+          <p>
+            You may click on top tabs to operate the website. Logo will take you
+            back to <b>Main Page</b>.
+            <b>We are good to go!</b>
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <span>© 2026 Glow Jobs Agency - "We are the best at what we do!"</span>
+    </footer>
+  </body>
+</html>

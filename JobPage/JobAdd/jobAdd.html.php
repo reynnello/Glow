@@ -1,7 +1,7 @@
 <!--
-Name: Oleksandr Storozhuk
-ID: C00313344
-Date: 22/02/2026
+Name: Anton Opria
+ID: C00309433
+Date: 25/02/2026
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -18,13 +18,13 @@ Date: 22/02/2026
         </div>
         <div class="brand-text">
           <div class="brand-title">Glow Jobs</div>
-          <div class="brand-subtitle">Add Client</div>
+          <div class="brand-subtitle">Add Job</div>
         </div>
       </a>
       <!-- Tabs placeholders -->
       <nav class="tabs" aria-label="Primary navigation">
-        <a class="tab active" href="../clientPage.html">Client</a>
-        <a class="tab" href="../../JobPage/jobPage.html">Job</a>
+        <a class="tab active" href="../../ClientPage/clientPage.html">Client</a>
+        <a class="tab" href="../JobPage/jobPage.html">Job</a>
         <a class="tab" href="../../TrainingCoursePage/trainingcoursepage.html"
           >Training Course</a
         >
@@ -34,86 +34,82 @@ Date: 22/02/2026
     <!--Main page-->
     <main class="page">
       <section class="card">
-        <h1>Add Client</h1>
-        <p class="hint">Please fill the information and add the Client</p>
+        <h1>Add Job</h1>
+        <p class="hint">Please fill the information and add a Job</p>
         <!--fields for data-->
         <form
-          name="addClientForm"
-          action="AddClientPost.php"
+          name="addJobForm"
+          action="AddJobPost.php"
           onsubmit="return confirmCheck()"
           method="post"
         >
           <!--Form submitting-->
           <div class="form-grid">
             <div class="field">
-              <label for="addName">Client Name </label>
-              <input type="text" name="addName" id="addName" required />
+              <label for="addTitle">Job Title</label>
+              <input type="text" name="addTitle" id="addTitle" required />
             </div>
 
-            <div class="field">
-              <label for="addAddress">Client Address</label>
-              <input type="text" name="addAddress" id="addAddress" required />
+            <div class="field field-big">
+              <label for="addDescription">Brief Description</label>
+              <input type="text" name="addDescription" id="addDescription" required />
             </div>
 
-            <div class="field">
-              <label for="addEircode">Eircode</label>
-              <input type="text" name="addEircode" id="addEircode" required />
-            </div>
+            <!-- Listbox -->
+        <div class="field">
+          <?php include 'companyListbox.php'; ?>
+        </div>
 
             <div class="field">
-              <label for="addPhone">Phone Number</label>
+              <label for="addQual">Qualification Required</label>
               <input
-                type="tel"
-                name="addPhone"
-                id="addPhone"
-                pattern="[+0-9 ]{7,20}"
+                type="text"
+                name="addQual"
+                id="addQual"
                 required
               />
             </div>
 
             <div class="field">
-              <label for="addDob">Date of Birth</label>
-              <input type="date" name="addDob" id="addDob" required />
+              <label for="addType">Type of Work</label>
+              <input type="text" name="addType" id="addType" required placeholder="full-time, part-time, ..." />
             </div>
 
             <div class="field">
-              <label for="addDriverLicense">Driver License Type</label>
-              <input
-                type="text"
-                name="addDriverLicense"
-                id="addDriverLicense"
-                required
-              />
-            </div>
-
-            <div class="field">
-              <label for="addJobTitle">Job Title</label>
-              <input
-                type="text"
-                name="addJobTitle"
-                id="addJobTitle"
-                required
-              /><br /><br />
-            </div>
-
-            <div class="field">
-              <label for="addQualifications">Qualifications</label>
-              <input
-                type="text"
-                name="addQualifications"
-                id="addQualifications"
-                required
-              /><br /><br />
-            </div>
-
-            <div class="field">
-              <label for="addMinAnnualSalary">Minimum Annual Salary</label>
+              <label for="addAnnualSalary">Annual Salary</label>
               <input
                 type="number"
-                name="addMinAnnualSalary"
-                id="addMinAnnualSalary"
+                name="addAnnualSalary"
+                id="addAnnualSalary"
                 required
               />
+            </div>
+            <div class="radio">
+              <label>Drivers License Required</label>
+              <input
+                type="radio"
+                name="addDriverLic"
+                id="addDriverLic"
+                  value="Yes"
+                required
+              /><
+
+              <input
+                type="radio"
+                name="addDriverLic"
+                id="addDriverLicNo"
+                  value="No"
+                required
+              />
+              <br /><br />
+            </div>
+            <div class="field">
+              <label for="addLocation">Location</label>
+              <input
+                type="text"
+                name="addLocation"
+                id="addLocation"
+                required
             </div>
           </div>
 
