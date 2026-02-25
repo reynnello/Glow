@@ -22,7 +22,7 @@ $sql = "UPDATE Company SET company_name = '$_POST[deleteName]',
         ,business_description = '$_POST[deleteDescription]'
         ,contact_name = '$_POST[deleteContactName]'
         ,contact_phone = '$_POST[deleteContactPhone]'
-        ,contact_email = '$_POST[delteContactEmail]'
+        ,contact_email = '$_POST[deleteContactEmail]'
         ,is_deleted = '1'
         WHERE company_id = '$_POST[deleteId]'";
 
