@@ -32,7 +32,7 @@ Date: 25/02/2026
       </nav>
     </header>
     <!--Main page-->
-    <main class="page">
+    <main class="page page--center">
       <section class="card">
         <h1>Add Job</h1>
         <p class="hint">Please fill the information and add a Job</p>
@@ -57,7 +57,7 @@ Date: 25/02/2026
 
             <!-- Listbox -->
         <div class="field">
-          <?php include 'companyListbox.php'; ?>
+          <?php include 'addJobListbox.php'; ?>
         </div>
 
             <div class="field">
