@@ -9,7 +9,6 @@ Date: 22/02/2026
     <meta charset="UTF-8">
     <title>Delete Client</title>
     <link rel="stylesheet" type="text/css" href="../../Main.css">
-    <script src="../../Main.js"></script>
 </head>
 
 <body>
@@ -129,5 +128,51 @@ Date: 22/02/2026
 <footer class="footer">
     <span>© 2026 Glow Jobs Agency - "We are the best at what we do!"</span>
 </footer>
+<script>
+    function populate() //populate function for fields of data to be visable
+    {
+        var sel = document.getElementById("deleteClientListbox");
+        var result;
+        result = sel.options[sel.selectedIndex].value;
+        var clientDetails = result.split('|');
+
+        document.getElementById("deleteId").value = clientDetails[0];
+        document.getElementById("deleteName").value = clientDetails[1];
+        document.getElementById("deleteAddress").value = clientDetails[2];
+        document.getElementById("deleteEircode").value = clientDetails[3];
+        document.getElementById("deletePhone").value = clientDetails[4];
+        document.getElementById("deleteDob").value = clientDetails[5];
+        document.getElementById("deleteDriverLicense").value = clientDetails[6];
+        document.getElementById("deleteJobTitleInterest").value = clientDetails[7];
+        document.getElementById("deleteQualifications").value = clientDetails[8];
+        document.getElementById("deleteMinimumAnnualSalary").value = clientDetails[9];
+    }
+
+
+    function confirmCheck() //checking the conformation from user
+    {
+        var clientName = document.getElementById("deleteName").value;
+        var response;
+        response = confirm('Are you sure you want to delete "'+ clientName+'" record from the list?');
+        if (response)
+        {
+            document.getElementById("deleteId").disabled = false;
+            document.getElementById("deleteName").disabled = false;
+            document.getElementById("deleteAddress").disabled = false;
+            document.getElementById("deleteEircode").disabled = false;
+            document.getElementById("deletePhone").disabled = false;
+            document.getElementById("deleteDob").disabled = false;
+            document.getElementById("deleteDriverLicense").disabled = false;
+            document.getElementById("deleteJobTitleInterest").disabled = false;
+            document.getElementById("deleteQualifications").disabled = false;
+            document.getElementById("deleteMinimumAnnualSalary").disabled = false;
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+</script>
 </body>
 </html>

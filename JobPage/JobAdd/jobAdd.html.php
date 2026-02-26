@@ -6,7 +6,6 @@ Date: 25/02/2026
 <!DOCTYPE html>
 <html lang="en">
   <link rel="stylesheet" type="text/css" href="../../Main.css" />
-  <script src="../../Main.js"></script>
   <body>
     <!--topbar start-->
     <header class="topbar">

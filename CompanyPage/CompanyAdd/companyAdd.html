@@ -7,7 +7,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" type="text/css" href="../../Main.css" />
-    <script src="../../Main.js" defer></script>
     <title>Add Company</title>
   </head>
 
@@ -136,5 +135,41 @@
     <footer class="footer">
       <span>© 2026 Glow Jobs Agency - "We are the best at what we do!"</span>
     </footer>
+
+    <script>
+      function confirmCheck() //function that ask for confirmation in case everything is empty or filled with spaces
+      {
+          var name = document.getElementById("addName").value.trim();
+          var address = document.getElementById("addAddress").value.trim();
+          var eircode = document.getElementById("addEircode").value.trim();
+          var phone = document.getElementById("addPhone").value.trim();
+          var website = document.getElementById("addWebsite").value.trim;
+          var description = document.getElementById("addDescription").value.trim();
+          var contactName = document.getElementById("addContactName").value.trim();
+          var contactPhone = document.getElementById("addContactPhone").value.trim();
+          var contactEmail = document.getElementById("addContactEmail").value.trim();
+      
+          if (
+              name === "" ||
+              address === "" ||
+              eircode === "" ||
+              phone === "" ||
+              description === "" ||
+              contactName === "" ||
+              contactPhone === "" ||
+              contactEmail === ""
+          )
+          {
+              alert("Please fill out required information");//if the information is incomplete or empty
+              return false;
+          }
+          else{
+              var response;
+              response = confirm('Are you sure you want to save these changes?');//asks for confirmation
+              if(response)
+                  return response;
+          }
+      }
+      </script>
   </body>
 </html>

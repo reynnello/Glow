@@ -7,7 +7,6 @@ Date: 22/02/2026
 <html lang="en">
   <head>
     <link rel="stylesheet" type="text/css" href="../../Main.css" />
-    <script src="../../Main.js"></script>
     <title>Add Client</title>
   </head>
   <body>
@@ -133,5 +132,41 @@ Date: 22/02/2026
     <footer class="footer">
       <span>© 2026 Glow Jobs Agency - "We are the best at what we do!"</span>
     </footer>
+    <script>
+      function confirmCheck() //function that ask for confirmation in case everything is empty or filled with spaces
+      {
+          var name = document.getElementById("addName").value.trim();
+          var address = document.getElementById("addAddress").value.trim();
+          var eircode = document.getElementById("addEircode").value.trim();
+          var phone = document.getElementById("addPhone").value.trim();
+          var dob = document.getElementById("addDob").value.trim();
+          var driverLicense = document.getElementById("addDriverLicense").value.trim();
+          var jobTitle = document.getElementById("addJobTitle").value.trim();
+          var qualifications = document.getElementById("addQualifications").value.trim();
+          var minAnnualSalary = document.getElementById("addMinAnnualSalary").value.trim();
+      
+          if (
+              name === "" ||
+              address === "" ||
+              eircode === "" ||
+              phone === "" ||
+              dob === "" ||
+              driverLicense === "" ||
+              jobTitle === "" ||
+              qualifications === "" ||
+              minAnnualSalary === ""
+          )
+          {
+              alert("Please fill out required information");//if the information is incomplete or empty
+              return false;
+          }
+          else{
+              var response;
+              response = confirm('Are you sure you want to save these changes?');//asks for confirmation
+              if(response)
+                  return response;
+          }
+      }
+      </script>
   </body>
 </html>
