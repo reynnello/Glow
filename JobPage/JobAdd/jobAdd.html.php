@@ -46,7 +46,7 @@ Date: 25/02/2026
         
 <div class="form-grid">
 <!-- Company select (wide) -->
-<div class="field field-big">
+<div class="field">
   <label for="companyListbox">Company</label>
   <?php include 'addJobListbox.php'; ?>
 
@@ -79,7 +79,6 @@ Date: 25/02/2026
 </div>
 
 <!-- Drivers license radio (wide) -->
-<div class="field field-big">
   <div class="radio-group" role="group" aria-labelledby="driverLicLabel">
     <span class="radio-label" id="driverLicLabel">Drivers License Required</span>
 
@@ -95,7 +94,6 @@ Date: 25/02/2026
       </label>
     </div>
   </div>
-</div>
 
 <div class="field">
   <label for="addLocation">Location</label>

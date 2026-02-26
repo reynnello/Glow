@@ -289,7 +289,7 @@ a.btn:hover {
 .form-grid {
   display: grid;
   grid-template-columns: 1fr 1fr; /* Two column layout */
-  gap: 12px;
+  gap: 10px;
 }
 
 /* Single column layout on small screens */
@@ -306,6 +306,7 @@ a.btn:hover {
 }
 
 .field input {
+  margin: 0;
   width: 100%;
   padding: 11px 12px;
   border-radius: 12px;
@@ -332,14 +333,17 @@ a.btn:hover {
 
 .field-big {
   grid-column: span 2; /* Makes this field take both columns */
+  min-height: 0;
 }
+
 .field > select {
+  width: 100%;
   padding: 11px 12px;
   border-radius: 12px;
   border: 1px solid rgba(0, 0, 0, 0.14);
   background: rgba(255, 255, 255, 0.9);
   min-width: 0;
-  margin-bottom: 20px;
+  margin: 0;
   appearance: none;
   cursor: pointer;
   transition: background 150ms ease, border-color 150ms ease, box-shadow 150ms ease;
@@ -407,14 +411,28 @@ a.btn:hover {
   height: 10px;
   border-radius: 999px;
   background: rgba(169, 90, 255, 0.92);
+  transform: scale(0);
+  transition: transform 120ms ease;
 }
 
-.radio-option input[type="radio"]:checked {
-  border-color: rgba(169, 90, 255, 0.92);
+.radio-option input[type="radio"]:checked::before {
+  transform: scale(1);
 }
 
 /* focus по клавиатуре */
 .radio-option input[type="radio"]:focus-visible {
   outline: none;
   box-shadow: 0 0 0 3px rgba(169, 90, 255, 0.18);
+}
+
+.radio-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+@media (max-width: 900px) {
+  .radio-row {
+    grid-template-columns: 1fr;
+  }
 }
