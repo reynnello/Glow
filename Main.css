@@ -334,24 +334,96 @@ a.btn:hover {
   grid-column: span 2; /* Makes this field take both columns */
 }
 
+/* Select: убрать странный margin и привести к input-стилю */
 .field > select {
-  flex: 1 1 auto;
   padding: 11px 12px;
   border-radius: 12px;
-  border: 1px solid #6b6b6b63;
+  border: 1px solid rgba(0, 0, 0, 0.14);
   background: rgba(255, 255, 255, 0.9);
   min-width: 0;
-  margin: 15px 0;
+  margin-bottom: 20px; /* важно: не ломаем grid */
   appearance: none;
   cursor: pointer;
-  transition: background 300ms ease, border-color 300ms ease;
+  transition: background 150ms ease, border-color 150ms ease, box-shadow 150ms ease;
 }
 
 .field > select:hover {
-  border-color: #1a1a1a;
+  background: rgba(255, 255, 255, 0.96);
+  border-color: rgba(0, 0, 0, 0.33);
 }
 
 .field > select:focus {
-  border-color: #000000;
+  background: rgba(255, 255, 255, 1);
+  border-color: rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 0 3px rgba(169, 90, 255, 0.18);
   outline: none;
+}
+
+/* Radio group */
+.radio-group {
+  display: grid;
+  gap: 10px;
+}
+
+.radio-label {
+  display: block;
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+
+.radio-option {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.14);
+  background: rgba(255, 255, 255, 0.9);
+  cursor: pointer;
+
+  user-select: none;
+  transition: border-color 150ms ease, background 150ms ease, transform 120ms ease;
+}
+
+.radio-option:hover {
+  background: rgba(255, 255, 255, 0.96);
+  border-color: rgba(0, 0, 0, 0.33);
+  transform: translateY(-1px);
+}
+
+.radio-option input[type="radio"] {
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 999px;
+  border: 2px solid rgba(0, 0, 0, 0.35);
+  background: #fff;
+  display: grid;
+  place-items: center;
+  margin: 0;
+}
+
+.radio-option input[type="radio"]::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: rgba(169, 90, 255, 0.92);
+  transform: scale(0);
+  transition: transform 120ms ease;
+}
+
+.radio-option input[type="radio"]:checked {
+  border-color: rgba(169, 90, 255, 0.92);
+}
+
+.radio-option input[type="radio"]:checked::before {
+  transform: scale(1);
+}
+
+/* focus по клавиатуре */
+.radio-option input[type="radio"]:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(169, 90, 255, 0.18);
 }

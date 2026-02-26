@@ -9,7 +9,6 @@ require_once __DIR__ . '/../../db.inc.php';
 ini_set('display_errors', 1); //display error
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
-session_start();
 
 $sql = "SELECT company_id, company_name, address, eircode, telephone, website, business_description, contact_name, contact_phone, contact_email FROM Company where is_deleted = 0"; //querying the db
 

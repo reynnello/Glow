@@ -9,7 +9,6 @@ require_once __DIR__ . '/../../db.inc.php';
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
-session_start();
 
 $sql = "SELECT company_id, company_name FROM Company WHERE is_deleted = 0 ORDER BY company_name";
 $result = mysqli_query($con, $sql);

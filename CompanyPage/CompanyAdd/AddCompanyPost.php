@@ -10,7 +10,6 @@ require_once __DIR__ . '/../../db.inc.php';//connection to db necessary for phps
 ini_set('display_errors', 1); //display error
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
-session_start();
 
 $name = $_POST['addName']; //creating variables and passing data from html fields
 $address = $_POST['addAddress'];

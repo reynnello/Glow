@@ -50,74 +50,66 @@ Date: 25/02/2026
           <?php include 'addJobListbox.php'; ?>
         </div>
         
-          <div class="form-grid">
-            <div class="field">
-              <label for="addTitle">Job Title</label>
-              <input type="text" name="addTitle" id="addTitle" required />
-            </div>
+          <!-- внутри формы -->
+<div class="form-grid">
 
-            <div class="field field-big">
-              <label for="addDescription">Brief Description</label>
-              <input type="text" name="addDescription" id="addDescription" required />
-            </div>
+<!-- Company select (wide) -->
+<div class="field field-big">
+  <?php include 'addJobListbox.php'; ?>
+</div>
 
-            <div class="field">
-              <label for="addQual">Qualification Required</label>
-              <input
-                type="text"
-                name="addQual"
-                id="addQual"
-                required
-              />
-            </div>
+<div class="field">
+  <label for="addTitle">Job Title</label>
+  <input type="text" name="addTitle" id="addTitle" required />
+</div>
 
-            <div class="field">
-              <label for="addType">Type of Work</label>
-              <input type="text" name="addType" id="addType" required placeholder="full-time, part-time, ..." />
-            </div>
+<div class="field field-big">
+  <label for="addDescription">Brief Description</label>
+  <input type="text" name="addDescription" id="addDescription" required />
+</div>
 
-            <div class="field">
-              <label for="addAnnualSalary">Annual Salary</label>
-              <input
-                type="number"
-                name="addAnnualSalary"
-                id="addAnnualSalary"
-                required
-              />
-            </div>
-            <div class="radio">
-              <label>Drivers License Required</label>
-              <input
-                type="radio"
-                name="addDriverLic"
-                id="addDriverLic"
-                  value="Yes"
-                required
-              /><
+<div class="field">
+  <label for="addQual">Qualification Required</label>
+  <input type="text" name="addQual" id="addQual" required />
+</div>
 
-              <input
-                type="radio"
-                name="addDriverLic"
-                id="addDriverLicNo"
-                  value="No"
-                required
-              />
-              <br /><br />
-            </div>
-            <div class="field">
-              <label for="addLocation">Location</label>
-              <input
-                type="text"
-                name="addLocation"
-                id="addLocation"
-                required
-            </div>
-          </div>
+<div class="field">
+  <label for="addType">Type of Work</label>
+  <input type="text" name="addType" id="addType" required placeholder="full-time, part-time, ..." />
+</div>
 
+<div class="field">
+  <label for="addAnnualSalary">Annual Salary</label>
+  <input type="number" name="addAnnualSalary" id="addAnnualSalary" required />
+</div>
+
+<!-- Drivers license radio (wide) -->
+<div class="field field-big">
+  <div class="radio-group" role="group" aria-labelledby="driverLicLabel">
+    <span class="radio-label" id="driverLicLabel">Drivers License Required</span>
+
+    <label class="radio-option" for="addDriverLicYes">
+      <input type="radio" name="addDriverLic" id="addDriverLicYes" value="Yes" required />
+      <span>Yes</span>
+    </label>
+
+    <label class="radio-option" for="addDriverLicNo">
+      <input type="radio" name="addDriverLic" id="addDriverLicNo" value="No" required />
+      <span>No</span>
+    </label>
+  </div>
+</div>
+
+<div class="field">
+  <label for="addLocation">Location</label>
+  <input type="text" name="addLocation" id="addLocation" required />
+</div>
+
+</div>
           <br /><br />
           <!--Submit and return buttons -->
           <div style="margin-top: 14px">
-            <input type="submit" value="Add Client" class="btn primary" />
+            <input type="submit" value="Add Job" class="btn primary" />
             <a href="../jobPage.html" class="btn">Back</a>
           </div>
         </form>

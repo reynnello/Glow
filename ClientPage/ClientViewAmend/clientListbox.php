@@ -9,7 +9,6 @@ require_once __DIR__ . '/../../db.inc.php';
 ini_set('display_errors', 1); //display error
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
-session_start();
 
 $sql = "SELECT client_id, client_name, address, eircode, telephone, date_of_birth, driver_license_type, job_title_interest, qualifications, min_annual_salary FROM client where is_deleted = 0"; //querying the db
 
