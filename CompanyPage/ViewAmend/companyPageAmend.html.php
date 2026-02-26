@@ -6,7 +6,6 @@
 <head>
     <meta charset="UTF-8">
     <title>Amend/View Company</title>
-
     <link rel="stylesheet" type="text/css" href="../../Main.css">
     <script src="../../Main.js"></script>
 </head>
@@ -27,9 +26,9 @@
 
     <!-- Tabs placeholders -->
     <nav class="tabs" aria-label="Primary navigation">
-        <a class="tab" href="../ClientPage/clientpage.html">Client</a>
-        <a class="tab" href="../JobPage/jobpage.html">Job</a>
-        <a class="tab" href="../TrainingCoursePage/trainingcoursepage.html">Training Course</a>
+        <a class="tab" href="../../ClientPage/clientpage.html">Client</a>
+        <a class="tab" href="../../JobPage/jobPage.html">Job</a>
+        <a class="tab" href="../../TrainingCoursePage/trainingcoursepage.html">Training Course</a>
         <a class="tab active" href="../companyPage.html">Company</a>
     </nav>
 </header>

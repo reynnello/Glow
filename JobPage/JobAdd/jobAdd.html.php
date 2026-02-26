@@ -23,8 +23,8 @@ Date: 25/02/2026
       </a>
       <!-- Tabs placeholders -->
       <nav class="tabs" aria-label="Primary navigation">
-        <a class="tab active" href="../../ClientPage/clientPage.html">Client</a>
-        <a class="tab" href="../JobPage/jobPage.html">Job</a>
+        <a class="tab" href="../../ClientPage/clientPage.html">Client</a>
+        <a class="tab active" href="../JobPage/jobPage.html">Job</a>
         <a class="tab" href="../../TrainingCoursePage/trainingcoursepage.html"
           >Training Course</a
         >
@@ -32,7 +32,7 @@ Date: 25/02/2026
       </nav>
     </header>
     <!--Main page-->
-    <main class="page">
+    <main class="page page--center">
       <section class="card">
         <h1>Add Job</h1>
         <p class="hint">Please fill the information and add a Job</p>
@@ -44,6 +44,12 @@ Date: 25/02/2026
           method="post"
         >
           <!--Form submitting-->
+
+              <!-- Listbox -->
+        <div class="field">
+          <?php include 'addJobListbox.php'; ?>
+        </div>
+        
           <div class="form-grid">
             <div class="field">
               <label for="addTitle">Job Title</label>
@@ -54,11 +60,6 @@ Date: 25/02/2026
               <label for="addDescription">Brief Description</label>
               <input type="text" name="addDescription" id="addDescription" required />
             </div>
-
-            <!-- Listbox -->
-        <div class="field">
-          <?php include 'companyListbox.php'; ?>
-        </div>
 
             <div class="field">
               <label for="addQual">Qualification Required</label>
@@ -117,7 +118,7 @@ Date: 25/02/2026
           <!--Submit and return buttons -->
           <div style="margin-top: 14px">
             <input type="submit" value="Add Client" class="btn primary" />
-            <a href="../clientPage.html" class="btn">Back</a>
+            <a href="../jobPage.html" class="btn">Back</a>
           </div>
         </form>
       </section>

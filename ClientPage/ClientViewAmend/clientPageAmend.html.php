@@ -29,8 +29,8 @@ Date: 22/02/2026
     <!-- Tabs placeholders -->
     <nav class="tabs" aria-label="Primary navigation">
         <a class="tab active" href="../clientPage.html">Client</a>
-        <a class="tab" href="../JobPage/jobpage.html">Job</a>
-        <a class="tab" href="../TrainingCoursePage/trainingcoursepage.html">Training Course</a>
+        <a class="tab" href="../../JobPage/jobPage.html">Job</a>
+        <a class="tab" href="../../TrainingCoursePage/trainingcoursepage.html">Training Course</a>
         <a class="tab" href="../../CompanyPage/companyPage.html">Company</a>
     </nav>
 </header>
