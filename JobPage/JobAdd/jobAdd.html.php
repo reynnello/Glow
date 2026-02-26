@@ -43,18 +43,14 @@ Date: 25/02/2026
           method="post"
         >
           <!--Form submitting-->
-
-              <!-- Listbox -->
-        <div class="field">
-          <?php include 'addJobListbox.php'; ?>
-        </div>
         
-          <!-- внутри формы -->
 <div class="form-grid">
-
 <!-- Company select (wide) -->
 <div class="field field-big">
+  <label for="companyListbox">Company</label>
   <?php include 'addJobListbox.php'; ?>
+
+  <input type="hidden" name="companyId" id="companyId" />
 </div>
 
 <div class="field">
@@ -87,15 +83,17 @@ Date: 25/02/2026
   <div class="radio-group" role="group" aria-labelledby="driverLicLabel">
     <span class="radio-label" id="driverLicLabel">Drivers License Required</span>
 
-    <label class="radio-option" for="addDriverLicYes">
-      <input type="radio" name="addDriverLic" id="addDriverLicYes" value="Yes" required />
-      <span>Yes</span>
-    </label>
+    <div class="radio-row">
+      <label class="radio-option" for="addDriverLicYes">
+        <input type="radio" name="addDriverLic" id="addDriverLicYes" value="Yes" required />
+        <span>Yes</span>
+      </label>
 
-    <label class="radio-option" for="addDriverLicNo">
-      <input type="radio" name="addDriverLic" id="addDriverLicNo" value="No" required />
-      <span>No</span>
-    </label>
+      <label class="radio-option" for="addDriverLicNo">
+        <input type="radio" name="addDriverLic" id="addDriverLicNo" value="No" required />
+        <span>No</span>
+      </label>
+    </div>
   </div>
 </div>
 
@@ -105,7 +103,6 @@ Date: 25/02/2026
 </div>
 
 </div>
-          <br /><br />
           <!--Submit and return buttons -->
           <div style="margin-top: 14px">
             <input type="submit" value="Add Job" class="btn primary" />
@@ -118,5 +115,17 @@ Date: 25/02/2026
     <footer class="footer">
       <span>© 2026 Glow Jobs Agency - "We are the best at what we do!"</span>
     </footer>
+
+    <script>
+  function populate() { // populate function is used to fill the hidden companyId field with the selected company's id from the listbox
+    var sel = document.getElementById("JobListbox");
+    var result = sel.options[sel.selectedIndex].value;
+
+    if (!result) return;
+
+    var parts = result.split("|");
+    document.getElementById("companyId").value = parts[0]; // company_id
+  }
+</script>
   </body>
 </html>

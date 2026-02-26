@@ -333,15 +333,13 @@ a.btn:hover {
 .field-big {
   grid-column: span 2; /* Makes this field take both columns */
 }
-
-/* Select: убрать странный margin и привести к input-стилю */
 .field > select {
   padding: 11px 12px;
   border-radius: 12px;
   border: 1px solid rgba(0, 0, 0, 0.14);
   background: rgba(255, 255, 255, 0.9);
   min-width: 0;
-  margin-bottom: 20px; /* важно: не ломаем grid */
+  margin-bottom: 20px;
   appearance: none;
   cursor: pointer;
   transition: background 150ms ease, border-color 150ms ease, box-shadow 150ms ease;
@@ -383,13 +381,12 @@ a.btn:hover {
   cursor: pointer;
 
   user-select: none;
-  transition: border-color 150ms ease, background 150ms ease, transform 120ms ease;
+  transition: border-color 150ms ease, background 150ms ease;
 }
 
 .radio-option:hover {
   background: rgba(255, 255, 255, 0.96);
   border-color: rgba(0, 0, 0, 0.33);
-  transform: translateY(-1px);
 }
 
 .radio-option input[type="radio"] {
@@ -410,16 +407,10 @@ a.btn:hover {
   height: 10px;
   border-radius: 999px;
   background: rgba(169, 90, 255, 0.92);
-  transform: scale(0);
-  transition: transform 120ms ease;
 }
 
 .radio-option input[type="radio"]:checked {
   border-color: rgba(169, 90, 255, 0.92);
-}
-
-.radio-option input[type="radio"]:checked::before {
-  transform: scale(1);
 }
 
 /* focus по клавиатуре */

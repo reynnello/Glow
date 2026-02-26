@@ -16,14 +16,15 @@ if (!$result) {
     die('Error in querying the database: ' . mysqli_error($con));
 }
 
-echo "<label for='companyId'>Company</label>";
-echo "<select name='companyId' id='companyId' required>";
-echo "<option value='' disabled selected>Select a company...</option>";
+echo "<select name='JobListbox' id='JobListbox' onclick='populate()' required>"; // setting id to 'JobListbox' and setting the onclick to populate function, also making it required
+echo "<option value='' disabled selected>Select a company...</option>"; // adding a default option to prompt the user to select a company
 
 while ($row = mysqli_fetch_assoc($result)) {
     $companyId = (int)$row['company_id'];
     $companyName = $row['company_name'];
-    echo "<option value='{$companyId}'>{$companyName}</option>";
+
+    $allText = "$companyId|$companyName";
+    echo "<option value='$allText'>$companyName</option>";
 }
 
 echo "</select>";
