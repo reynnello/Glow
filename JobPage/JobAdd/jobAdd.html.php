@@ -23,8 +23,8 @@ Date: 25/02/2026
       </a>
       <!-- Tabs placeholders -->
       <nav class="tabs" aria-label="Primary navigation">
-        <a class="tab active" href="../../ClientPage/clientPage.html">Client</a>
-        <a class="tab" href="../JobPage/jobPage.html">Job</a>
+        <a class="tab" href="../../ClientPage/clientPage.html">Client</a>
+        <a class="tab active" href="../JobPage/jobPage.html">Job</a>
         <a class="tab" href="../../TrainingCoursePage/trainingcoursepage.html"
           >Training Course</a
         >
