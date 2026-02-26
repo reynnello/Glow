@@ -32,7 +32,7 @@
     </nav>
 </header>
 
-<main class="page page--center">
+<main class="page">
     <!-- Main card -->
     <section class="card">
         <h1>Delete Company</h1>

@@ -348,7 +348,6 @@ a.btn:hover {
 }
 
 .field > select:hover {
-  background: rgba(168, 139, 199, 0.92);
   border-color: #1a1a1a;
 }
 

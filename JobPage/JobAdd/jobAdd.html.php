@@ -44,6 +44,12 @@ Date: 25/02/2026
           method="post"
         >
           <!--Form submitting-->
+
+              <!-- Listbox -->
+        <div class="field">
+          <?php include 'addJobListbox.php'; ?>
+        </div>
+        
           <div class="form-grid">
             <div class="field">
               <label for="addTitle">Job Title</label>
@@ -54,11 +60,6 @@ Date: 25/02/2026
               <label for="addDescription">Brief Description</label>
               <input type="text" name="addDescription" id="addDescription" required />
             </div>
-
-            <!-- Listbox -->
-        <div class="field">
-          <?php include 'addJobListbox.php'; ?>
-        </div>
 
             <div class="field">
               <label for="addQual">Qualification Required</label>

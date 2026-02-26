@@ -34,7 +34,7 @@ Date: 22/02/2026
     </nav>
 </header>
 
-<main class="page page--center">
+<main class="page">
     <!-- Main card -->
     <section class="card">
         <h1>Delete Client</h1>
