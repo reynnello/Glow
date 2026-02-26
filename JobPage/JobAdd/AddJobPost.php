@@ -31,5 +31,5 @@ mysqli_close($con);
 <!--Button for return back-->
 <form action="../jobPage.html" method="POST">
     <br>
-    <input type="submit" value="Return to Client Page"/>
+    <input type="submit" value="Return to Job Page"/>
 </form>

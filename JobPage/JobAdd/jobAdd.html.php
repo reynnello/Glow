@@ -117,7 +117,7 @@ Date: 25/02/2026
           <!--Submit and return buttons -->
           <div style="margin-top: 14px">
             <input type="submit" value="Add Client" class="btn primary" />
-            <a href="../clientPage.html" class="btn">Back</a>
+            <a href="../jobPage.html" class="btn">Back</a>
           </div>
         </form>
       </section>
