@@ -11,19 +11,30 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 session_start();
 
+//set variables
+$name = $_POST['deleteName'];
+$address = $_POST['deleteAddress'];
+$eircode = $_POST['deleteEircode'];
+$phone = $_POST['deletePhone'];
+$dob = $_POST['deleteDob'];
+$driverLicense = $_POST['deleteDriverLicense'];
+$jobTitle = $_POST['deleteJobTitleInterest'];
+$qualifications = $_POST['deleteQualifications'];
+$minSalary = $_POST['deleteMinimumAnnualSalary'];
+$id = $_POST['deleteId'];
 
 //update query
-$sql = "UPDATE client SET client_name = '$_POST[deleteName]',
-        address = '$_POST[deleteAddress]'
-        ,eircode = '$_POST[deleteEircode]'
-        ,telephone = '$_POST[deletePhone]'
-        ,date_of_birth = '$_POST[deleteDob]'
-        ,driver_license_type = '$_POST[deleteDriverLicense]'
-        ,job_title_interest = '$_POST[deleteJobTitle]'
-        ,qualifications = '$_POST[deleteQualifications]'
-        ,min_annual_salary = '$_POST[deleteMinAnnualSalary]'
-        ,is_deleted = '1'
-        WHERE client_id = '$_POST[deleteId]'";
+$sql = "UPDATE client SET client_name = '$name',
+        address = '$address',
+        eircode = '$eircode',
+        telephone = '$phone',
+        date_of_birth = '$dob',
+        driver_license_type = '$driverLicense',
+        job_title_interest = '$jobTitle',
+        qualifications = '$qualifications',
+        min_annual_salary = '$minSalary',
+        is_deleted = '1'
+        WHERE client_id = '$id'";
 
 if (! mysqli_query($con,$sql)) //if connection is not successful
 {
@@ -39,9 +50,9 @@ else
             ."; Client Telephone: ".$_POST['deletePhone']."<br>"
             ."; Client Date of Birth: ".$_POST['deleteDob']."<br>"
             ."; Client Driver License Type: ".$_POST['deleteDriverLicense']."<br>"
-            ."; Client Job Title Interest: ".$_POST['deleteJobTitle']."<br>"
+            ."; Client Job Title Interest: ".$_POST['deleteJobTitleInterest']."<br>"
             ."; Client Qualifications: ".$_POST['deleteQualifications']."<br>"
-            ."; Client Minimum Annual Salary: ".$_POST['deleteMinAnnualSalary']."<br>"
+            ."; Client Minimum Annual Salary: ".$_POST['deleteMinimumAnnualSalary']."<br>"
             ." has been deleted";
 }
 

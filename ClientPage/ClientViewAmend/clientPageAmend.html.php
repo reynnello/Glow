@@ -149,8 +149,8 @@ Date: 22/02/2026
         document.getElementById("amendAddress").value = clientDetails[2];
         document.getElementById("amendEircode").value = clientDetails[3];
         document.getElementById("amendPhone").value = clientDetails[4];
-        document.getElementById("amendWebsite").value = clientDetails[5];
-        document.getElementById("amendDescription").value = clientDetails[6];
+        document.getElementById("amendDob").value = clientDetails[5];
+        document.getElementById("amendDriverLicense").value = clientDetails[6];
         document.getElementById("amendJobTitle").value = clientDetails[7];
         document.getElementById("amendQualifications").value = clientDetails[8];
         document.getElementById("amendMinAnnualSalary").value = clientDetails[9];
