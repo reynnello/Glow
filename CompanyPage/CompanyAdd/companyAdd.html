@@ -48,44 +48,71 @@
         >
           <!--Form submitting-->
           <div class="form-grid">
+
             <div class="field">
-              <label for="addName">Company Name </label>
-              <input type="text" name="addName" id="addName" required />
+              <label for="addName">Company Name</label>
+              <input
+                      type="text"
+                      name="addName"
+                      id="addName"
+                      placeholder="e.g. Tech Solutions Ltd"
+                      required
+              />
             </div>
 
             <div class="field">
               <label for="addAddress">Company Address</label>
-              <input type="text" name="addAddress" id="addAddress" required />
+              <input
+                      type="text"
+                      name="addAddress"
+                      id="addAddress"
+                      placeholder="e.g. 12 Main Street, Carlow"
+                      required
+              />
             </div>
 
             <div class="field">
               <label for="addEircode">Eircode</label>
-              <input type="text" name="addEircode" id="addEircode" required />
+              <input
+                      type="text"
+                      name="addEircode"
+                      id="addEircode"
+                      placeholder="A65 F4E2"
+                      pattern="^[A-Za-z]\d{2}\s?[A-Za-z0-9]{4}$"
+                      required
+              />
             </div>
 
             <div class="field">
               <label for="addPhone">Phone Number</label>
               <input
-                type="tel"
-                name="addPhone"
-                id="addPhone"
-                pattern="[+0-9 ]{7,20}"
-                required
+                      type="tel"
+                      name="addPhone"
+                      id="addPhone"
+                      placeholder="+353 87 123 4567"
+                      pattern="^[0-9\(\)\-\s+]+$"
+                      required
               />
             </div>
 
             <div class="field">
               <label for="addWebsite">Company Website</label>
-              <input type="text" name="addWebsite" id="addWebsite" />
+              <input
+                      type="url"
+                      name="addWebsite"
+                      id="addWebsite"
+                      placeholder="https://www.company.ie"
+              />
             </div>
 
             <div class="field">
               <label for="addDescription">Business Description</label>
               <input
-                type="text"
-                name="addDescription"
-                id="addDescription"
-                required
+                      type="text"
+                      name="addDescription"
+                      id="addDescription"
+                      placeholder="e.g. Software development and IT consulting"
+                      required
               />
               <small class="hint-text">Optional field</small>
             </div>
@@ -93,33 +120,37 @@
             <div class="field">
               <label for="addContactName">Contact Name</label>
               <input
-                type="text"
-                name="addContactName"
-                id="addContactName"
-                required
-              /><br /><br />
+                      type="text"
+                      name="addContactName"
+                      id="addContactName"
+                      placeholder="e.g. John Murphy"
+                      required
+              />
             </div>
 
             <div class="field">
               <label for="addContactPhone">Contact Phone</label>
               <input
-                type="tel"
-                name="addContactPhone"
-                id="addContactPhone"
-                pattern="[+0-9 ]{7,20}"
-                required
-              /><br /><br />
+                      type="tel"
+                      name="addContactPhone"
+                      id="addContactPhone"
+                      placeholder="+353 85 987 6543"
+                      pattern="^[0-9\(\)\-\s+]+$"
+                      required
+              />
             </div>
 
             <div class="field">
               <label for="addContactEmail">Contact Email</label>
               <input
-                type="email"
-                name="addContactEmail"
-                id="addContactEmail"
-                required
+                      type="email"
+                      name="addContactEmail"
+                      id="addContactEmail"
+                      placeholder="john.murphy@email.ie"
+                      required
               />
             </div>
+
           </div>
 
           <br /><br />
@@ -166,8 +197,7 @@
           else{
               var response;
               response = confirm('Are you sure you want to save these changes?');//asks for confirmation
-              if(response)
-                  return response;
+            return response;
           }
       }
       </script>
