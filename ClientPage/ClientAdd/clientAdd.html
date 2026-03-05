@@ -138,42 +138,58 @@ Date: 22/02/2026
       <span>© 2026 Glow Jobs Agency - "We are the best at what we do!"</span>
     </footer>
     <script>
-      function confirmCheck() //function that ask for confirmation in case everything is empty or filled with spaces
-      {
-          var name = document.getElementById("addName").value.trim();
-          var address = document.getElementById("addAddress").value.trim();
-          var eircode = document.getElementById("addEircode").value.trim();
-          var phone = document.getElementById("addPhone").value.trim();
-          var dob = document.getElementById("addDob").value.trim();
-          var driverLicense = document.getElementById("addDriverLicense").value.trim();
-          var jobTitle = document.getElementById("addJobTitle").value.trim();
-          var qualifications = document.getElementById("addQualifications").value.trim();
-          var minAnnualSalary = document.getElementById("addMinAnnualSalary").value.trim();
-      
-          if (
-              name === "" ||
-              address === "" ||
-              eircode === "" ||
-              phone === "" ||
-              dob === "" ||
-              driverLicense === "" ||
-              jobTitle === "" ||
-              qualifications === "" ||
-              minAnnualSalary === ""
-          )
-          {
-              alert("Please fill out required information");//if the information is incomplete or empty
-              return false;
-          }
-          else{
-              var response;
-              response = confirm('Are you sure you want to save these changes?');//asks for confirmation
-              if(response)
-                  return response;
-              else
-                return false;
-          }
-      }
-      </script>
+function confirmCheck() {
+    // Get and trim all field values
+    var name = document.getElementById("addName").value.trim();
+    var address = document.getElementById("addAddress").value.trim();
+    var eircode = document.getElementById("addEircode").value.trim();
+    var phone = document.getElementById("addPhone").value.trim();
+    var dob = document.getElementById("addDob").value.trim();
+    var driverLicense = document.getElementById("addDriverLicense").value.trim();
+    var jobTitle = document.getElementById("addJobTitle").value.trim();
+    var qualifications = document.getElementById("addQualifications").value.trim();
+    var minAnnualSalary = document.getElementById("addMinAnnualSalary").value.trim();
+
+    // Check if any field is empty
+    if (
+        name === "" ||
+        address === "" ||
+        eircode === "" ||
+        phone === "" ||
+        dob === "" ||
+        driverLicense === "" ||
+        jobTitle === "" ||
+        qualifications === "" ||
+        minAnnualSalary === ""
+    ) {
+        alert("Please fill out required information");
+        return false;
+    }
+
+    // Validate age - client must be at least 16 years old
+    const dobDate = new Date(dob);
+    const today = new Date();
+    let age = today.getFullYear() - dobDate.getFullYear();
+    const monthDiff = today.getMonth() - dobDate.getMonth();
+    
+    // Adjust age if birthday hasn't occurred yet this year
+    if (
+        monthDiff < 0 ||
+        (monthDiff === 0 && today.getDate() < dobDate.getDate())
+    ) {
+        age--;
+    }
+
+    // If client is under 16, show alert and prevent form submission
+    if (age < 16) {
+        alert("Client must be at least 16 years old.");
+        return false;
+    }
+
+    // If all validation passes, ask for confirmation
+    var response = confirm('Are you sure you want to save these changes?');
+    return response;
+}
+</script>
   </body>
 </html>
