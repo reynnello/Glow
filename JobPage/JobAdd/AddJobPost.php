@@ -1,3 +1,8 @@
+<!--
+Name: Anton Opria
+ID: C00309433
+Date: 25/02/2026
+-->
 <?php
 /** @var mysqli $con */
 require_once __DIR__ . '/../../db.inc.php'; //connection to db necessary for phpstorm
