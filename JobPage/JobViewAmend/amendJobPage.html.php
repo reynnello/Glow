@@ -84,12 +84,23 @@ Date: 15/03/2026
 
                 <div class="field">
                     <label for="amendAnnualSalary">Annual Salary</label>
-                    <input type="text" name="amendAnnualSalary" id="amendAnnualSalary" disabled>
+                    <input type="number" name="amendAnnualSalary" id="amendAnnualSalary" disabled>
                 </div>
 
-                <div class="field">
-                    <label for="amendDriverLic">Drivers License Required</label>
-                    <input type="text" name="amendDriverLic" id="amendDriverLic" disabled>
+                <div class="radio-group" role="group" aria-labelledby="driverLicLabel">
+                    <span class="radio-label" id="driverLicLabel">Drivers License Required</span>
+
+                    <div class="radio-row">
+                        <label class="radio-option" for="amendDriverLicYes">
+                            <input type="radio" name="amendDriverLic" id="amendDriverLicYes" value="Yes" required disabled />
+                            <span>Yes</span>
+                        </label>
+
+                        <label class="radio-option" for="amendDriverLicNo">
+                            <input type="radio" name="amendDriverLic" id="amendDriverLicNo" value="No" required disabled />
+                            <span>No</span>
+                        </label>
+                    </div>
                 </div>
 
                 <div class="field">
@@ -97,10 +108,6 @@ Date: 15/03/2026
                     <input type="text" name="amendLocation" id="amendLocation" disabled>
                 </div>
 
-                <div class="field">
-                    <label for="amendStatus">Status</label>
-                    <input type="text" name="amendStatus" id="amendStatus" disabled>
-                </div>
             </div>
 
             <div style="margin-top: 14px;">
@@ -142,9 +149,6 @@ Date: 15/03/2026
         result = sel.options[sel.selectedIndex].value;
         var jobDetails = result.split('|');
 
-        // 0 job_id, 1 company_id, 2 company_name, 3 job_title, 4 job_description,
-        // 5 qualification_required, 6 work_type, 7 annual_salary, 8 drivers_license_required,
-        // 9 location, 10 status
         document.getElementById("amendId").value = jobDetails[0];
         document.getElementById("amendCompanyId").value = jobDetails[1];
         document.getElementById("amendCompanyName").value = jobDetails[2];
@@ -153,9 +157,14 @@ Date: 15/03/2026
         document.getElementById("amendQual").value = jobDetails[5];
         document.getElementById("amendType").value = jobDetails[6];
         document.getElementById("amendAnnualSalary").value = jobDetails[7];
-        document.getElementById("amendDriverLic").value = jobDetails[8];
+
+        if (jobDetails[8] === 'Yes') {
+            document.getElementById("amendDriverLicYes").checked = true;
+        } else {
+            document.getElementById("amendDriverLicNo").checked = true;
+        }
+
         document.getElementById("amendLocation").value = jobDetails[9];
-        document.getElementById("amendStatus").value = jobDetails[10];
     }
 
     function toggleLock()
@@ -167,9 +176,9 @@ Date: 15/03/2026
             document.getElementById("amendQual").disabled = false;
             document.getElementById("amendType").disabled = false;
             document.getElementById("amendAnnualSalary").disabled = false;
-            document.getElementById("amendDriverLic").disabled = false;
+            document.getElementById("amendDriverLicYes").disabled = false;
+            document.getElementById("amendDriverLicNo").disabled = false;
             document.getElementById("amendLocation").disabled = false;
-            document.getElementById("amendStatus").disabled = false;
 
             document.getElementById("amendViewbutton").value = "View Details";
         }
@@ -180,9 +189,9 @@ Date: 15/03/2026
             document.getElementById("amendQual").disabled = true;
             document.getElementById("amendType").disabled = true;
             document.getElementById("amendAnnualSalary").disabled = true;
-            document.getElementById("amendDriverLic").disabled = true;
+            document.getElementById("amendDriverLicYes").disabled = true;
+            document.getElementById("amendDriverLicNo").disabled = true;
             document.getElementById("amendLocation").disabled = true;
-            document.getElementById("amendStatus").disabled = true;
 
             document.getElementById("amendViewbutton").value = "Amend Details";
         }
@@ -202,9 +211,9 @@ Date: 15/03/2026
             document.getElementById("amendQual").disabled = false;
             document.getElementById("amendType").disabled = false;
             document.getElementById("amendAnnualSalary").disabled = false;
-            document.getElementById("amendDriverLic").disabled = false;
+            document.getElementById("amendDriverLicYes").disabled = false;
+            document.getElementById("amendDriverLicNo").disabled = false;
             document.getElementById("amendLocation").disabled = false;
-            document.getElementById("amendStatus").disabled = false;
             return true;
         }
         else

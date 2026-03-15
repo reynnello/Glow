@@ -10,8 +10,8 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-// Fetch all vacant and non-deleted jobs along with their company names
-$sql = "SELECT job_id, company_id, job_title, job_description, qualification_required, work_type, annual_salary, drivers_license_required, location, status FROM job WHERE is_deleted = 0 AND status = 'vacant' ORDER BY job_title";
+// Fetch all vacant and non-deleted jobs
+$sql = "SELECT job_id, company_id, job_title, job_description, qualification_required, work_type, annual_salary, drivers_license_required, location FROM job WHERE is_deleted = 0 AND status = 'vacant' ORDER BY job_title";
 
 // Execute the query and check for errors
 $result = mysqli_query($con, $sql);
@@ -45,12 +45,12 @@ while ($row = mysqli_fetch_assoc($result)) {
     $annualSalary = $row['annual_salary'];
     $driversLicenseRequired = $row['drivers_license_required'];
     $location = $row['location'];
-    $status = $row['status'];
-
-    $allText = "$jobId|$companyId|$companyName|$jobTitle|$jobDescription|$qualificationRequired|$workType|$annualSalary|$driversLicenseRequired|$location|$status";
+    $allText = "$jobId|$companyId|$companyName|$jobTitle|$jobDescription|$qualificationRequired|$workType|$annualSalary|$driversLicenseRequired|$location";
     $label = $companyName . " -- " . $jobTitle;
 
-    echo "<option value='$allText'>$label</option>";
+    $safeValue = htmlspecialchars($allText, ENT_QUOTES, 'UTF-8');
+    $safeLabel = htmlspecialchars($label, ENT_QUOTES, 'UTF-8');
+    echo "<option value='$safeValue'>$safeLabel</option>";
 }
 
 echo "</select>";

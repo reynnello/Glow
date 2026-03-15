@@ -21,7 +21,6 @@ $sql = "UPDATE job SET
             annual_salary = '$_POST[deleteAnnualSalary]',
             drivers_license_required = '$_POST[deleteDriverLic]',
             location = '$_POST[deleteLocation]',
-            status = '$_POST[deleteStatus]',
             is_deleted = '1'
         WHERE job_id = '$_POST[deleteId]'";
 
@@ -40,7 +39,6 @@ if (!mysqli_query($con, $sql)) {
         ."; Annual Salary: " . $_POST['deleteAnnualSalary'] . "<br>"
         ."; Drivers License Required: " . $_POST['deleteDriverLic'] . "<br>"
         ."; Location: " . $_POST['deleteLocation'] . "<br>"
-        ."; Status: " . $_POST['deleteStatus'] . "<br>"
         ." has been deleted";
 }
 

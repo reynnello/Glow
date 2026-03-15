@@ -21,8 +21,7 @@ $sql = "UPDATE job SET
     work_type = '$_POST[amendType]',
     annual_salary = '$_POST[amendAnnualSalary]',
     drivers_license_required = '$_POST[amendDriverLic]',
-    location = '$_POST[amendLocation]',
-    status = '$_POST[amendStatus]'
+    location = '$_POST[amendLocation]'
     WHERE job_id = '$_POST[amendId]'";
 
 // Execute the query and check for errors
@@ -46,7 +45,6 @@ else
             ."; Annual Salary: ". $_POST['amendAnnualSalary']."<br>"
             ."; Drivers License Required: ". $_POST['amendDriverLic']."<br>"
             ."; Location: ". $_POST['amendLocation']."<br>"
-            ."; Status: ". $_POST['amendStatus']."<br>"
             ." has been updated";
     }
     else

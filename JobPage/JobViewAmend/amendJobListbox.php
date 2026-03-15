@@ -18,8 +18,7 @@ $sql = "SELECT job_id,
                work_type,
                annual_salary,
                drivers_license_required,
-               location,
-               status
+               location
         FROM job
         WHERE is_deleted = 0
         ORDER BY job_title";
@@ -43,7 +42,6 @@ while ($row = mysqli_fetch_assoc($result))
     $annualSalary = $row['annual_salary'];
     $driversLicenseRequired = $row['drivers_license_required'];
     $location = $row['location'];
-    $status = $row['status'];
 
     // Fetch company name based on company_id (simple like other pages)
     $companyName = 'Unknown Company';
@@ -56,7 +54,7 @@ while ($row = mysqli_fetch_assoc($result))
         mysqli_free_result($companyResult);
     }
 
-    $allText = "$jobId|$companyId|$companyName|$jobTitle|$jobDescription|$qualificationRequired|$workType|$annualSalary|$driversLicenseRequired|$location|$status";
+    $allText = "$jobId|$companyId|$companyName|$jobTitle|$jobDescription|$qualificationRequired|$workType|$annualSalary|$driversLicenseRequired|$location";
     $label = $companyName . " - " . $jobTitle;
 
     $safeValue = htmlspecialchars($allText, ENT_QUOTES, 'UTF-8');

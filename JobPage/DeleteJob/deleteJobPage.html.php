@@ -6,9 +6,9 @@ Date: 15/03/2026
 <!doctype html>
 <html lang="en">
 <head>
-        <meta charset="UTF-8">
-        <title>Delete Job</title>
-        <link rel="stylesheet" type="text/css" href="../../Main.css">
+  <meta charset="UTF-8">
+  <title>Delete Job</title>
+  <link rel="stylesheet" type="text/css" href="../../Main.css">
 </head>
 
 <body>
@@ -79,22 +79,28 @@ Date: 15/03/2026
 
         <div class="field">
           <label for="deleteAnnualSalary">Annual Salary</label>
-          <input type="text" name="deleteAnnualSalary" id="deleteAnnualSalary" disabled>
+          <input type="number" name="deleteAnnualSalary" id="deleteAnnualSalary" disabled>
         </div>
 
-        <div class="field">
-          <label for="deleteDriverLic">Drivers License Required</label>
-          <input type="text" name="deleteDriverLic" id="deleteDriverLic" disabled>
+        <div class="radio-group" role="group" aria-labelledby="deleteDriverLicLabel">
+          <span class="radio-label" id="deleteDriverLicLabel">Drivers License Required</span>
+
+          <div class="radio-row">
+            <label class="radio-option" for="deleteDriverLicYes">
+              <input type="radio" name="deleteDriverLic" id="deleteDriverLicYes" value="Yes" required disabled />
+              <span>Yes</span>
+            </label>
+
+            <label class="radio-option" for="deleteDriverLicNo">
+              <input type="radio" name="deleteDriverLic" id="deleteDriverLicNo" value="No" required disabled />
+              <span>No</span>
+            </label>
+          </div>
         </div>
 
         <div class="field">
           <label for="deleteLocation">Location</label>
           <input type="text" name="deleteLocation" id="deleteLocation" disabled>
-        </div>
-
-        <div class="field">
-          <label for="deleteStatus">Status</label>
-          <input type="text" name="deleteStatus" id="deleteStatus" disabled>
         </div>
       </div>
 
@@ -144,9 +150,14 @@ Date: 15/03/2026
     document.getElementById("deleteQual").value = jobDetails[5];
     document.getElementById("deleteType").value = jobDetails[6];
     document.getElementById("deleteAnnualSalary").value = jobDetails[7];
-    document.getElementById("deleteDriverLic").value = jobDetails[8];
+
+    if (jobDetails[8] === 'Yes') {
+      document.getElementById("deleteDriverLicYes").checked = true;
+    } else {
+      document.getElementById("deleteDriverLicNo").checked = true;
+    }
+
     document.getElementById("deleteLocation").value = jobDetails[9];
-    document.getElementById("deleteStatus").value = jobDetails[10];
   }
 
   // Confirmation check before deletion
@@ -163,9 +174,9 @@ Date: 15/03/2026
       document.getElementById("deleteQual").disabled = false;
       document.getElementById("deleteType").disabled = false;
       document.getElementById("deleteAnnualSalary").disabled = false;
-      document.getElementById("deleteDriverLic").disabled = false;
+      document.getElementById("deleteDriverLicYes").disabled = false;
+      document.getElementById("deleteDriverLicNo").disabled = false;
       document.getElementById("deleteLocation").disabled = false;
-      document.getElementById("deleteStatus").disabled = false;
       return true;
     } else {
       return false;

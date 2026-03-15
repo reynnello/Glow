@@ -393,6 +393,28 @@ a.btn:hover {
   border-color: rgba(0, 0, 0, 0.33);
 }
 
+/* Disabled radio option visuals */
+.radio-option:has(input[type="radio"]:disabled) {
+  opacity: 0.6;
+  cursor: not-allowed;
+  background: rgba(255, 255, 255, 0.75);
+  border-color: rgba(0, 0, 0, 0.12);
+}
+
+.radio-option:has(input[type="radio"]:disabled):hover {
+  background: rgba(255, 255, 255, 0.75);
+  border-color: rgba(0, 0, 0, 0.12);
+}
+
+.radio-option input[type="radio"]:disabled {
+  cursor: not-allowed;
+  border-color: rgba(0, 0, 0, 0.22);
+}
+
+.radio-option input[type="radio"]:disabled + span {
+  cursor: not-allowed;
+}
+
 .radio-option input[type="radio"] {
   appearance: none;
   width: 18px;
