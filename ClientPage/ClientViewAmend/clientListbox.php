@@ -34,7 +34,9 @@ while($row = mysqli_fetch_array($result)) //setting the data to variables
 
     $allText = "$clientId|$clientName|$clientAddress|$clientEircode|$clientPhone|$clientDateOfBirth|$clientDriverLicenseType|$clientJobTitleInterest|$clientQualifications|$clientMinAnnualSalary";
     //$allText is now filled with data splited by '|'
-    echo "<option value = '$allText'>$clientName</option>";
+    echo "
+    <option hidden>Select a client</option>
+    <option value = '$allText'>$clientName</option>";
     //option is now saved and the user can see the client name in Listbox that will store all the client data
 }
 echo"</select>";
