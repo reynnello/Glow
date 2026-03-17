@@ -55,7 +55,7 @@ Date: 17/03/2026
 
 				<div class="field">
 					<label for="acceptedSalary">Accepted Salary</label>
-					<input type="number" name="acceptedSalary" id="acceptedSalary" required>
+					<input type="number" name="acceptedSalary" id="acceptedSalary" required placeholder="50000.00">
 				</div>
 
 				<div class="field">

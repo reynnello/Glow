@@ -31,13 +31,15 @@ if(!mysqli_query($con, $sql))
     die("Ann Error in the SQL Query ". mysqli_error($con));
 }
 //else
-echo "<br>A record has been added for   " .
-    $name;
-//closing connection
 mysqli_close($con);
 ?>
-<!--Button for return back-->
-<form action="../clientPage.html" method="POST">
-    <br>
-    <input type="submit" value="Return to Client Page"/>
-</form>
+
+<!-- result modal -->
+<?php
+$modalTitle = 'Client Added';
+$modalMessage = 'A record has been added for <b>' . $name . '</b>.';
+$returnHref = '../clientPage.html';
+$returnLabel = 'Return to Client Page';
+$cssHref = '../../Main.css';
+require_once __DIR__ . '/../../resultModal.inc.php';
+?>

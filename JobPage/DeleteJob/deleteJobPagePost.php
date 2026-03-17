@@ -28,24 +28,23 @@ $sql = "UPDATE job SET
 if (!mysqli_query($con, $sql)) {
     echo "Error " . mysqli_error($con);
 } else {
-    echo mysqli_affected_rows($con) . " record(s) updated <br>";
-    echo "Job Id: " . $_POST['deleteId'] . "<br>"
-        ."; Company Id: " . $_POST['deleteCompanyId'] . "<br>"
-        ."; Company Name: " . $_POST['deleteCompanyName'] . "<br>"
-        ."; Job Title: " . $_POST['deleteTitle'] . "<br>"
-        ."; Job Description: " . $_POST['deleteDescription'] . "<br>"
-        ."; Qualification Required: " . $_POST['deleteQual'] . "<br>"
-        ."; Type of Work: " . $_POST['deleteType'] . "<br>"
-        ."; Annual Salary: " . $_POST['deleteAnnualSalary'] . "<br>"
-        ."; Drivers License Required: " . $_POST['deleteDriverLic'] . "<br>"
-        ."; Location: " . $_POST['deleteLocation'] . "<br>"
-        ." has been deleted";
+    $rows = mysqli_affected_rows($con);
 }
 
 mysqli_close($con);
 ?>
-<!--Button for return back-->
-<form action="deleteJobPage.html.php" method="post">
-    <br>
-    <input type="submit" value="Return to Previous Screen" />
-</form>
+
+<!-- result Modal -->
+<?php
+$rows = $rows ?? 0;
+$modalTitle = 'Job Deleted';
+if ($rows != 0) {
+    $modalMessage = 'Job record has been deleted.';
+} else {
+    $modalMessage = 'No records were changed.';
+}
+$returnHref = 'deleteJobPage.html.php';
+$returnLabel = 'Return to Previous Screen';
+$cssHref = '../../Main.css';
+require_once __DIR__ . '/../../resultModal.inc.php';
+?>

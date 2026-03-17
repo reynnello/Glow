@@ -65,27 +65,27 @@ Date: 15/03/2026
 
                 <div class="field">
                     <label for="amendTitle">Job Title</label>
-                    <input type="text" name="amendTitle" id="amendTitle" disabled>
+                    <input type="text" name="amendTitle" id="amendTitle" disabled placeholder="Cool Job">
                 </div>
 
                 <div class="field field-big">
                     <label for="amendDescription">Brief Description</label>
-                    <input type="text" name="amendDescription" id="amendDescription" disabled>
+                    <input type="text" name="amendDescription" id="amendDescription" disabled placeholder="Description">
                 </div>
 
                 <div class="field">
                     <label for="amendQual">Qualification Required</label>
-                    <input type="text" name="amendQual" id="amendQual" disabled>
+                    <input type="text" name="amendQual" id="amendQual" disabled placeholder="Junior Web Developer">
                 </div>
 
                 <div class="field">
                     <label for="amendType">Type of Work</label>
-                    <input type="text" name="amendType" id="amendType" disabled>
+                    <input type="text" name="amendType" id="amendType" disabled placeholder="Full-time">
                 </div>
 
                 <div class="field">
                     <label for="amendAnnualSalary">Annual Salary</label>
-                    <input type="number" name="amendAnnualSalary" id="amendAnnualSalary" disabled>
+                    <input type="number" name="amendAnnualSalary" id="amendAnnualSalary" disabled placeholder="50000.00">
                 </div>
 
                 <div class="radio-group" role="group" aria-labelledby="driverLicLabel">
@@ -106,7 +106,7 @@ Date: 15/03/2026
 
                 <div class="field">
                     <label for="amendLocation">Location</label>
-                    <input type="text" name="amendLocation" id="amendLocation" disabled>
+                    <input type="text" name="amendLocation" id="amendLocation" disabled placeholder="Location">
                 </div>
 
             </div>

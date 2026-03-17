@@ -40,9 +40,13 @@ if (!mysqli_query($con, $clientSql)) {
 
 mysqli_close($con);
 ?>
-<!--Button for return back-->
-<form action="../jobPage.html" method="POST">
-    <br>
-    <input type="submit" value="Return to Job Page"/>
-</form>
+<!-- result modal -->
+<?php
+$modalTitle = 'Job Filled';
+$modalMessage = 'The job status was updated to <b>filled</b>, and the client employment status was updated to <b>Employed</b>.';
+$returnHref = '../jobPage.html';
+$returnLabel = 'Return to Job Page';
+$cssHref = '../../Main.css';
+require_once __DIR__ . '/../../resultModal.inc.php';
+?>
 
