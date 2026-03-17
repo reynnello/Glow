@@ -1,6 +1,56 @@
 /* -------- Global -------- */
 
 :root {
+  /* Base colors */
+  --color-text: #1b1b1b;
+  --color-white: #ffffff;
+
+  /* Theme accents */
+  --accent-orange: rgba(255, 169, 70, 0.92);
+  --accent-purple: rgba(169, 90, 255, 0.92);
+  --accent-orange-soft: rgba(255, 169, 70, 0.25);
+  --accent-purple-soft: rgba(169, 90, 255, 0.18);
+
+  /* Background layers */
+  --bg-radial-orange: rgba(255, 167, 71, 0.45);
+  --bg-radial-purple: rgba(170, 90, 255, 0.4);
+  --bg-radial-coral: rgba(255, 108, 70, 0.28);
+  --bg-deep-1: #2b0a3d;
+  --bg-deep-2: #1b1033;
+  --bg-deep-3: #2a0f2b;
+
+  /* Glass surfaces */
+  --glass-10: rgba(255, 255, 255, 0.1);
+  --glass-14: rgba(255, 255, 255, 0.14);
+  --glass-16: rgba(255, 255, 255, 0.16);
+  --glass-22: rgba(255, 255, 255, 0.22);
+
+  /* Cards / panels */
+  --card-bg: rgba(255, 255, 255, 0.92);
+  --card-border: rgba(255, 255, 255, 0.35);
+  --info-bg: rgba(255, 255, 255, 0.82);
+
+  /* Lines / borders */
+  --border-black-10: rgba(0, 0, 0, 0.1);
+  --border-black-12: rgba(0, 0, 0, 0.12);
+  --border-black-14: rgba(0, 0, 0, 0.14);
+  --border-black-22: rgba(0, 0, 0, 0.22);
+  --border-black-33: rgba(0, 0, 0, 0.33);
+  --border-black-35: rgba(0, 0, 0, 0.35);
+  --border-black-50: rgba(0, 0, 0, 0.5);
+
+  /* Shadows */
+  --shadow-tab: 0 8px 18px rgba(0, 0, 0, 0.18);
+  --shadow-card: 0 18px 50px rgba(0, 0, 0, 0.3);
+  --shadow-info: 0 16px 44px rgba(0, 0, 0, 0.22);
+
+  /* Text colors */
+  --text-on-dark: rgba(255, 255, 255, 0.92);
+  --text-on-dark-muted: rgba(255, 255, 255, 0.75);
+  --text-muted: rgba(0, 0, 0, 0.65);
+
+  /* Focus */
+  --focus-ring: 0 0 0 3px rgba(169, 90, 255, 0.18);
 }
 /* Makes padding and border included inside width/height calculations */
 * {
@@ -21,25 +71,25 @@ body {
   flex-direction: column;
   margin: 0; /* Removes default browser margin */
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; /* Modern font stack */
-  color: #1b1b1b; /* Default text color */
+  color: var(--color-text); /* Default text color */
 
   /* Orange–Purple theme background made from multiple gradient layers */
   background: radial-gradient(
       900px 500px at 15% 10%,
-      rgba(255, 167, 71, 0.45),
+      var(--bg-radial-orange),
       transparent 60%
     ),
     radial-gradient(
       900px 500px at 85% 25%,
-      rgba(170, 90, 255, 0.4),
+      var(--bg-radial-purple),
       transparent 55%
     ),
     radial-gradient(
       700px 500px at 70% 85%,
-      rgba(255, 108, 70, 0.28),
+      var(--bg-radial-coral),
       transparent 55%
     ),
-    linear-gradient(135deg, #2b0a3d 0%, #1b1033 45%, #2a0f2b 100%);
+    linear-gradient(135deg, var(--bg-deep-1) 0%, var(--bg-deep-2) 45%, var(--bg-deep-3) 100%);
 }
 
 /* -------- Top bar -------- */
@@ -57,8 +107,8 @@ body {
 
   padding: 14px 18px; /* Inner spacing */
   backdrop-filter: blur(10px); /* Glass blur effect */
-  background: rgba(255, 255, 255, 0.1); /* Transparent background */
-  border-bottom: 1px solid rgba(255, 255, 255, 0.14); /* Bottom border */
+  background: var(--glass-10); /* Transparent background */
+  border-bottom: 1px solid var(--glass-14); /* Bottom border */
 }
 
 /* Brand / logo */
@@ -68,7 +118,7 @@ body {
   align-items: center; /* Vertical alignment */
   gap: 12px; /* Space between logo and text */
   text-decoration: none; /* Removes underline */
-  color: #fff; /* White text */
+  color: var(--color-white); /* White text */
 }
 
 .logo {
@@ -103,12 +153,12 @@ body {
 
 .tab {
   text-decoration: none; /* Remove underline */
-  color: rgba(255, 255, 255, 0.92); /* Light text */
+  color: var(--text-on-dark); /* Light text */
   padding: 10px 14px; /* Inner spacing */
   border-radius: 999px; /* Fully rounded button shape */
-  background: rgba(255, 255, 255, 0.1); /* Transparent background */
-  border: 1px solid rgba(255, 255, 255, 0.16); /* Light border */
-  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18); /* Shadow effect */
+  background: var(--glass-10); /* Transparent background */
+  border: 1px solid var(--glass-16); /* Light border */
+  box-shadow: var(--shadow-tab); /* Shadow effect */
   transition: transform 120ms ease, background 120ms ease,
     border-color 120ms ease; /* Smooth animation */
   user-select: none; /* Prevent text selection */
@@ -116,18 +166,18 @@ body {
 
 .tab:hover {
   transform: translateY(-1px); /* Slight lift on hover */
-  background: rgba(255, 255, 255, 0.14); /* Slightly brighter */
-  border-color: rgba(255, 255, 255, 0.22); /* Brighter border */
+  background: var(--glass-14); /* Slightly brighter */
+  border-color: var(--glass-22); /* Brighter border */
 }
 
 .tab.active {
   background: linear-gradient(
     135deg,
-    rgba(255, 169, 70, 0.92),
-    rgba(169, 90, 255, 0.92)
+    var(--accent-orange),
+    var(--accent-purple)
   ); /* Gradient highlight */
   border-color: rgba(255, 255, 255, 0.3);
-  color: #1b1b1b; /* Dark text */
+  color: var(--color-text); /* Dark text */
   font-weight: 800; /* Bold */
 }
 
@@ -172,9 +222,9 @@ body {
 .card {
   border-radius: 18px; /* Rounded corners */
   padding: 18px 18px 16px; /* Inner spacing */
-  background: rgba(255, 255, 255, 0.92); /* White background */
-  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.3); /* Shadow */
-  border: 1px solid rgba(255, 255, 255, 0.35); /* Border */
+  background: var(--card-bg); /* White background */
+  box-shadow: var(--shadow-card); /* Shadow */
+  border: 1px solid var(--card-border); /* Border */
 }
 
 .card h1 {
@@ -191,7 +241,7 @@ body {
   align-items: center;
   justify-content: center;
   padding: 18px;
-  background: rgba(0, 0, 0, 0.35);
+  background: var(--border-black-35);
 }
 
 .modal {
@@ -200,7 +250,7 @@ body {
 
 .hint {
   margin: 0 0 14px;
-  color: rgba(0, 0, 0, 0.65); /* Muted text */
+  color: var(--text-muted); /* Muted text */
 }
 
 /* Menu block */
@@ -219,13 +269,13 @@ body {
   padding: 12px 14px;
   border-radius: 14px;
 
-  color: #1b1b1b;
+  color: var(--color-text);
   background: linear-gradient(
     135deg,
-    rgba(255, 169, 70, 0.25),
-    rgba(169, 90, 255, 0.18)
+    var(--accent-orange-soft),
+    var(--accent-purple-soft)
   );
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--border-black-10);
   box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
 
   transition: transform 150ms ease, box-shadow 150ms ease;
@@ -246,8 +296,8 @@ body {
 .info-card {
   border-radius: 18px;
   padding: 14px;
-  background: rgba(255, 255, 255, 0.82);
-  box-shadow: 0 16px 44px rgba(0, 0, 0, 0.22);
+  background: var(--info-bg);
+  box-shadow: var(--shadow-info);
 }
 
 /* Footer */
@@ -256,7 +306,7 @@ body {
   max-width: 1100px;
   margin: auto auto 0;
   padding: 0 18px 22px;
-  color: rgba(255, 255, 255, 0.75);
+  color: var(--text-on-dark-muted);
   font-size: 12px;
 }
 
@@ -267,8 +317,8 @@ body {
   border-radius: 14px;
   background: linear-gradient(
     135deg,
-    rgba(255, 169, 70, 0.25),
-    rgba(169, 90, 255, 0.18)
+    var(--accent-orange-soft),
+    var(--accent-purple-soft)
   );
   font-weight: 800;
   cursor: pointer;
@@ -294,10 +344,10 @@ a.btn:hover {
 .btn.primary {
   background: linear-gradient(
     135deg,
-    rgba(255, 169, 70, 0.92),
-    rgba(169, 90, 255, 0.92)
+    var(--accent-orange),
+    var(--accent-purple)
   );
-  color: #1b1b1b;
+  color: var(--color-text);
 }
 
 /* Form layout */
@@ -326,19 +376,19 @@ a.btn:hover {
   width: 100%;
   padding: 11px 12px;
   border-radius: 12px;
-  border: 1px solid rgba(0, 0, 0, 0.14);
+  border: 1px solid var(--border-black-14);
   background: rgba(255, 255, 255, 0.9);
   transition: background 150ms ease, border-color 150ms ease;
 }
 
 .field input:hover {
   background: rgba(255, 255, 255, 0.96);
-  border-color: rgba(0, 0, 0, 0.33);
+  border-color: var(--border-black-33);
 }
 
 .field input:focus {
   background: rgba(255, 255, 255, 1);
-  border-color: rgba(0, 0, 0, 0.5);
+  border-color: var(--border-black-50);
   outline: none; /* Removes default focus outline */
 }
 
@@ -356,7 +406,7 @@ a.btn:hover {
   width: 100%;
   padding: 11px 12px;
   border-radius: 12px;
-  border: 1px solid rgba(0, 0, 0, 0.14);
+  border: 1px solid var(--border-black-14);
   background: rgba(255, 255, 255, 0.9);
   min-width: 0;
   margin: 0;
@@ -367,13 +417,13 @@ a.btn:hover {
 
 .field > select:hover {
   background: rgba(255, 255, 255, 0.96);
-  border-color: rgba(0, 0, 0, 0.33);
+  border-color: var(--border-black-33);
 }
 
 .field > select:focus {
   background: rgba(255, 255, 255, 1);
-  border-color: rgba(0, 0, 0, 0.5);
-  box-shadow: 0 0 0 3px rgba(169, 90, 255, 0.18);
+  border-color: var(--border-black-50);
+  box-shadow: var(--focus-ring);
   outline: none;
 }
 
