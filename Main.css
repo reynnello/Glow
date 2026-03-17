@@ -441,7 +441,7 @@ a.btn:hover {
   transform: scale(1);
 }
 
-/* focus по клавиатуре */
+/* focus */
 .radio-option input[type="radio"]:focus-visible {
   outline: none;
   box-shadow: 0 0 0 3px rgba(169, 90, 255, 0.18);

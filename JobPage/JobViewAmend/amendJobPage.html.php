@@ -37,16 +37,17 @@ Date: 15/03/2026
         <h1>Amend/View Job</h1>
         <p class="hint">Please select a job and then click the amend button if you wish to update.</p>
 
-        <div class="field">
-            <?php include 'amendJobListbox.php'; ?>
-        </div>
-
+        
         <div style="display:flex; gap:10px; flex-wrap:wrap; margin-bottom: 12px;">
             <input type="button" value="Amend Details" id="amendViewbutton" onclick="toggleLock()" class="btn">
         </div>
-
+        
         <form name="myForm" action="amendJobPost.php" onsubmit="return confirmCheck()" method="post">
             <div class="form-grid">
+                <div class="field field-big">
+                    <label for="amendJobListbox">Job</label>
+                    <?php include 'amendJobListbox.php'; ?>
+                </div>
                 <div class="field">
                     <label for="amendId">Job Id</label>
                     <input type="text" name="amendId" id="amendId" disabled>

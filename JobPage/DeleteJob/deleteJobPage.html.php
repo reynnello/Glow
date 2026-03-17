@@ -36,12 +36,13 @@ Date: 15/03/2026
     <h1>Delete Job</h1>
     <p class="hint">Please select a job and then click the delete button. Please make sure that you chose the correct job and double-check the information</p>
 
-    <div class="field">
-      <?php include 'deleteJobListbox.php'; ?>
-    </div>
-
+    
     <form name="myForm" action="deleteJobPagePost.php" onsubmit="return confirmCheck()" method="post">
       <div class="form-grid">
+        <div class="field field-big">
+          <label for="deleteJobListbox">Job</label>
+          <?php include 'deleteJobListbox.php'; ?>
+        </div>
         <div class="field">
           <label for="deleteId">Job Id</label>
           <input type="text" name="deleteId" id="deleteId" disabled>

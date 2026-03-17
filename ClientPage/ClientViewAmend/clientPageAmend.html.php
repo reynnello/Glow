@@ -40,11 +40,6 @@ Date: 22/02/2026
         <h1>Amend/View Client</h1>
         <p class="hint">Please select a client and then click the amend button if you wish to update.</p>
 
-        <!-- Listbox -->
-        <div class="field">
-            <?php include 'clientListbox.php'; ?>
-        </div>
-
         <!-- Actions row -->
         <div style="display:flex; gap:10px; flex-wrap:wrap; margin-bottom: 12px;">
             <input type="button" value="Amend Details" id="amendViewbutton" onclick="toggleLock()" class="btn">
@@ -53,6 +48,10 @@ Date: 22/02/2026
         <!-- Form -->
         <form name="myForm" action="clientPagePost.php" onsubmit="return confirmCheck()" method="post">
             <div class="form-grid">
+                <div class="field field-big">
+                    <label for="clientListbox">Client</label>
+                    <?php include 'clientListbox.php'; ?>
+                </div>
                 <div class="field">
                     <label for="amendId">Client Id</label>
                     <input type="text" name="amendId" id="amendId" disabled>
