@@ -48,9 +48,6 @@
   --text-on-dark: rgba(255, 255, 255, 0.92);
   --text-on-dark-muted: rgba(255, 255, 255, 0.75);
   --text-muted: rgba(0, 0, 0, 0.65);
-
-  /* Focus */
-  --focus-ring: 0 0 0 3px rgba(169, 90, 255, 0.18);
 }
 /* Makes padding and border included inside width/height calculations */
 * {
@@ -423,7 +420,6 @@ a.btn:hover {
 .field > select:focus {
   background: rgba(255, 255, 255, 1);
   border-color: var(--border-black-50);
-  box-shadow: var(--focus-ring);
   outline: none;
 }
 
