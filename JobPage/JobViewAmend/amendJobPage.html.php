@@ -85,7 +85,7 @@ Date: 15/03/2026
 
                 <div class="field">
                     <label for="amendAnnualSalary">Annual Salary</label>
-                    <input type="number" name="amendAnnualSalary" id="amendAnnualSalary" disabled placeholder="50000.00">
+                    <input type="number" name="amendAnnualSalary" id="amendAnnualSalary" disabled placeholder="50000">
                 </div>
 
                 <div class="radio-group" role="group" aria-labelledby="driverLicLabel">
