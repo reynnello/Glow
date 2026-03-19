@@ -19,10 +19,11 @@ $driverLicense = $_POST['addDriverLicense'];
 $jobTitle = $_POST['addJobTitle'];
 $qualifications = $_POST['addQualifications'];
 $minAnnualSalary = $_POST['addMinAnnualSalary'];
+$status = 'Unemployed'; //setting default status to Unemployed
 
 //sql query for insert
-$sql = "INSERT INTO client (client_name, address, eircode, telephone, date_of_birth, driver_license_type, job_title_interest, qualifications, min_annual_salary)
-         VALUES('$name', '$address', '$eircode', '$phone', '$dob', '$driverLicense', '$jobTitle', '$qualifications', '$minAnnualSalary')";
+$sql = "INSERT INTO client (client_name, address, eircode, telephone, date_of_birth, driver_license_type, job_title_interest, qualifications, min_annual_salary, employment_status)
+         VALUES('$name', '$address', '$eircode', '$phone', '$dob', '$driverLicense', '$jobTitle', '$qualifications', '$minAnnualSalary', '$status')";
 
 //if connection failed or sql query is wrong
 if(!mysqli_query($con, $sql))
