@@ -38,6 +38,13 @@ if (!mysqli_query($con, $clientSql)) {
     die("An Error in the SQL Query " . mysqli_error($con));
 }
 
+$filledPostSql = "INSERT INTO filled_post (job_id, client_id, date_of_offer, salary_accepted, employment_start_date)
+                VALUES ('$jobId', '$clientId', '$offerDate', '$acceptedSalary', '$startDate')";
+
+if (!mysqli_query($con, $filledPostSql)) {
+    die("An Error in the SQL Query " . mysqli_error($con));
+}
+
 mysqli_close($con);
 ?>
 <!-- result modal -->
