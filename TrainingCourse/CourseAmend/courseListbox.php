@@ -20,7 +20,7 @@ if (!$result = mysqli_query($con, $sql))
     die('Error in querying the database ' . mysqli_error($con));
 }
 
-echo "<select name='deleteCourseListbox' id='deleteCourseListbox' onclick='populate()'>";
+echo "<select name='courseListbox' id='courseListbox' onclick='populate()'>";
 
 while($row = mysqli_fetch_array($result))
 {

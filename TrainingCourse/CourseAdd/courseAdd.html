@@ -28,21 +28,19 @@
       <nav class="tabs" aria-label="Primary navigation">
         <a class="tab" href="../../ClientPage/clientPage.html">Client</a>
         <a class="tab" href="../../JobPage/jobPage.html">Job</a>
-        <a class="tab" href="../../TrainingCoursePage/trainingcoursepage.html"
-          >Training Course</a
-        >
-        <a class="tab active" href="../companyPage.html">Company</a>
+        <a class="tab active" href="../coursePage.html">Training Course</a>
+        <a class="tab " href="../../CompanyPage/companyPage.html">Company</a>
       </nav>
     </header>
     <!--Main page-->
     <main class="page page--center">
       <section class="card">
-        <h1>Add Company</h1>
-        <p class="hint">Please fill the information and add the Company</p>
+        <h1>Add Training Course</h1>
+        <p class="hint">Please fill the information and add the Training Course</p>
         <!--fields for data-->
         <form
           name="addCompanyForm"
-          action="AddCompanyPost.php"
+          action="courseAdd.php"
           onsubmit="return confirmCheck()"
           method="post"
         >
@@ -50,114 +48,122 @@
           <div class="form-grid">
 
             <div class="field">
-              <label for="addName">Company Name</label>
+              <label for="addTitle">Course Title</label>
               <input
                       type="text"
-                      name="addName"
-                      id="addName"
-                      placeholder="e.g. Tech Solutions Ltd"
+                      name="addTitle"
+                      id="addTitle"
+                      placeholder="e.g. Web Development"
                       required
               />
             </div>
 
             <div class="field">
-              <label for="addAddress">Company Address</label>
+              <label for="addProvider">Course Provider</label>
               <input
                       type="text"
-                      name="addAddress"
-                      id="addAddress"
-                      placeholder="e.g. 12 Main Street, Carlow"
+                      name="addProvider"
+                      id="addProvider"
+                      placeholder="e.g. SETU"
                       required
               />
             </div>
 
             <div class="field">
-              <label for="addEircode">Eircode</label>
-              <input
-                      type="text"
-                      name="addEircode"
-                      id="addEircode"
-                      placeholder="A65 F4E2"
-                      pattern="^[A-Za-z]\d{2}\s?[A-Za-z0-9]{4}$"
-                      required
-              />
-            </div>
-
-            <div class="field">
-              <label for="addPhone">Phone Number</label>
-              <input
-                      type="tel"
-                      name="addPhone"
-                      id="addPhone"
-                      placeholder="+353 87 123 4567"
-                      pattern="^[0-9\(\)\-\s+]+$"
-                      required
-              />
-            </div>
-
-            <div class="field">
-              <label for="addWebsite">Company Website</label>
-              <input
-                      type="url"
-                      name="addWebsite"
-                      id="addWebsite"
-                      placeholder="https://www.company.ie"
-              />
-            </div>
-
-            <div class="field">
-              <label for="addDescription">Business Description</label>
+              <label for="addDescription">Course Description</label>
               <input
                       type="text"
                       name="addDescription"
                       id="addDescription"
-                      placeholder="e.g. Software development and IT consulting"
+                      placeholder="e.g. Description to HTML"
                       required
               />
-              <small class="hint-text">Optional field</small>
             </div>
 
             <div class="field">
-              <label for="addContactName">Contact Name</label>
+              <label for="addFee">Course Fee</label>
+              <input
+                      type="number"
+                      step="0.01"
+                      name="addFee"
+                      id="addFee"
+                      placeholder="250.00"
+                      required
+              />
+            </div>
+
+            <div class="field">
+              <label for="addVenue">Course Venue</label>
               <input
                       type="text"
-                      name="addContactName"
-                      id="addContactName"
-                      placeholder="e.g. John Murphy"
+                      name="addVenue"
+                      id="addVenue"
+                      placeholder="e.g. Carlow Campus"
+              />
+            </div>
+
+            <div class="field">
+              <label for="addPlaces">Course Total Places</label>
+              <input
+                      type="number"
+                      name="addPlaces"
+                      id="addPlaces"
+                      placeholder="e.g. 12"
                       required
               />
             </div>
 
             <div class="field">
-              <label for="addContactPhone">Contact Phone</label>
+              <label for="addStartDate">Start Date</label>
               <input
-                      type="tel"
-                      name="addContactPhone"
-                      id="addContactPhone"
-                      placeholder="+353 85 987 6543"
-                      pattern="^[0-9\(\)\-\s+]+$"
+                      type="date"
+                      name="addStartDate"
+                      id="addStartDate"
+                      placeholder="e.g. #"
                       required
               />
             </div>
 
             <div class="field">
-              <label for="addContactEmail">Contact Email</label>
+              <label for="addNumberOfDays">Course Number Of Days</label>
               <input
-                      type="email"
-                      name="addContactEmail"
-                      id="addContactEmail"
-                      placeholder="john.murphy@email.ie"
+                      type="number"
+                      name="addNumberOfDays"
+                      id="addNumberOfDays"
+                      placeholder="e.g. 5"
+                      required
+              />
+            </div>
+
+            <div class="field">
+              <label for="addStartTime">Course Start Time</label>
+              <input
+                      type="time"
+                      name="addStartTime"
+                      id="addStartTime"
+                      placeholder="e.g. 10:00"
+                      required
+              />
+            </div>
+
+            <div class="field">
+              <label for="addEndTime">Course End Time</label>
+              <input
+                      type="time"
+                      name="addEndTime"
+                      id="addEndTime"
+                      placeholder="e.g. 13:00"
                       required
               />
             </div>
 
           </div>
 
-          <br /><br />
+          <br/><br/>
           <!--Submit and return buttons -->
           <div style="margin-top: 14px">
             <input type="submit" value="Add Company" class="btn primary" />
-            <a href="../companyPage.html" class="btn">Back</a>
+            <a href="../coursePage.html" class="btn">Back</a>
           </div>
         </form>
       </section>
@@ -170,25 +176,28 @@
     <script>
       function confirmCheck() //function that ask for confirmation in case everything is empty or filled with spaces
       {
-          var name = document.getElementById("addName").value.trim();
-          var address = document.getElementById("addAddress").value.trim();
-          var eircode = document.getElementById("addEircode").value.trim();
-          var phone = document.getElementById("addPhone").value.trim();
-          var website = document.getElementById("addWebsite").value.trim;
+          var title = document.getElementById("addTitle").value.trim();
+          var provider = document.getElementById("addProvider").value.trim();
           var description = document.getElementById("addDescription").value.trim();
-          var contactName = document.getElementById("addContactName").value.trim();
-          var contactPhone = document.getElementById("addContactPhone").value.trim();
-          var contactEmail = document.getElementById("addContactEmail").value.trim();
+          var fee = document.getElementById("addFee").value.trim();
+          var venue = document.getElementById("addVenue").value.trim;
+          var placesTotal = document.getElementById("addPlacesTotal").value.trim();
+          var numOfDays = document.getElementById("addNumOfDays").value.trim();
+          var startDate = document.getElementById("addStartDate").value.trim();
+        var startTime = document.getElementById("addStarTime").value.trim();
+          var endTime = document.getElementById("addEndTime").value.trim();
       
           if (
-              name === "" ||
-              address === "" ||
-              eircode === "" ||
-              phone === "" ||
+              title === "" ||
+              provider === "" ||
               description === "" ||
-              contactName === "" ||
-              contactPhone === "" ||
-              contactEmail === ""
+              fee === "" ||
+              venue === "" ||
+              placesTotal === "" ||
+              numOfDays === "" ||
+              startDate === "" ||
+              startTime === "" ||
+              endTime === ""
           )
           {
               alert("Please fill out required information");//if the information is incomplete or empty

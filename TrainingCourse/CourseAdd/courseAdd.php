@@ -11,19 +11,23 @@ ini_set('display_errors', 1); //display error
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-$name = $_POST['addName']; //creating variables and passing data from html fields
-$address = $_POST['addAddress'];
-$eircode = $_POST['addEircode'];
-$phone = $_POST['addPhone'];
-$website = $_POST['addWebsite'];
+$title = $_POST['addTitle']; //creating variables and passing data from html fields
+$provider = $_POST['addProvider'];
 $description = $_POST['addDescription'];
-$contactName = $_POST['addContactName'];
-$contactPhone = $_POST['addContactPhone'];
-$contactEmail = $_POST['addContactEmail'];
+$fee = $_POST['addFee'];
+$venue = $_POST['addVenue'];
+$places_total = $_POST['addPlaces'];
+$places_left = $places_total;
+$startDate = $_POST['addStartDate'];
+$numOfDays = $_POST['addNumberOfDays'];
+$startTime = $_POST['addStartTime'];
+$endTime = $_POST['addEndTime'];
 
+//
+$status = "taking_bookings";
 //sql query for insert
-$sql = "INSERT INTO Company (company_name, address, eircode, telephone, website, business_description, contact_name, contact_phone, contact_email)
-         VALUES('$name', '$address', '$eircode', '$phone', '$website', '$description', '$contactName', '$contactPhone', '$contactEmail')";
+$sql = "INSERT INTO training_course (course_title, course_provider, course_description, fee, venue, places_total, places_remaining, start_date, num_days, start_time, end_time, status)
+         VALUES('$title', '$provider', '$description', '$fee', '$venue', '$places_total', '$places_left', '$startDate', '$numOfDays', '$startTime', '$endTime', '$status')";
 
 //if connection failed or sql query is wrong
 if(!mysqli_query($con, $sql))
@@ -32,12 +36,12 @@ if(!mysqli_query($con, $sql))
 }
 //else
 echo "<br>A record has been added for   " .
-    $name;
+    $title;
 //closing connection
 mysqli_close($con);
 ?>
 <!--Button for return back-->
-<form action="../companyPage.html" method="POST">
+<form action="../coursePage.html" method="POST">
     <br>
     <input type="submit" value="Return to Company Page"/>
 </form>
