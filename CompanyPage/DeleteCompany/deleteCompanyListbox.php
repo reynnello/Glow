@@ -34,7 +34,9 @@ while($row = mysqli_fetch_array($result)) //setting the data to variables
 
     $allText = "$companyId|$companyName|$companyAddress|$companyEircode|$companyPhone|$companyWebsite|$companyBusinessDescription|$companyContactName|$companyContactPhone|$companyContactEmail";
     //$allText is now filled with data splited by '|'
-    echo "<option value = '$allText'>$companyName</option>";
+    echo "
+    <option hidden>Select a company</option>
+    <option value = '$allText'>$companyName</option>";
     //option is now saved and the user can see the company name in Listbox that will store all the company data
 }
 echo"</select>";
