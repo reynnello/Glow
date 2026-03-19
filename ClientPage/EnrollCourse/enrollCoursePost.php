@@ -14,6 +14,8 @@ $courseId     = $_POST['courseId'];
 $depositAmount = $_POST['depositAmount'];
 $today        = date('Y-m-d');
 
+$rows = 0;
+
 // 1. Insert new enrolment record
 $sql = "INSERT INTO enrolment (client_id, course_id, date_enrolled, deposit_amount, is_deleted)
         VALUES ('$clientId', '$courseId', '$today', '$depositAmount', 0)";
@@ -25,6 +27,8 @@ if (!mysqli_query($con, $sql))
     exit;
 }
 
+$rows += mysqli_affected_rows($con);
+
 // 2. Decrease places_remaining in training_course by 1
 $sql2 = "UPDATE training_course SET places_remaining = places_remaining - 1 WHERE course_id = '$courseId'";
 
@@ -35,6 +39,8 @@ if (!mysqli_query($con, $sql2))
     exit;
 }
 
+$rows += mysqli_affected_rows($con);
+
 // 3. Increase num_training_courses in client by 1
 $sql3 = "UPDATE client SET num_training_courses = num_training_courses + 1 WHERE client_id = '$clientId'";
 
@@ -44,6 +50,8 @@ if (!mysqli_query($con, $sql3))
     mysqli_close($con);
     exit;
 }
+
+$rows += mysqli_affected_rows($con);
 
 mysqli_close($con);
 ?>
