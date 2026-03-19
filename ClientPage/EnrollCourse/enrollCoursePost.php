@@ -60,7 +60,7 @@ mysqli_close($con);
 $rows = $rows ?? 0;
 $modalTitle = 'Enrolment Result';
 if ($rows != 0) {
-    $modalMessage = 'Enrolment record has been created.';
+    $modalMessage = 'Enrolment record for client ' . $clientId . ' has been created.';
 } else {
     $modalMessage = 'No records were changed.';
 }

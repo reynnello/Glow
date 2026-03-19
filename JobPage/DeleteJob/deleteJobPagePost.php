@@ -39,7 +39,7 @@ mysqli_close($con);
 $rows = $rows ?? 0;
 $modalTitle = 'Job Deleted';
 if ($rows != 0) {
-    $modalMessage = 'Job record has been deleted.';
+    $modalMessage = 'Job record for ' . $_POST['deleteTitle'] . ' has been deleted.';
 } else {
     $modalMessage = 'No records were changed.';
 }

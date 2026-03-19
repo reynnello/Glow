@@ -43,7 +43,7 @@ mysqli_close($con);//close connection
 $rows = $rows ?? 0;
 $modalTitle = 'Company Deleted';
 if ($rows != 0) {
-    $modalMessage = 'Company record has been deleted.';
+    $modalMessage = 'Company record for ' . $_POST['deleteName'] . ' has been deleted.';
 } else {
     $modalMessage = 'No records were changed.';
 }

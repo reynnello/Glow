@@ -30,7 +30,7 @@ mysqli_close($con);
 $rows = $rows ?? 0;
     $modalTitle = 'Delete Result';
     if ($rows != 0) {
-        $modalMessage = 'Course record has been deleted.';
+        $modalMessage = 'Course record for ' . $_POST['delTitle'] . ' has been deleted.';
     } else {
         $modalMessage = 'No records were changed.';
     }

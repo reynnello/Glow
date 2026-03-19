@@ -41,7 +41,7 @@ mysqli_close($con);//close connection
 $rows = $rows ?? 0;
 $modalTitle = 'Client Updated';
 if ($rows != 0) {
-    $modalMessage = 'Client record has been updated.';
+    $modalMessage = 'Client record for ' . $_POST['amendName'] . ' has been updated.';
 } else {
     $modalMessage = 'No records were changed.';
 }

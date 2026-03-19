@@ -50,7 +50,7 @@ mysqli_close($con);
 <!-- result modal -->
 <?php
 $modalTitle = 'Job Filled';
-$modalMessage = 'The job status was updated to <b>filled</b>, and the client employment status was updated to <b>Employed</b>.';
+$modalMessage = 'The job status was updated to filled, and the client employment status was updated to Employed.';
 $returnHref = '../jobPage.html';
 $returnLabel = 'Return to Job Page';
 $cssHref = '../../Main.css';

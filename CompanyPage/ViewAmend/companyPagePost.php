@@ -42,7 +42,7 @@ mysqli_close($con);//close connection
 $rows = $rows ?? 0;
 $modalTitle = 'Company Updated';
 if ($rows != 0) {
-    $modalMessage = 'Company record has been updated.';
+    $modalMessage = 'Company record for ' . $_POST['amendName'] . ' has been updated.';
 } else {
     $modalMessage = 'No records were changed.';
 }

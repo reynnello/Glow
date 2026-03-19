@@ -46,7 +46,7 @@ mysqli_close($con);
 $rows = $rows ?? 0;
     $modalTitle = 'Add Result';
     if ($rows != 0) {
-        $modalMessage = 'Course record has been added.';
+        $modalMessage = 'Course record for ' . $title . ' has been added.';
     } else {
         $modalMessage = 'No records were changed.';
     }

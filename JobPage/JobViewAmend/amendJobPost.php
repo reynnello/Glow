@@ -42,7 +42,7 @@ mysqli_close($con); //close connection
 $rows = $rows ?? 0;
 $modalTitle = 'Job Updated';
 if ($rows != 0) {
-    $modalMessage = 'Job record has been updated.';
+    $modalMessage = 'Job record for ' . $_POST['amendTitle'] . ' has been updated.';
 } else {
     $modalMessage = 'No records were changed.';
 }

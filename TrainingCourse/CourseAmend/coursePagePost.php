@@ -41,11 +41,10 @@ mysqli_close($con);//close connection
 $rows = $rows ?? 0;
     $modalTitle = 'Update Result';
     if ($rows != 0) {
-        $modalMessage = 'Course record has been updated.';
+        $modalMessage = 'Course record for ' . $_POST['amendTitle'] . ' has been updated.';
     } else {
         $modalMessage = 'No records were changed.';
     }
-}
 
 $returnHref = 'coursePageAmend.html.php';
 $returnLabel = 'Return to Previous Screen';

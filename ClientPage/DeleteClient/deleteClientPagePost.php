@@ -53,7 +53,7 @@ mysqli_close($con);//close connection
 $rows = $rows ?? 0;
 $modalTitle = 'Client Deleted';
 if ($rows != 0) {
-    $modalMessage = 'Client record has been deleted.';
+    $modalMessage = 'Client record for ' . $_POST['deleteName'] . ' has been deleted.';
 } else {
     $modalMessage = 'No records were changed.';
 }
