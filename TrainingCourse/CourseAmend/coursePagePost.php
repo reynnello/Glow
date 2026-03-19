@@ -9,6 +9,9 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 session_start();
 
+$rows = 0;
+$sqlError = '';
+
 
 //update query
 $sql = "UPDATE training_course SET course_title = '$_POST[delTitle]',
@@ -24,38 +27,28 @@ $sql = "UPDATE training_course SET course_title = '$_POST[delTitle]',
         ,end_time = '$_POST[delEndTime]'
         WHERE course_id = '$_POST[delId]'";
 
-if (! mysqli_query($con,$sql)) //if connection is not successful
-{
-    echo "Error ".mysqli_error($con);
-}
-else
-{
-    if (mysqli_affected_rows($con) != 0) //if rows affected
-    {
-        echo mysqli_affected_rows($con)." record(s) updated <br>"; // print the details
-        echo "Course ID: " . $_POST['delId'] . "<br>"
-                . "; Course Title: " . $_POST['delTitle'] . "<br>"
-                . "; Course Provider: " . $_POST['delProvider'] . "<br>"
-                . "; Course Description: " . $_POST['delDescription'] . "<br>"
-                . "; Fee: " . $_POST['delFee'] . "<br>"
-                . "; Venue: " . $_POST['delVenue'] . "<br>"
-                . "; Places Total: " . $_POST['delPlaces'] . "<br>"
-                . "; Places Left: " . $_POST['delLeftPlaces'] . "<br>"
-                . "; Course Start Date: " . $_POST['delStartDate'] . "<br>"
-                . "; Number of Days: " . $_POST['delNumberOfDays'] . "<br>"
-                . "; Start Time: " . $_POST['delStartTime'] . "<br>"
-                . "; End Time: " . $_POST['delEndTime'] . "<br>"
-            ." has been updated";
-    }
-    else
-    {
-        echo "No records were changed";//else print
-    }
+if (!mysqli_query($con, $sql)) {
+    $sqlError = mysqli_error($con);
+} else {
+    $rows = mysqli_affected_rows($con);
 }
 
 mysqli_close($con);//close connection
 ?>
-<form action = "coursePageAmend.html.php" method = "post" />
 
-<input type = "submit" value = "Return to Previous Screen"><!--Return to the previous page-->
-</form>
+<!-- result Modal -->
+<?php
+$rows = $rows ?? 0;
+    $modalTitle = 'Update Result';
+    if ($rows != 0) {
+        $modalMessage = 'Course record has been updated.';
+    } else {
+        $modalMessage = 'No records were changed.';
+    }
+}
+
+$returnHref = 'coursePageAmend.html.php';
+$returnLabel = 'Return to Previous Screen';
+$cssHref = '../../Main.css';
+require_once __DIR__ . '/../../resultModal.inc.php';
+?>

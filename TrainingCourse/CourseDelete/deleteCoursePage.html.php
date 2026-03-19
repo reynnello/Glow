@@ -42,6 +42,7 @@
         <form name="myForm" action="deleteCoursePagePost.php" onsubmit="return confirmCheck()" method="post">
             <div class="form-grid">
             <div class="field">
+                <label for="deleteCourseListbox">Select Course</label>
                 <?php include 'deleteCourseListbox.php'; ?>
             </div>
             <div class="field">

@@ -50,7 +50,7 @@ mysqli_close($con);
 <!-- result Modal -->
 <?php
 $rows = $rows ?? 0;
-$modalTitle = 'Enrolment Confirmed';
+$modalTitle = 'Enrolment Result';
 if ($rows != 0) {
     $modalMessage = 'Enrolment record has been created.';
 } else {
