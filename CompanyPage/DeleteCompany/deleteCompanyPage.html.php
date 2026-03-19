@@ -37,14 +37,13 @@
         <h1>Delete Company</h1>
         <p class="hint">Please select a company and then click the delete button. Please make sure that you chose the correct company and double-check the information</p>
 
-        <!-- Listbox -->
-        <div class="field">
-            <?php include 'deleteCompanyListbox.php'; ?>
-        </div>
-
         <!-- Form -->
         <form name="myForm" action="deleteCompanyPagePost.php" onsubmit="return confirmCheck()" method="post">
             <div class="form-grid">
+                <div class="field field-big">
+                    <label for="deleteCompanyListbox">Company</label>
+                    <?php include 'deleteCompanyListbox.php'; ?>
+                </div>
                 <div class="field">
                     <label for="deleteId">Company Id</label>
                     <input type="text" name="deleteId" id="deleteId" disabled>

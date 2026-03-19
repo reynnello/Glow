@@ -45,19 +45,19 @@ if (!mysqli_query($con, $sql3))
     exit;
 }
 
-// All 3 succeeded - show confirmation
-echo mysqli_affected_rows($con) . " record(s) updated <br>";
-echo "Enrolment confirmed!<br>";
-echo "Client ID: "     . $_POST['clientId']      . "<br>";
-echo "Client Name: "   . $_POST['clientName']    . "<br>";
-echo "Course ID: "     . $_POST['courseId']      . "<br>";
-echo "Course Title: "  . $_POST['courseTitle']   . "<br>";
-echo "Date Enrolled: " . $today                  . "<br>";
-echo "Deposit Paid: &euro;" . $_POST['depositAmount'] . "<br>";
-
 mysqli_close($con);
 ?>
-
-<form action="enrollCourse.html.php" method="post">
-    <input type="submit" value="Return to Previous Screen">
-</form>
+<!-- result Modal -->
+<?php
+$rows = $rows ?? 0;
+$modalTitle = 'Enrolment Confirmed';
+if ($rows != 0) {
+    $modalMessage = 'Enrolment record has been created.';
+} else {
+    $modalMessage = 'No records were changed.';
+}
+$returnHref = 'enrollCourse.html.php';
+$returnLabel = 'Return to Previous Screen';
+$cssHref = '../../Main.css';
+require_once __DIR__ . '/../../resultModal.inc.php';
+?>

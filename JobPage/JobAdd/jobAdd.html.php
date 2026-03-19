@@ -55,17 +55,17 @@ Date: 25/02/2026
 
 <div class="field">
   <label for="addTitle">Job Title</label>
-  <input type="text" name="addTitle" id="addTitle" required />
+  <input type="text" name="addTitle" id="addTitle" required placeholder="Cool Job Title"/>
 </div>
 
 <div class="field field-big">
   <label for="addDescription">Brief Description</label>
-  <input type="text" name="addDescription" id="addDescription" required />
+  <input type="text" name="addDescription" id="addDescription" required placeholder="Description"/>
 </div>
 
 <div class="field">
   <label for="addQual">Qualification Required</label>
-  <input type="text" name="addQual" id="addQual" required />
+  <input type="text" name="addQual" id="addQual" required placeholder="Junior Web Developer"/>
 </div>
 
 <div class="field">
@@ -75,7 +75,7 @@ Date: 25/02/2026
 
 <div class="field">
   <label for="addAnnualSalary">Annual Salary</label>
-  <input type="number" name="addAnnualSalary" id="addAnnualSalary" required />
+  <input type="number" name="addAnnualSalary" id="addAnnualSalary" required placeholder="50000"/>
 </div>
 
 <!-- Drivers license radio (wide) -->
@@ -97,7 +97,7 @@ Date: 25/02/2026
 
 <div class="field">
   <label for="addLocation">Location</label>
-  <input type="text" name="addLocation" id="addLocation" required />
+  <input type="text" name="addLocation" id="addLocation" required placeholder="SETU Carlow"/>
 </div>
 
 </div>
@@ -124,6 +124,32 @@ Date: 25/02/2026
     var parts = result.split("|");
     document.getElementById("companyId").value = parts[0]; // company_id
   }
-</script>
+  function confirmCheck() { //function that ask for confirmation in case everything is empty or filled with spaces
+          var title = document.getElementById("addTitle").value.trim();
+          var location = document.getElementById("addLocation").value.trim();
+          var desc = document.getElementById("addDescription").value.trim();
+          var qual = document.getElementById("addQual").value.trim();
+          var type = document.getElementById("addType").value.trim();
+          var salary = document.getElementById("addAnnualSalary").value.trim();
+          var driverLicChecked = document.querySelector('input[name="addDriverLic"]:checked'); // radio buttons need querySelector
+
+          if (
+              title === "" ||
+              location === "" ||
+              desc === "" ||
+              qual === "" ||
+              type === "" ||
+              salary === "" ||
+              driverLicChecked === null
+          )
+          {
+              alert("Please fill out required information"); //if the information is incomplete or empty
+              return false;
+          }
+          else {
+              return confirm('Are you sure you want to save these changes?'); //if the information is complete, ask for confirmation before submitting
+          }
+      }
+  </script>
   </body>
 </html>

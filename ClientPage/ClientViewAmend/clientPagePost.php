@@ -30,30 +30,23 @@ if (! mysqli_query($con,$sql)) //if connection is not successful
 }
 else
 {
-    if (mysqli_affected_rows($con) != 0) //if rows affected
-    {
-        echo mysqli_affected_rows($con)." record(s) updated <br>"; // print the details
-        echo "Client Id: ". $_POST['amendId']."<br>"
-            ."; Client Name: ". $_POST['amendName']."<br>"
-            ."; Client Address: ". $_POST['amendAddress']."<br>"
-            ."; Client Eircode: ".$_POST['amendEircode']."<br>"
-            ."; Client Telephone: ".$_POST['amendPhone']."<br>"
-            ."; Client Date of Birth: ".$_POST['amendDob']."<br>"
-            ."; Client Driver License Type: ".$_POST['amendDriverLicense']."<br>"
-            ."; Client Job Title Interest: ".$_POST['amendJobTitle']."<br>"
-            ."; Client Qualifications: ".$_POST['amendQualifications']."<br>"
-            ."; Client Minimum Annual Salary: ".$_POST['amendMinAnnualSalary']."<br>"
-            ." has been updated";
-    }
-    else
-    {
-        echo "No records were changed";//else print
-    }
+    $rows = mysqli_affected_rows($con);
 }
 
 mysqli_close($con);//close connection
 ?>
-<form action = "clientPageAmend.html.php" method = "post" />
 
-<input type = "submit" value = "Return to Previous Screen"><!--Return to the previous page-->
-</form>
+<!-- result modal -->
+<?php
+$rows = $rows ?? 0;
+$modalTitle = 'Client Updated';
+if ($rows != 0) {
+    $modalMessage = 'Client record has been updated.';
+} else {
+    $modalMessage = 'No records were changed.';
+}
+$returnHref = 'clientPageAmend.html.php';
+$returnLabel = 'Return to Previous Screen';
+$cssHref = '../../Main.css';
+require_once __DIR__ . '/../../resultModal.inc.php';
+?>

@@ -39,14 +39,13 @@ Date: 22/02/2026
         <h1>Delete Client</h1>
         <p class="hint">Please select a client and then click the delete button. Please make sure that you chose the correct client and double-check the information</p>
 
-        <!-- Listbox -->
-        <div class="field">
-            <?php include 'deleteClientListbox.php'; ?>
-        </div>
-
         <!-- Form -->
         <form name="myForm" action="deleteClientPagePost.php" onsubmit="return confirmCheck()" method="post">
             <div class="form-grid">
+                <div class="field field-big">
+                    <label for="deleteClientListbox">Client</label>
+                    <?php include 'deleteClientListbox.php'; ?>
+                </div>
                 <div class="field">
                     <label for="deleteId">Client Id</label>
                     <input type="text" name="deleteId" id="deleteId" disabled>

@@ -1,3 +1,8 @@
+<!--
+Name: Anton Opria
+ID: C00309433
+Date: 25/02/2026
+-->
 <?php
 /** @var mysqli $con */
 require_once __DIR__ . '/../../db.inc.php'; //connection to db necessary for phpstorm
@@ -24,12 +29,14 @@ if (!mysqli_query($con, $sql)) {
     die("An Error in the SQL Query " . mysqli_error($con));
 }
 
-echo "<br>A record has been added for " . $name;
-
 mysqli_close($con);
 ?>
-<!--Button for return back-->
-<form action="../jobPage.html" method="POST">
-    <br>
-    <input type="submit" value="Return to Job Page"/>
-</form>
+<!-- result modal -->
+<?php
+$modalTitle = 'Job Added';
+$modalMessage = 'A record has been added for <b>' . $name . '</b>.';
+$returnHref = '../jobPage.html';
+$returnLabel = 'Return to Job Page';
+$cssHref = '../../Main.css';
+require_once __DIR__ . '/../../resultModal.inc.php';
+?>

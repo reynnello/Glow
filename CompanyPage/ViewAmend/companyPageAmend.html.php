@@ -38,11 +38,6 @@
         <h1>Amend/View Company</h1>
         <p class="hint">Please select a company and then click the amend button if you wish to update.</p>
 
-        <!-- Listbox -->
-        <div class="field">
-            <?php include 'companyListbox.php'; ?>
-        </div>
-
         <!-- Actions row -->
         <div style="display:flex; gap:10px; flex-wrap:wrap; margin-bottom: 12px;">
             <input type="button" value="Amend Details" id="amendViewbutton" onclick="toggleLock()" class="btn">
@@ -51,6 +46,10 @@
         <!-- Form -->
         <form name="myForm" action="companyPagePost.php" onsubmit="return confirmCheck()" method="post">
             <div class="form-grid">
+                <div class="field field-big">
+                    <label for="companyListbox">Company</label>
+                    <?php include 'companyListbox.php'; ?>
+                </div>
                 <div class="field">
                     <label for="amendId">Company Id</label>
                     <input type="text" name="amendId" id="amendId" disabled>
