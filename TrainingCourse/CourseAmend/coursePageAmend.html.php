@@ -40,6 +40,7 @@
 
 
         <form name="myForm" action="coursePagePost.php" onsubmit="return confirmCheck()" method="post">
+            <div class="form-grid">
             <div class="field">
                 <?php include 'courseListbox.php'; ?>
             </div>
@@ -111,6 +112,7 @@
                 <input type="submit" value="Save Changes" class="btn primary">
                 <a href="../coursePage.html" class="btn">Back</a>
             </div>
+        </div>
         </form>
 
         <p id="display" style="margin-top: 12px;"></p>

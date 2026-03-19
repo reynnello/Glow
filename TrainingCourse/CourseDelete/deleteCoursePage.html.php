@@ -40,6 +40,7 @@
 
 
         <form name="myForm" action="deleteCoursePagePost.php" onsubmit="return confirmCheck()" method="post">
+            <div class="form-grid">
             <div class="field">
                 <?php include 'deleteCourseListbox.php'; ?>
             </div>
@@ -106,6 +107,7 @@
             <div style="margin-top: 14px;">
                 <input type="submit" value="Delete Course" class="btn primary">
                 <a href="../coursePage.html" class="btn">Back</a>
+            </div>
             </div>
         </form>
 

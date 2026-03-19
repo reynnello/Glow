@@ -40,8 +40,17 @@ echo "<br>A record has been added for   " .
 //closing connection
 mysqli_close($con);
 ?>
-<!--Button for return back-->
-<form action="../coursePage.html" method="POST">
-    <br>
-    <input type="submit" value="Return to Company Page"/>
-</form>
+<!-- result Modal -->
+<?php
+$rows = $rows ?? 0;
+$modalTitle = 'Course Added';
+if ($rows != 0) {
+    $modalMessage = 'Course record has been added.';
+} else {
+    $modalMessage = 'No records were changed.';
+}
+$returnHref = 'coursePage.html.php';
+$returnLabel = 'Return to Previous Screen';
+$cssHref = '../../Main.css';
+require_once __DIR__ . '/../../resultModal.inc.php';
+?>
