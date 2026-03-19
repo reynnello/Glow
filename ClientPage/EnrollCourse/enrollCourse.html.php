@@ -125,7 +125,7 @@ Date: 19/03/2026
 
             <div style="margin-top: 14px;">
                 <input type="submit" value="Confirm Enrolment" class="btn primary" id="enrolBtn" disabled>
-                <a href="trainingcoursepage.html" class="btn">Back</a>
+                <a href="../clientPage.html" class="btn">Back</a>
             </div>
 
         </form>
