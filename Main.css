@@ -67,11 +67,18 @@ body {
   display: flex;
   flex-direction: column;
   margin: 0; /* Removes default browser margin */
-  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; /* Modern font stack */
+  font-family:
+    system-ui,
+    -apple-system,
+    Segoe UI,
+    Roboto,
+    Arial,
+    sans-serif; /* Modern font stack */
   color: var(--color-text); /* Default text color */
 
   /* Orange–Purple theme background made from multiple gradient layers */
-  background: radial-gradient(
+  background:
+    radial-gradient(
       900px 500px at 15% 10%,
       var(--bg-radial-orange),
       transparent 60%
@@ -86,7 +93,12 @@ body {
       var(--bg-radial-coral),
       transparent 55%
     ),
-    linear-gradient(135deg, var(--bg-deep-1) 0%, var(--bg-deep-2) 45%, var(--bg-deep-3) 100%);
+    linear-gradient(
+      135deg,
+      var(--bg-deep-1) 0%,
+      var(--bg-deep-2) 45%,
+      var(--bg-deep-3) 100%
+    );
 }
 
 /* -------- Top bar -------- */
@@ -156,7 +168,9 @@ body {
   background: var(--glass-10); /* Transparent background */
   border: 1px solid var(--glass-16); /* Light border */
   box-shadow: var(--shadow-tab); /* Shadow effect */
-  transition: transform 120ms ease, background 120ms ease,
+  transition:
+    transform 120ms ease,
+    background 120ms ease,
     border-color 120ms ease; /* Smooth animation */
   user-select: none; /* Prevent text selection */
 }
@@ -275,7 +289,9 @@ body {
   border: 1px solid var(--border-black-10);
   box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
 
-  transition: transform 150ms ease, box-shadow 150ms ease;
+  transition:
+    transform 150ms ease,
+    box-shadow 150ms ease;
 }
 
 .menu a:hover {
@@ -375,7 +391,9 @@ a.btn:hover {
   border-radius: 12px;
   border: 1px solid var(--border-black-14);
   background: rgba(255, 255, 255, 0.9);
-  transition: background 150ms ease, border-color 150ms ease;
+  transition:
+    background 150ms ease,
+    border-color 150ms ease;
 }
 
 .field input:hover {
@@ -409,7 +427,10 @@ a.btn:hover {
   margin: 0;
   appearance: none;
   cursor: pointer;
-  transition: background 150ms ease, border-color 150ms ease, box-shadow 150ms ease;
+  transition:
+    background 150ms ease,
+    border-color 150ms ease,
+    box-shadow 150ms ease;
 }
 
 .field > select:hover {
@@ -447,7 +468,9 @@ a.btn:hover {
   cursor: pointer;
 
   user-select: none;
-  transition: border-color 150ms ease, background 150ms ease;
+  transition:
+    border-color 150ms ease,
+    background 150ms ease;
 }
 
 .radio-option:hover {
@@ -517,6 +540,52 @@ a.btn:hover {
 
 @media (max-width: 900px) {
   .radio-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* main page styles */
+
+.main-content {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px;
+  align-items: stretch;
+}
+.main-card {
+  border-radius: 18px;
+  background: var(--card-bg);
+  padding: 28px;
+  box-shadow: var(--shadow-card);
+  border: 1px solid var(--card-border);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  font-size: 1.25rem;
+  transition: transform 150ms ease;
+
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+.main-card:hover {
+  transform: scale(1.025);
+}
+
+.main-card:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--accent-purple-soft), var(--shadow-card);
+}
+
+.main-card .hint-action {
+  margin-left: 6px;
+  font-weight: 800;
+  text-decoration: underline;
+}
+
+@media (max-width: 900px) {
+  .main-content {
     grid-template-columns: 1fr;
   }
 }

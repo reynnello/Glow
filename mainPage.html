@@ -1,394 +1,78 @@
-<!DOCTYPE html>
+<!--
+Name: Anton Opria
+ID: C00309433
+Date: 15/03/2026
+-->
+<!doctype html>
 <html lang="en">
-<head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>68K Assembly Quiz – Miniature Kingdom</title>
-<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet"/>
-<style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  body {
-    min-height: 100vh;
-    background: #080810;
-    font-family: 'Courier New', monospace;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 24px 16px;
-    position: relative;
-    overflow-x: hidden;
-  }
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    z-index: 0;
-    background-image: repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,0.18) 2px,rgba(0,0,0,0.18) 4px);
-  }
-  #app { max-width: 640px; width: 100%; position: relative; z-index: 1; }
+  <head>
+    <meta charset="UTF-8" />
+    <title>Glow</title>
+    <link rel="stylesheet" type="text/css" href="/Main.css" />
+  </head>
 
-  .fade-in { animation: fadeIn 0.35s ease forwards; }
-  .slide-in { animation: slideIn 0.3s ease forwards; }
-  @keyframes fadeIn { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:translateY(0); } }
-  @keyframes slideIn { from { opacity:0; transform:translateX(20px); } to { opacity:1; transform:translateX(0); } }
-
-  .card { background: #0d0d1a; border: 1px solid #1a1a2e; }
-  .pixel-border { border: 2px solid #2a2a4a; padding: 36px 32px; box-shadow: 0 0 60px #1a0a4a88; }
-
-  button {
-    display: block; width: 100%; padding: 14px 20px;
-    background: transparent; font-family: 'Press Start 2P', monospace;
-    font-size: 11px; letter-spacing: 3px; cursor: pointer;
-    transition: all 0.2s; border: 2px solid;
-  }
-  button:hover:not(:disabled) { filter: brightness(1.3); transform: translateY(-1px); }
-  button:disabled { cursor: not-allowed; color: #2a2a3e; border-color: #1e1e2e; }
-
-  .progress-bar-wrap { background: #111; height: 3px; margin-bottom: 20px; overflow: hidden; }
-  .progress-bar { height: 100%; transition: width 0.4s; }
-
-  .option {
-    padding: 12px 16px; cursor: pointer;
-    border: 1px solid #1e1e2e; background: transparent;
-    display: flex; align-items: center; gap: 12;
-    margin-bottom: 8px; transition: all 0.15s; width: 100%;
-    text-align: left; font-family: 'Courier New', monospace;
-  }
-  .option:hover:not(.locked) { border-color: #333; }
-  .option .opt-letter {
-    font-family: 'Press Start 2P', monospace; font-size: 9px;
-    min-width: 16px; color: #2a2a3e;
-  }
-  .option .opt-text { font-size: 13px; color: #94a3b8; }
-
-  .tag {
-    display: inline-block; padding: 3px 8px;
-    font-family: 'Press Start 2P', monospace; font-size: 9px; letter-spacing: 1px;
-  }
-  .explanation {
-    border-left: 3px solid; padding: 14px 18px; margin-bottom: 12px;
-    font-size: 12px; color: #94a3b8; line-height: 1.7;
-  }
-  .explanation .verdict {
-    font-family: 'Press Start 2P', monospace; font-size: 9px;
-    font-weight: 700; margin-right: 8px;
-  }
-  .meta-row { display: flex; gap: 12; align-items: center; margin-bottom: 18px; }
-  .q-number { font-family: 'Press Start 2P', monospace; font-size: 20px; color: #1e1e2e; line-height: 1.2; min-width: 36px; }
-  .q-text { color: #e2e8f0; font-size: 14px; line-height: 1.7; }
-
-  /* results */
-  .bar-row { display: flex; align-items: center; gap: 10; margin-bottom: 6px; }
-  .bar-label { font-size: 9px; letter-spacing: 0.5px; min-width: 140px; }
-  .bar-track { flex: 1; background: #111; height: 4px; }
-  .bar-fill { height: 100%; transition: width 0.8s ease; }
-  .bar-count { font-size: 9px; color: #555; min-width: 30px; }
-  .wrong-card { border-left: 3px solid #f87171; padding: 12px 14px; margin-bottom: 8px; }
-  .section-label { font-size: 9px; letter-spacing: 3px; margin-bottom: 10px; }
-
-  @media (max-width: 480px) {
-    .pixel-border { padding: 24px 16px; }
-    .q-text { font-size: 13px; }
-  }
-</style>
-</head>
-<body>
-<div id="app"></div>
-
-<script>
-const ALL_QUESTIONS = [
-  { id:1,  category:"Memory & ORG",        difficulty:"easy",
-    question:"What does the ORG $1000 directive tell the assembler?",
-    options:["Reserve 1000 bytes of memory","Set the starting memory address to $1000","Define a constant equal to 1000","Jump to address $1000"],
-    answer:1, explanation:"ORG sets the origin — where in memory the assembled code will be placed. Here it starts at hexadecimal $1000." },
-  { id:2,  category:"Memory & ORG",        difficulty:"medium",
-    question:"Why is there a second ORG $3000 directive mid-program?",
-    options:["To reset the program counter to zero","To place the GAME loop and onwards at memory address $3000","To declare a new data segment","To switch the CPU to 32-bit mode"],
-    answer:1, explanation:"The second ORG $3000 relocates subsequent code (GAME and everything after) so it assembles starting at address $3000." },
-  { id:3,  category:"Memory & ORG",        difficulty:"medium",
-    question:"What does MOVE.B #100,$4000 do at the start?",
-    options:["Copies address $4000 into a register","Stores the byte value 100 at memory address $4000","Loads 100 into data register D0","Defines a constant named $4000"],
-    answer:1, explanation:"MOVE.B moves a byte. #100 is the literal value, and $4000 is the destination memory address — this initialises the bravery points." },
-  { id:4,  category:"EQU Constants",       difficulty:"easy",
-    question:"What is the maximum number of potions a player can collect?",
-    options:["1","5","9","100"],
-    answer:2, explanation:"MAX_POTIONS EQU 9 sets the upper limit for potions to 9." },
-  { id:5,  category:"EQU Constants",       difficulty:"easy",
-    question:"What does EXIT EQU 0 represent in the program?",
-    options:["An error code","The value compared against player input to quit the game","The first memory address","The minimum weapon count"],
-    answer:1, explanation:"EXIT EQU 0 is used in REPLAY: CMP #EXIT,D1 / BEQ END — if the player enters 0, the game ends." },
-  { id:6,  category:"EQU Constants",       difficulty:"medium",
-    question:"What is DANGER_LOC used for?",
-    options:["Storing high score","Marking a safe zone","Simple collision detection — a value of 100 means a hit","The player's starting health"],
-    answer:2, explanation:"DANGER_LOC EQU 100 is loaded into D1 then compared to 100 to simulate a collision hit (e.g., a giant footstep)." },
-  { id:7,  category:"EQU Constants",       difficulty:"medium",
-    question:"If a player loses an encounter, their bravery points change by:",
-    options:["+5","-8","+8","-5"],
-    answer:1, explanation:"LOSE_POINT EQU 8 — points are lost on failure. WIN_POINT EQU 5 — gained on success. (Note: the actual arithmetic isn't implemented yet in this scaffold.)" },
-  { id:8,  category:"Registers",           difficulty:"easy",
-    question:"Which register is used as a pointer to the bravery points at $4000?",
-    options:["D0","A1","A3","D1"],
-    answer:2, explanation:"LEA $4000,A3 loads the effective address $4000 into A3, making it a pointer to bravery points memory." },
-  { id:9,  category:"Registers",           difficulty:"medium",
-    question:"In the HUD subroutine, what does MOVE.B (A3),D1 accomplish?",
-    options:["Stores D1 into memory at A3","Copies the address in A3 to D1","Dereferences A3 — reads the byte stored at address $4000 into D1","Adds A3 and D1 together"],
-    answer:2, explanation:"(A3) uses indirect addressing — it reads the value stored at the address A3 points to ($4000), which is the current bravery points, and puts it in D1 for display." },
-  { id:10, category:"Registers",           difficulty:"medium",
-    question:"What is register A7 in 68000 assembly?",
-    options:["A general purpose data register","The stack pointer","The program counter","A floating point register"],
-    answer:1, explanation:"A7 is the dedicated stack pointer (SP) in the 68000 architecture. MOVEM.L D0/A1,-(A7) pushes onto the stack by pre-decrementing A7." },
-  { id:11, category:"Registers",           difficulty:"hard",
-    question:"Why does ENDL use MOVEM.L D0/A1,-(A7) at the start and MOVEM.L (A7)+,D0/A1 at the end?",
-    options:["To speed up the CPU","To preserve D0 and A1 since ENDL modifies them — restoring them for the caller","To clear the registers before use","To copy the values into memory permanently"],
-    answer:1, explanation:"ENDL needs to overwrite D0 (for TRAP) and A1 (for LEA CRLF). Saving/restoring via the stack ensures the calling subroutine's values are unaffected." },
-  { id:12, category:"TRAP #15 Calls",      difficulty:"easy",
-    question:"What does TRAP #15 with D0=#14 do?",
-    options:["Reads a number from keyboard","Clears the screen","Prints a null-terminated string whose address is in A1","Halts the simulator"],
-    answer:2, explanation:"Task 14 of TRAP #15 outputs the null-terminated string at the address in A1 — the most common output call in this program." },
-  { id:13, category:"TRAP #15 Calls",      difficulty:"easy",
-    question:"What does TRAP #15 with D0=#4 do?",
-    options:["Print string from A1","Read an integer from keyboard into D1","Clear the screen","Print number from D1"],
-    answer:1, explanation:"Task 4 reads an integer typed by the user and stores it in D1 — used in GAMEPLAY and REPLAY to get player choices." },
-  { id:14, category:"TRAP #15 Calls",      difficulty:"medium",
-    question:"What does TRAP #15 with D0=#3 output?",
-    options:["A null-terminated string","The value of A1","The numeric value in D1","A newline character"],
-    answer:2, explanation:"Task 3 prints the number stored in D1 as a decimal integer — used in HUD to display the current bravery points score." },
-  { id:15, category:"TRAP #15 Calls",      difficulty:"medium",
-    question:"In CLEAR_SCREEN, what does MOVE.W #$FF00,D1 specify?",
-    options:["The number of lines to clear","A screen colour value","The memory address to clear","The font size"],
-    answer:1, explanation:"When D0=#11 (clear screen), D1 holds the colour — $FF00 sets the background colour used when clearing." },
-  { id:16, category:"Subroutines & Flow",  difficulty:"easy",
-    question:"What is the difference between BSR and BRA?",
-    options:["There is no difference","BSR saves a return address and branches; BRA just branches with no return","BRA is for subroutines; BSR is for unconditional jumps","BSR is only for forward branches"],
-    answer:1, explanation:"BSR (Branch to SubRoutine) pushes the return address onto the stack then branches. BRA (BRAnch Always) is a simple unconditional jump with no return mechanism." },
-  { id:17, category:"Subroutines & Flow",  difficulty:"medium",
-    question:"What happens if RTS is missing at the end of a subroutine?",
-    options:["The program asks the user to retry","Execution falls through into the next subroutine's code","The assembler throws an error","D0 is reset to zero"],
-    answer:1, explanation:"Without RTS, execution continues sequentially into whatever code follows — causing unintended subroutines to run (a 'fall-through' bug)." },
-  { id:18, category:"Subroutines & Flow",  difficulty:"medium",
-    question:"In what order does GAMELOOP call its subroutines?",
-    options:["DRAW → INPUT → UPDATE → GAMEPLAY → HUD → REPLAY","INPUT → UPDATE → DRAW → GAMEPLAY → HUD → REPLAY","UPDATE → DRAW → INPUT → HUD → GAMEPLAY → REPLAY","INPUT → DRAW → GAMEPLAY → UPDATE → REPLAY → HUD"],
-    answer:1, explanation:"GAMELOOP calls: INPUT, then UPDATE, then DRAW, then GAMEPLAY, then HUD, then REPLAY — in that exact sequence." },
-  { id:19, category:"Subroutines & Flow",  difficulty:"hard",
-    question:"The REPLAY subroutine calls GAMELOOP recursively. What risk does this introduce?",
-    options:["It makes the game run faster","Each replay pushes a new return address onto the stack — deep recursion can overflow the stack","It resets all registers unexpectedly","TRAP #15 stops working after recursion"],
-    answer:1, explanation:"Every BSR GAMELOOP inside REPLAY nests another call frame on the stack. With enough replays, the stack grows until it corrupts other memory — a stack overflow." },
-  { id:20, category:"Collision Detection", difficulty:"easy",
-    question:"What message displays when a collision IS detected?",
-    options:["SAFE! HID UNDER A LEAF.","TINY ADVENTURE BEGINS!","OH NO! STEPPED ON BY A GIANT!","UPDATING QUEST STATUS..."],
-    answer:2, explanation:"HIT_MSG is displayed when DANGER_LOC equals 100 and the collision hit branch is taken." },
-  { id:21, category:"Collision Detection", difficulty:"medium",
-    question:"In the COLLISION subroutine, what does CMP #100,D1 / BNE COLLISION_MISS mean logically?",
-    options:["If D1 > 100, skip","If D1 ≠ 100, branch to COLLISION_MISS (no hit)","If D1 = 100, branch to COLLISION_MISS","If D1 < 100, branch to COLLISION_HIT"],
-    answer:1, explanation:"CMP sets flags. BNE (Branch if Not Equal) fires when the comparison shows D1 ≠ 100 — meaning no collision, so branch to COLLISION_MISS." },
-  { id:22, category:"Loops & Data",        difficulty:"medium",
-    question:"How does the DECORATE loop print exactly 60 dots?",
-    options:["It uses a WHILE loop construct","D3 is set to 60; each iteration prints a dot and runs SUB #1,D3 / BNE OUT until D3=0","A3 counts bytes in a string of 60 characters","TRAP #15 task 60 prints a line of dots"],
-    answer:1, explanation:"MOVE.B #60,D3 initialises the counter. Each loop iteration decrements D3 with SUB #1,D3, and BNE OUT repeats until D3 reaches zero." },
-  { id:23, category:"Loops & Data",        difficulty:"medium",
-    question:"What does DC.B $0D,$0A,0 define in the CRLF label?",
-    options:["A 3-byte integer constant","Carriage Return, Line Feed, and a null terminator — a Windows-style newline","Three memory addresses","The value of EXIT constant"],
-    answer:1, explanation:"$0D is Carriage Return (CR), $0A is Line Feed (LF), and 0 is the null terminator. Together they form a CRLF newline string." },
-  { id:24, category:"Loops & Data",        difficulty:"hard",
-    question:"What does DS.W 1 do for the HEALTH and SCORE labels?",
-    options:["Defines a string of length 1","Reserves 1 word (2 bytes) of uninitialised storage","Sets HEALTH and SCORE to 1","Declares a byte constant with value 1"],
-    answer:1, explanation:"DS.W 1 (Define Storage Word) reserves 1 word = 2 bytes of memory space without initialising it. This creates storage slots for HEALTH and SCORE." },
-  { id:25, category:"Big Picture",         difficulty:"medium",
-    question:"INPUT is commented out in START (;BSR INPUT) but called inside GAMELOOP. What is the effect?",
-    options:["INPUT never runs","INPUT runs once per game loop iteration via GAMELOOP, but not once at startup","The assembler ignores the semicolon","The program crashes at START"],
-    answer:1, explanation:"The semicolon makes that one BSR INPUT in START a comment. However GAMELOOP unconditionally calls INPUT on every loop iteration, so it still executes — just not before the first GAME call." },
-];
-
-const CAT_COLORS = {
-  "Memory & ORG":        { accent:"#b388ff", dim:"rgba(124,58,237,0.2)" },
-  "EQU Constants":       { accent:"#38bdf8", dim:"rgba(14,165,233,0.2)" },
-  "Registers":           { accent:"#facc15", dim:"rgba(202,138,4,0.2)"  },
-  "TRAP #15 Calls":      { accent:"#4ade80", dim:"rgba(22,163,74,0.2)"  },
-  "Subroutines & Flow":  { accent:"#f87171", dim:"rgba(220,38,38,0.2)"  },
-  "Collision Detection": { accent:"#fb923c", dim:"rgba(234,88,12,0.2)"  },
-  "Loops & Data":        { accent:"#22d3ee", dim:"rgba(8,145,178,0.2)"  },
-  "Big Picture":         { accent:"#a3e635", dim:"rgba(101,163,13,0.2)" },
-};
-
-const DIFF = { easy:"★☆☆", medium:"★★☆", hard:"★★★" };
-
-let state = { phase:"intro", current:0, selected:null, confirmed:false, score:0, wrong:[] };
-
-function setState(patch) { Object.assign(state, patch); render(); }
-
-function render() {
-  const app = document.getElementById('app');
-  if (state.phase === 'intro')   { app.innerHTML = introHTML();   return; }
-  if (state.phase === 'results') { app.innerHTML = resultsHTML(); return; }
-  app.innerHTML = quizHTML();
-  bindOptions();
-}
-
-// ── INTRO ───────────────────────────────────────────────
-function introHTML() {
-  const cats = Object.entries(CAT_COLORS).map(([n,c]) =>
-    `<span style="font-family:'Press Start 2P',monospace;font-size:9px;color:${c.accent};letter-spacing:1px">${n.slice(0,3).toUpperCase()}</span>`
-  ).join('');
-  return `<div class="fade-in" style="text-align:center">
-    <div class="pixel-border">
-      <div style="font-size:11px;letter-spacing:6px;color:#555;margin-bottom:16px">68000 ASSEMBLY</div>
-      <div style="font-family:'Press Start 2P',monospace;font-size:22px;color:#facc15;line-height:1.6;margin-bottom:8px">MINIATURE<br>KINGDOM QUIZ</div>
-      <div style="color:#555;font-size:11px;letter-spacing:4px;margin-bottom:28px">ALL TOPICS · INTERMEDIATE</div>
-      <div style="display:flex;justify-content:center;gap:16px;flex-wrap:wrap;margin-bottom:28px">${cats}</div>
-      <div style="color:#888;font-size:12px;margin-bottom:32px;line-height:1.8">25 questions · 8 categories<br>covering every part of the assembly code</div>
-      <button onclick="startQuiz()" style="color:#facc15;border-color:#facc15;font-family:'Press Start 2P',monospace">START QUEST</button>
-    </div>
-  </div>`;
-}
-
-// ── QUIZ ────────────────────────────────────────────────
-function quizHTML() {
-  const q   = ALL_QUESTIONS[state.current];
-  const cat = CAT_COLORS[q.category] || CAT_COLORS["Big Picture"];
-  const pct = (state.current / ALL_QUESTIONS.length) * 100;
-
-  const opts = q.options.map((opt, i) => {
-    let borderColor = '#1e1e2e', bgColor = 'transparent', textColor = '#94a3b8', letterColor = '#2a2a3e';
-    if (state.confirmed) {
-      if (i === q.answer)                         { borderColor='#4ade80'; bgColor='rgba(74,222,128,0.07)'; textColor='#4ade80'; letterColor='#4ade80'; }
-      else if (i === state.selected)              { borderColor='#f87171'; bgColor='rgba(248,113,113,0.07)'; textColor='#f87171'; letterColor='#f87171'; }
-    } else if (state.selected === i) {
-      borderColor = cat.accent; bgColor = cat.dim; textColor = '#fff'; letterColor = cat.accent;
-    }
-    const check = state.confirmed && i === q.answer ? `<span style="margin-left:auto;color:#4ade80">✓</span>` : '';
-    const cross  = state.confirmed && i === state.selected && i !== q.answer ? `<span style="margin-left:auto;color:#f87171">✗</span>` : '';
-    const locked = state.confirmed ? ' locked' : '';
-    return `<button class="option${locked}" onclick="selectOpt(${i})"
-      style="border-color:${borderColor};background:${bgColor}">
-      <span class="opt-letter" style="color:${letterColor}">${String.fromCharCode(65+i)}</span>
-      <span class="opt-text" style="color:${textColor}">${opt}</span>
-      ${check}${cross}
-    </button>`;
-  }).join('');
-
-  const explanation = state.confirmed ? `
-    <div class="explanation card fade-in" style="border-color:${state.selected===q.answer?'#4ade80':'#f87171'}">
-      <span class="verdict" style="color:${state.selected===q.answer?'#4ade80':'#f87171'}">${state.selected===q.answer?'CORRECT!':'WRONG.'}</span>
-      ${q.explanation}
-    </div>` : '';
-
-  const actionBtn = !state.confirmed
-    ? `<button onclick="confirmAnswer()" ${state.selected===null?'disabled':''} style="color:${cat.accent};border-color:${cat.accent};font-family:'Press Start 2P',monospace">CONFIRM</button>`
-    : `<button onclick="nextQuestion()" style="color:#4ade80;border-color:#4ade80;font-family:'Press Start 2P',monospace">${state.current+1>=ALL_QUESTIONS.length?'SEE RESULTS →':'NEXT →'}</button>`;
-
-  return `
-    <div>
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
-        <span style="font-family:'Press Start 2P',monospace;font-size:9px;color:#444">${state.current+1}/${ALL_QUESTIONS.length}</span>
-        <span style="font-family:'Press Start 2P',monospace;font-size:10px;color:#facc15">${state.score} PTS</span>
-      </div>
-      <div class="progress-bar-wrap">
-        <div class="progress-bar" style="width:${pct}%;background:linear-gradient(90deg,${cat.accent},#facc15)"></div>
-      </div>
-      <div class="card slide-in" style="border-top:3px solid ${cat.accent};margin-bottom:12px;padding:24px 24px 20px">
-        <div class="meta-row">
-          <span class="tag" style="background:${cat.dim};color:${cat.accent}">${q.category.toUpperCase()}</span>
-          <span style="color:#444;font-size:10px">${DIFF[q.difficulty]}</span>
+  <body>
+    <!-- Top bar -->
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Go to Main Page">
+        <div class="logo">
+          <img src="/resources/img/logo.jpeg" alt="Glow Jobs Logo" />
         </div>
-        <div style="display:flex;gap:14px;margin-bottom:22px">
-          <div class="q-number">${String(q.id).padStart(2,'0')}</div>
-          <div class="q-text">${q.question}</div>
+        <div class="brand-text">
+          <div class="brand-title">Glow Jobs</div>
         </div>
-        ${opts}
-      </div>
-      ${explanation}
-      ${actionBtn}
-      <div style="margin-top:16px;display:flex;justify-content:space-between;color:#222;font-size:10px;letter-spacing:2px">
-        <span>QUESTION ${state.current+1} OF ${ALL_QUESTIONS.length}</span>
-        <span>${q.category.toUpperCase()}</span>
-      </div>
-    </div>`;
-}
+      </a>
 
-// ── RESULTS ─────────────────────────────────────────────
-function resultsHTML() {
-  const total = ALL_QUESTIONS.length;
-  const pct   = Math.round((state.score / total) * 100);
-  const rank  = pct>=90?"⚔️ LEGENDARY KNIGHT":pct>=75?"🛡️ SEASONED EXPLORER":pct>=55?"🗺️ JUNIOR ADVENTURER":"🌱 APPRENTICE";
-  const scoreColor = pct>=75?'#4ade80':pct>=55?'#facc15':'#f87171';
+      <nav class="tabs" aria-label="Primary navigation">
+        <a class="tab" href="/ClientPage/clientPage.html">Client</a>
+        <a class="tab" href="/JobPage/jobPage.html">Job</a>
+        <a class="tab" href="/TrainingCourse/coursePage.html"
+          >Training Course</a
+        >
+        <a class="tab" href="/CompanyPage/companyPage.html">Company</a>
+      </nav>
+    </header>
 
-  const catBars = Object.entries(CAT_COLORS).map(([cat, c]) => {
-    const qs     = ALL_QUESTIONS.filter(q => q.category === cat);
-    const missed = state.wrong.filter(w => w.category === cat).length;
-    const got    = qs.length - missed;
-    return `<div class="bar-row">
-      <span class="bar-label" style="color:${c.accent}">${cat}</span>
-      <div class="bar-track"><div class="bar-fill" style="width:${(got/qs.length)*100}%;background:${c.accent}"></div></div>
-      <span class="bar-count">${got}/${qs.length}</span>
-    </div>`;
-  }).join('');
+    <!-- Page content -->
+    <main class="page main-content">
+      <a class="main-card" href="/JobPage/jobPage.html" aria-label="Open Job Management">
+        <h1>Job Management</h1>
+        <p class="hint">
+          Allows you to manage job records such as adding, deleting, updating,
+          and filling job information.
+          <span class="hint-action">Click to open.</span>
+        </p>
+      </a>
+      <a class="main-card" href="/CompanyPage/companyPage.html" aria-label="Open Company Management">
+        <h1>Company Management</h1>
+        <p class="hint">
+          Allows you to manage company records such as adding, deleting,
+          updating, and creating training reports for company information.
+          <span class="hint-action">Click to open.</span>
+        </p>
+      </a>
 
-  const wrongCards = state.wrong.length === 0 ? '' : `
-    <div style="margin-bottom:24px">
-      <div class="section-label" style="color:#f87171">REVIEW ERRORS</div>
-      ${state.wrong.map(w => `
-        <div class="card wrong-card">
-          <div style="color:#666;font-size:10px;margin-bottom:6px">Q${w.id} · ${w.category}</div>
-          <div style="color:#ddd;font-size:11px;margin-bottom:8px">${w.question}</div>
-          <div style="color:#f87171;font-size:10px;margin-bottom:4px">✗ ${w.options[w.chosen]}</div>
-          <div style="color:#4ade80;font-size:10px">✓ ${w.options[w.answer]}</div>
-        </div>`).join('')}
-    </div>`;
+      <a class="main-card" href="/ClientPage/clientPage.html" aria-label="Open Client Management">
+        <h1>Client Management</h1>
+        <p class="hint">
+          Allows you to manage client records such as adding, deleting,
+          updating, and enrolling clients on training courses.
+          <span class="hint-action">Click to open.</span>
+        </p>
+      </a>
 
-  return `<div class="fade-in">
-    <div class="pixel-border" style="margin-bottom:24px">
-      <div style="font-size:10px;letter-spacing:5px;color:#555;margin-bottom:12px">QUEST COMPLETE</div>
-      <div style="font-family:'Press Start 2P',monospace;font-size:28px;color:${scoreColor};margin-bottom:4px">${state.score}/${total}</div>
-      <div style="color:#888;font-size:11px;margin-bottom:6px">${rank}</div>
-      <div style="color:#555;font-size:11px;letter-spacing:2px;margin-bottom:20px">BRAVERY PTS: ${state.score*5} / ${total*5}</div>
-      <div style="background:#111;height:6px;margin-bottom:28px;overflow:hidden">
-        <div style="height:100%;width:${pct}%;background:${scoreColor};transition:width 1s ease"></div>
-      </div>
-      <div style="margin-bottom:24px">
-        <div class="section-label" style="color:#555">CATEGORY BREAKDOWN</div>
-        ${catBars}
-      </div>
-      ${wrongCards}
-      <button onclick="restart()" style="color:#facc15;border-color:#facc15;font-family:'Press Start 2P',monospace;margin-top:8px">PLAY AGAIN</button>
-    </div>
-  </div>`;
-}
+      <a class="main-card" href="/TrainingCourse/coursePage.html" aria-label="Open Training Course Management">
+        <h1>Training Course Management</h1>
+        <p class="hint">
+          Allows you to manage training course records such as adding, deleting,
+          and updating information.
+          <span class="hint-action">Click to open.</span>
+        </p>
+      </a>
+    </main>
 
-// ── HANDLERS ────────────────────────────────────────────
-function startQuiz() { setState({ phase:'quiz' }); }
-
-function bindOptions() {
-  // options use inline onclick already
-}
-
-function selectOpt(i) {
-  if (state.confirmed) return;
-  setState({ selected: i });
-}
-
-function confirmAnswer() {
-  if (state.selected === null || state.confirmed) return;
-  const q = ALL_QUESTIONS[state.current];
-  const correct = state.selected === q.answer;
-  const newWrong = correct ? state.wrong : [...state.wrong, { ...q, chosen: state.selected }];
-  setState({ confirmed: true, score: correct ? state.score + 1 : state.score, wrong: newWrong });
-}
-
-function nextQuestion() {
-  if (state.current + 1 >= ALL_QUESTIONS.length) {
-    setState({ phase: 'results' });
-  } else {
-    setState({ current: state.current + 1, selected: null, confirmed: false });
-  }
-}
-
-function restart() {
-  state = { phase:'intro', current:0, selected:null, confirmed:false, score:0, wrong:[] };
-  render();
-}
-
-render();
-</script>
-</body>
+    <footer class="footer">
+      <span>© 2026 Glow Jobs Agency - "We are the best at what we do!"</span>
+    </footer>
+  </body>
 </html>
