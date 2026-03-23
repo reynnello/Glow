@@ -46,7 +46,7 @@ if (!$result) {
 
 <!-- Top bar -->
 <header class="topbar">
-    <a class="brand" href="mainPage.html.php" aria-label="Go to Main Page">
+    <a class="brand" href="../../mainPage.html" aria-label="Go to Main Page">
         <div class="logo">
             <img src="../../resources/img/logo.jpeg" alt="Glow Jobs Logo">
         </div>
@@ -58,15 +58,15 @@ if (!$result) {
 
     <!-- Tabs placeholders -->
     <nav class="tabs" aria-label="Primary navigation">
-        <a class="tab" href="../../ClientPage/clientPage.html">Client</a>
-        <a class="tab" href="../../JobPage/jobPage.html">Job</a>
-        <a class="tab" href="../../TrainingCourse/coursePage.html">Training Course</a>
+        <a class="tab" href="../ClientPage/clientPage.html">Client</a>
+        <a class="tab" href="../JobPage/jobPage.html">Job</a>
+        <a class="tab" href="../TrainingCourse/coursePage.html">Training Course</a>
         <a class="tab active" href="../companyPage.html">Company</a>
     </nav>
 </header>
 
 <!-- Page layout -->
-<main class="page">
+<main class="page page--center">
 
     <section class="card">
         <h1>Training Courses Report</h1>
@@ -126,6 +126,16 @@ if (!$result) {
 
 <footer class="footer">
     <span>© 2026 Glow Jobs Agency - "We are the best at what we do!"</span>
+    <span class="github-link">
+        <a
+            href="https://github.com/reynnello/Glow"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="View the project on GitHub"
+        >
+            <img src="../../resources/img/github.svg" alt="GitHub" />
+        </a>
+    </span>
 </footer>
 
 </body>

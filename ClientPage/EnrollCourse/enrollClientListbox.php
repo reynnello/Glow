@@ -17,7 +17,7 @@ if (!$result = mysqli_query($con, $sql))
 }
 
 echo "<select name='clientListbox' id='clientListbox' onchange='populateClient()'>";
-echo "<option value=''>-- Select a Client --</option>";
+echo "<option hidden>-- Select a Client --</option>";
 
 while ($row = mysqli_fetch_array($result))
 {

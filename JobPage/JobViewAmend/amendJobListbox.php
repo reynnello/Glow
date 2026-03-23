@@ -31,6 +31,7 @@ if (!$result = mysqli_query($con, $sql)) //checking db connection
 echo "<select name='amendJobListbox' id='amendJobListbox' onclick='populate()' required>";
 echo "<option value='' disabled selected>Select a job...</option>";
 
+// Loop through the results and populate the listbox
 while ($row = mysqli_fetch_assoc($result))
 {
     $jobId = (int)$row['job_id'];
@@ -43,7 +44,7 @@ while ($row = mysqli_fetch_assoc($result))
     $driversLicenseRequired = $row['drivers_license_required'];
     $location = $row['location'];
 
-    // Fetch company name based on company_id (simple like other pages)
+    // Fetch the company name for the current job
     $companyName = 'Unknown Company';
     $companySql = "SELECT company_name FROM Company WHERE company_id = $companyId AND is_deleted = 0";
     $companyResult = mysqli_query($con, $companySql);
@@ -57,9 +58,7 @@ while ($row = mysqli_fetch_assoc($result))
     $allText = "$jobId|$companyId|$companyName|$jobTitle|$jobDescription|$qualificationRequired|$workType|$annualSalary|$driversLicenseRequired|$location";
     $label = $companyName . " - " . $jobTitle;
 
-    $safeValue = htmlspecialchars($allText, ENT_QUOTES, 'UTF-8');
-    $safeLabel = htmlspecialchars($label, ENT_QUOTES, 'UTF-8');
-    echo "<option value='$safeValue'>$safeLabel</option>";
+    echo "<option value='$allText'>$label</option>";
 }
 echo "</select>";
 mysqli_close($con);

@@ -14,7 +14,7 @@ Date: 22/02/2026
 <body>
 
 <header class="topbar">
-    <a class="brand" href="mainPage.html.php" aria-label="Go to Main Page">
+    <a class="brand" href="../../mainPage.html" aria-label="Go to Main Page">
         <div class="logo">
             <img src="../../resources/img/logo.jpeg" alt="Glow Jobs Logo">
         </div>
@@ -26,9 +26,9 @@ Date: 22/02/2026
 
     <!-- Tabs placeholders -->
     <nav class="tabs" aria-label="Primary navigation">
-        <a class="tab active" href="../clientpage.html">Client</a>
+        <a class="tab active" href="../clientPage.html">Client</a>
         <a class="tab" href="../../JobPage/jobPage.html">Job</a>
-        <a class="tab" href="../../TrainingCoursePage/trainingcoursepage.html">Training Course</a>
+        <a class="tab" href="../../TrainingCourse/coursePage.html">Training Course</a>
         <a class="tab" href="../../CompanyPage/companyPage.html">Company</a>
     </nav>
 </header>
@@ -39,14 +39,13 @@ Date: 22/02/2026
         <h1>Delete Client</h1>
         <p class="hint">Please select a client and then click the delete button. Please make sure that you chose the correct client and double-check the information</p>
 
-        <!-- Listbox -->
-        <div class="field">
-            <?php include 'deleteClientListbox.php'; ?>
-        </div>
-
         <!-- Form -->
         <form name="myForm" action="deleteClientPagePost.php" onsubmit="return confirmCheck()" method="post">
             <div class="form-grid">
+                <div class="field field-big">
+                    <label for="deleteClientListbox">Client</label>
+                    <?php include 'deleteClientListbox.php'; ?>
+                </div>
                 <div class="field">
                     <label for="deleteId">Client Id</label>
                     <input type="text" name="deleteId" id="deleteId" disabled>
@@ -127,6 +126,16 @@ Date: 22/02/2026
 
 <footer class="footer">
     <span>© 2026 Glow Jobs Agency - "We are the best at what we do!"</span>
+    <span class="github-link">
+        <a
+            href="https://github.com/reynnello/Glow"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="View the project on GitHub"
+        >
+            <img src="../../resources/img/github.svg" alt="GitHub" />
+        </a>
+    </span>
 </footer>
 <script>
     function populate() //populate function for fields of data to be visable

@@ -19,10 +19,11 @@ $driverLicense = $_POST['addDriverLicense'];
 $jobTitle = $_POST['addJobTitle'];
 $qualifications = $_POST['addQualifications'];
 $minAnnualSalary = $_POST['addMinAnnualSalary'];
+$emp_status = 'Unemployed';
 
 //sql query for insert
-$sql = "INSERT INTO client (client_name, address, eircode, telephone, date_of_birth, driver_license_type, job_title_interest, qualifications, min_annual_salary)
-         VALUES('$name', '$address', '$eircode', '$phone', '$dob', '$driverLicense', '$jobTitle', '$qualifications', '$minAnnualSalary')";
+$sql = "INSERT INTO client (client_name, address, eircode, telephone, date_of_birth, driver_license_type, job_title_interest, qualifications, min_annual_salary, employment_status)
+         VALUES('$name', '$address', '$eircode', '$phone', '$dob', '$driverLicense', '$jobTitle', '$qualifications', '$minAnnualSalary', '$emp_status')";
 
 //if connection failed or sql query is wrong
 if(!mysqli_query($con, $sql))
@@ -30,13 +31,15 @@ if(!mysqli_query($con, $sql))
     die("Ann Error in the SQL Query ". mysqli_error($con));
 }
 //else
-echo "<br>A record has been added for   " .
-    $name;
-//closing connection
 mysqli_close($con);
 ?>
-<!--Button for return back-->
-<form action="../clientPage.html" method="POST">
-    <br>
-    <input type="submit" value="Return to Client Page"/>
-</form>
+
+<!-- result modal -->
+<?php
+$modalTitle = 'Client Added';
+$modalMessage = 'A record has been added for <b>' . $name . '</b>.';
+$returnHref = '../clientPage.html';
+$returnLabel = 'Return to Client Page';
+$cssHref = '../../Main.css';
+require_once __DIR__ . '/../../resultModal.inc.php';
+?>

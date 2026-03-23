@@ -12,7 +12,7 @@
 <body>
 
 <header class="topbar">
-    <a class="brand" href="mainPage.html.php" aria-label="Go to Main Page">
+    <a class="brand" href="../../mainPage.html" aria-label="Go to Main Page">
         <div class="logo">
             <img src="../../resources/img/logo.jpeg" alt="Glow Jobs Logo">
         </div>
@@ -26,7 +26,7 @@
     <nav class="tabs" aria-label="Primary navigation">
         <a class="tab" href="../../ClientPage/clientPage.html">Client</a>
         <a class="tab" href="../../JobPage/jobPage.html">Job</a>
-        <a class="tab" href="../../TrainingCoursePage/trainingcoursepage.html">Training Course</a>
+        <a class="tab" href="../../TrainingCourse/coursePage.html">Training Course</a>
         <a class="tab active" href="../companyPage.html">Company</a>
     </nav>
 </header>
@@ -37,14 +37,13 @@
         <h1>Delete Company</h1>
         <p class="hint">Please select a company and then click the delete button. Please make sure that you chose the correct company and double-check the information</p>
 
-        <!-- Listbox -->
-        <div class="field">
-            <?php include 'deleteCompanyListbox.php'; ?>
-        </div>
-
         <!-- Form -->
         <form name="myForm" action="deleteCompanyPagePost.php" onsubmit="return confirmCheck()" method="post">
             <div class="form-grid">
+                <div class="field field-big">
+                    <label for="deleteCompanyListbox">Company</label>
+                    <?php include 'deleteCompanyListbox.php'; ?>
+                </div>
                 <div class="field">
                     <label for="deleteId">Company Id</label>
                     <input type="text" name="deleteId" id="deleteId" disabled>
@@ -99,11 +98,7 @@
             <div style="margin-top: 14px;">
                 <input type="submit" value="Delete Company" class="btn primary">
                 <a href="../companyPage.html" class="btn">Back</a>
-            </div>
-            <div style="margin-top: 14px;">
-            <input type="submit" value="Delete Client" class="btn primary">
-            <a href="../clientPage.html" class="btn">Back</a>
-            </div>
+
         </form>
 
         <p id="display" style="margin-top: 12px;"></p>
@@ -129,6 +124,16 @@
 
 <footer class="footer">
     <span>© 2026 Glow Jobs Agency - "We are the best at what we do!"</span>
+    <span class="github-link">
+        <a
+            href="https://github.com/reynnello/Glow"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="View the project on GitHub"
+        >
+            <img src="../../resources/img/github.svg" alt="GitHub" />
+        </a>
+    </span>
 </footer>
 
 <script>

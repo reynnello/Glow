@@ -11,7 +11,12 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 // Fetch all vacant and non-deleted jobs along with their company names
-$sql = "SELECT company_id, company_name FROM Company WHERE is_deleted = 0 ORDER BY company_name";
+$sql = "SELECT company_id,
+               company_name
+        FROM Company 
+        WHERE is_deleted = 0 
+        ORDER BY company_name";
+
 $result = mysqli_query($con, $sql);
 if (!$result) {
     die('Error in querying the database: ' . mysqli_error($con));

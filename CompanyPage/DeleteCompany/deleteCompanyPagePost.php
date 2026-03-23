@@ -32,23 +32,23 @@ if (! mysqli_query($con,$sql)) //if connection is not successful
 }
 else
 {
-        echo mysqli_affected_rows($con)." record(s) updated <br>"; // print the details
-        echo "Company Id: ". $_POST['deleteId']."<br>"
-            ."; Company Name: ". $_POST['deleteName']."<br>"
-            ."; Company Address: ". $_POST['deleteAddress']."<br>"
-            ."; Company Eircode: ".$_POST['deleteEircode']."<br>"
-            ."; Company Telephone: ".$_POST['deletePhone']."<br>"
-            ."; Company Website: ".$_POST['deleteWebsite']."<br>"
-            ."; Company Business Description: ".$_POST['deleteDescription']."<br>"
-            ."; Contact Name: ".$_POST['deleteContactName']."<br>"
-            ."; Contact Phone: ".$_POST['deleteContactPhone']."<br>"
-            ."; Contact Email: ".$_POST['deleteContactEmail'] ."<br>"
-            ." has been deleted";
+        $rows = mysqli_affected_rows($con);
 }
 
 mysqli_close($con);//close connection
 ?>
-<form action = "deleteCompanyPage.html.php" method = "post">
 
-<input type = "submit" value = "Return to Previous Screen"><!--Return to the previous page-->
-</form>
+<!-- result Modal -->
+<?php
+$rows = $rows ?? 0;
+$modalTitle = 'Company Deleted';
+if ($rows != 0) {
+    $modalMessage = 'Company record for ' . $_POST['deleteName'] . ' has been deleted.';
+} else {
+    $modalMessage = 'No records were changed.';
+}
+$returnHref = 'deleteCompanyPage.html.php';
+$returnLabel = 'Return to Previous Screen';
+$cssHref = '../../Main.css';
+require_once __DIR__ . '/../../resultModal.inc.php';
+?>

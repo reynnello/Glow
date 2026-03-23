@@ -42,23 +42,23 @@ if (! mysqli_query($con,$sql)) //if connection is not successful
 }
 else
 {
-        echo mysqli_affected_rows($con)." record(s) updated <br>"; // print the details
-        echo "Client Id: ". $_POST['deleteId']."<br>"
-            ."; Client Name: ". $_POST['deleteName']."<br>"
-            ."; Client Address: ". $_POST['deleteAddress']."<br>"
-            ."; Client Eircode: ".$_POST['deleteEircode']."<br>"
-            ."; Client Telephone: ".$_POST['deletePhone']."<br>"
-            ."; Client Date of Birth: ".$_POST['deleteDob']."<br>"
-            ."; Client Driver License Type: ".$_POST['deleteDriverLicense']."<br>"
-            ."; Client Job Title Interest: ".$_POST['deleteJobTitleInterest']."<br>"
-            ."; Client Qualifications: ".$_POST['deleteQualifications']."<br>"
-            ."; Client Minimum Annual Salary: ".$_POST['deleteMinimumAnnualSalary']."<br>"
-            ." has been deleted";
+        $rows = mysqli_affected_rows($con);
 }
 
 mysqli_close($con);//close connection
 ?>
-<form action = "deleteClientPage.html.php" method = "post">
 
-<input type = "submit" value = "Return to Previous Screen"><!--Return to the previous page-->
-</form>
+<!-- result modal -->
+<?php
+$rows = $rows ?? 0;
+$modalTitle = 'Client Deleted';
+if ($rows != 0) {
+    $modalMessage = 'Client record for ' . $_POST['deleteName'] . ' has been deleted.';
+} else {
+    $modalMessage = 'No records were changed.';
+}
+$returnHref = 'deleteClientPage.html.php';
+$returnLabel = 'Return to Previous Screen';
+$cssHref = '../../Main.css';
+require_once __DIR__ . '/../../resultModal.inc.php';
+?>
