@@ -8,7 +8,7 @@ Date: 15/03/2026
   <head>
     <meta charset="UTF-8" />
     <title>Glow</title>
-    <link rel="stylesheet" type="text/css" href="/Main.css" />
+    <link rel="stylesheet" type="text/css" href="Main.css" />
   </head>
 
   <body>
@@ -16,7 +16,7 @@ Date: 15/03/2026
     <header class="topbar">
       <a class="brand" href="#" aria-label="Go to Main Page">
         <div class="logo">
-          <img src="/resources/img/logo.jpeg" alt="Glow Jobs Logo" />
+          <img src="./resources/img/logo.jpeg" alt="Glow Jobs Logo" />
         </div>
         <div class="brand-text">
           <div class="brand-title">Glow Jobs</div>
@@ -24,55 +24,69 @@ Date: 15/03/2026
       </a>
 
       <nav class="tabs" aria-label="Primary navigation">
-        <a class="tab" href="/ClientPage/clientPage.html">Client</a>
-        <a class="tab" href="/JobPage/jobPage.html">Job</a>
-        <a class="tab" href="/TrainingCourse/coursePage.html"
+        <a class="tab" href="./ClientPage/clientPage.html">Client</a>
+        <a class="tab" href="./JobPage/jobPage.html">Job</a>
+        <a class="tab" href="./TrainingCourse/coursePage.html"
           >Training Course</a
         >
-        <a class="tab" href="/CompanyPage/companyPage.html">Company</a>
+        <a class="tab" href="./CompanyPage/companyPage.html">Company</a>
       </nav>
     </header>
 
     <!-- Page content -->
     <main class="page main-content">
-      <a class="main-card" href="/JobPage/jobPage.html" aria-label="Open Job Management">
+      <section class="main-card">
         <h1>Job Management</h1>
         <p class="hint">
           Allows you to manage job records such as adding, deleting, updating,
           and filling job information.
-          <span class="hint-action">Click to open.</span>
         </p>
-      </a>
-      <a class="main-card" href="/CompanyPage/companyPage.html" aria-label="Open Company Management">
+        <a href="./JobPage/jobPage.html" class="btn">Manage Jobs</a>
+      </section>
+      <section class="main-card">
         <h1>Company Management</h1>
         <p class="hint">
           Allows you to manage company records such as adding, deleting,
           updating, and creating training reports for company information.
-          <span class="hint-action">Click to open.</span>
         </p>
-      </a>
+        <a href="./CompanyPage/companyPage.html" class="btn"
+          >Manage Companies</a
+        >
+      </section>
 
-      <a class="main-card" href="/ClientPage/clientPage.html" aria-label="Open Client Management">
+      <section class="main-card">
         <h1>Client Management</h1>
         <p class="hint">
           Allows you to manage client records such as adding, deleting,
           updating, and enrolling clients on training courses.
-          <span class="hint-action">Click to open.</span>
         </p>
-      </a>
+        <a href="./ClientPage/clientPage.html" class="btn">Manage Clients</a>
+      </section>
 
-      <a class="main-card" href="/TrainingCourse/coursePage.html" aria-label="Open Training Course Management">
+      <section class="main-card">
         <h1>Training Course Management</h1>
         <p class="hint">
           Allows you to manage training course records such as adding, deleting,
           and updating information.
-          <span class="hint-action">Click to open.</span>
         </p>
-      </a>
+        <a href="./TrainingCourse/coursePage.html" class="btn"
+          >Manage Training Courses</a
+        >
+      </section>
     </main>
 
     <footer class="footer">
       <span>© 2026 Glow Jobs Agency - "We are the best at what we do!"</span>
+      <span class="github-link">
+        <a
+          href="https://github.com/reynnello/Glow"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="View the project on GitHub"
+        >
+          <img src="./resources/img/github.svg" alt="GitHub" />
+        </a>
+      </span>
     </footer>
   </body>
 </html>

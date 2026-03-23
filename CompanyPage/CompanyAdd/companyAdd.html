@@ -1,7 +1,7 @@
 <!--Name: Dzheffriei Ihesinulo-->
 <!--Student ID: C00311856-->
 <!--Date: 17.02.26-->
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -14,7 +14,7 @@
     <!--topbar start-->
     <header class="topbar">
       <!--Anchor for main page also classifies brand-->
-      <a class="brand" href="mainPage.html.php" aria-label="Go to Main Page">
+      <a class="brand" href="../../mainPage.html" aria-label="Go to Main Page">
         <!--Logo-->
         <div class="logo">
           <img src="../../resources/img/logo.jpeg" alt="Glow Jobs Logo" />
@@ -28,7 +28,9 @@
       <nav class="tabs" aria-label="Primary navigation">
         <a class="tab" href="../../ClientPage/clientPage.html">Client</a>
         <a class="tab" href="../../JobPage/jobPage.html">Job</a>
-        <a class="tab" href="../../TrainingCourse/coursePage.html">Training Course</a>
+        <a class="tab" href="../../TrainingCourse/coursePage.html"
+          >Training Course</a
+        >
         <a class="tab active" href="../companyPage.html">Company</a>
       </nav>
     </header>
@@ -41,76 +43,75 @@
         <form
           name="addCompanyForm"
           action="AddCompanyPost.php"
-          onsubmit="return confirmCheck()"
+          onsubmit="return confirmCheck();"
           method="post"
         >
           <!--Form submitting-->
           <div class="form-grid">
-
             <div class="field">
               <label for="addName">Company Name</label>
               <input
-                      type="text"
-                      name="addName"
-                      id="addName"
-                      placeholder="e.g. Tech Solutions Ltd"
-                      required
+                type="text"
+                name="addName"
+                id="addName"
+                placeholder="e.g. Tech Solutions Ltd"
+                required
               />
             </div>
 
             <div class="field">
               <label for="addAddress">Company Address</label>
               <input
-                      type="text"
-                      name="addAddress"
-                      id="addAddress"
-                      placeholder="e.g. 12 Main Street, Carlow"
-                      required
+                type="text"
+                name="addAddress"
+                id="addAddress"
+                placeholder="e.g. 12 Main Street, Carlow"
+                required
               />
             </div>
 
             <div class="field">
               <label for="addEircode">Eircode</label>
               <input
-                      type="text"
-                      name="addEircode"
-                      id="addEircode"
-                      placeholder="A65 F4E2"
-                      pattern="^[A-Za-z]\d{2}\s?[A-Za-z0-9]{4}$"
-                      required
+                type="text"
+                name="addEircode"
+                id="addEircode"
+                placeholder="A65 F4E2"
+                pattern="^[A-Za-z]\d{2}\s?[A-Za-z0-9]{4}$"
+                required
               />
             </div>
 
             <div class="field">
               <label for="addPhone">Phone Number</label>
               <input
-                      type="tel"
-                      name="addPhone"
-                      id="addPhone"
-                      placeholder="+353 87 123 4567"
-                      pattern="^[0-9\(\)\-\s+]+$"
-                      required
+                type="tel"
+                name="addPhone"
+                id="addPhone"
+                placeholder="+353 87 123 4567"
+                pattern="^[0-9\(\)\-\s+]+$"
+                required
               />
             </div>
 
             <div class="field">
               <label for="addWebsite">Company Website</label>
               <input
-                      type="url"
-                      name="addWebsite"
-                      id="addWebsite"
-                      placeholder="https://www.company.ie"
+                type="url"
+                name="addWebsite"
+                id="addWebsite"
+                placeholder="https://www.company.ie"
               />
             </div>
 
             <div class="field">
               <label for="addDescription">Business Description</label>
               <input
-                      type="text"
-                      name="addDescription"
-                      id="addDescription"
-                      placeholder="e.g. Software development and IT consulting"
-                      required
+                type="text"
+                name="addDescription"
+                id="addDescription"
+                placeholder="e.g. Software development and IT consulting"
+                required
               />
               <small class="hint-text">Optional field</small>
             </div>
@@ -118,37 +119,36 @@
             <div class="field">
               <label for="addContactName">Contact Name</label>
               <input
-                      type="text"
-                      name="addContactName"
-                      id="addContactName"
-                      placeholder="e.g. John Murphy"
-                      required
+                type="text"
+                name="addContactName"
+                id="addContactName"
+                placeholder="e.g. John Murphy"
+                required
               />
             </div>
 
             <div class="field">
               <label for="addContactPhone">Contact Phone</label>
               <input
-                      type="tel"
-                      name="addContactPhone"
-                      id="addContactPhone"
-                      placeholder="+353 85 987 6543"
-                      pattern="^[0-9\(\)\-\s+]+$"
-                      required
+                type="tel"
+                name="addContactPhone"
+                id="addContactPhone"
+                placeholder="+353 85 987 6543"
+                pattern="^[0-9\(\)\-\s+]+$"
+                required
               />
             </div>
 
             <div class="field">
               <label for="addContactEmail">Contact Email</label>
               <input
-                      type="email"
-                      name="addContactEmail"
-                      id="addContactEmail"
-                      placeholder="john.murphy@email.ie"
-                      required
+                type="email"
+                name="addContactEmail"
+                id="addContactEmail"
+                placeholder="john.murphy@email.ie"
+                required
               />
             </div>
-
           </div>
 
           <br /><br />
@@ -163,41 +163,57 @@
     <!--footer-->
     <footer class="footer">
       <span>© 2026 Glow Jobs Agency - "We are the best at what we do!"</span>
+      <span class="github-link">
+        <a
+          href="https://github.com/reynnello/Glow"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="View the project on GitHub"
+        >
+          <img src="../../resources/img/github.svg" alt="GitHub" />
+        </a>
+      </span>
     </footer>
 
     <script>
-      function confirmCheck() //function that ask for confirmation in case everything is empty or filled with spaces
-      {
-          var name = document.getElementById("addName").value.trim();
-          var address = document.getElementById("addAddress").value.trim();
-          var eircode = document.getElementById("addEircode").value.trim();
-          var phone = document.getElementById("addPhone").value.trim();
-          var website = document.getElementById("addWebsite").value.trim;
-          var description = document.getElementById("addDescription").value.trim();
-          var contactName = document.getElementById("addContactName").value.trim();
-          var contactPhone = document.getElementById("addContactPhone").value.trim();
-          var contactEmail = document.getElementById("addContactEmail").value.trim();
-      
-          if (
-              name === "" ||
-              address === "" ||
-              eircode === "" ||
-              phone === "" ||
-              description === "" ||
-              contactName === "" ||
-              contactPhone === "" ||
-              contactEmail === ""
-          )
-          {
-              alert("Please fill out required information");//if the information is incomplete or empty
-              return false;
-          }
-          else{
-              var response;
-              response = confirm('Are you sure you want to save these changes?');//asks for confirmation
-            return response;
-          }
+      function confirmCheck() {
+        //function that ask for confirmation in case everything is empty or filled with spaces
+        var name = document.getElementById("addName").value.trim();
+        var address = document.getElementById("addAddress").value.trim();
+        var eircode = document.getElementById("addEircode").value.trim();
+        var phone = document.getElementById("addPhone").value.trim();
+        var website = document.getElementById("addWebsite").value.trim;
+        var description = document
+          .getElementById("addDescription")
+          .value.trim();
+        var contactName = document
+          .getElementById("addContactName")
+          .value.trim();
+        var contactPhone = document
+          .getElementById("addContactPhone")
+          .value.trim();
+        var contactEmail = document
+          .getElementById("addContactEmail")
+          .value.trim();
+
+        if (
+          name === "" ||
+          address === "" ||
+          eircode === "" ||
+          phone === "" ||
+          description === "" ||
+          contactName === "" ||
+          contactPhone === "" ||
+          contactEmail === ""
+        ) {
+          alert("Please fill out required information"); //if the information is incomplete or empty
+          return false;
+        } else {
+          var response;
+          response = confirm("Are you sure you want to save these changes?"); //asks for confirmation
+          return response;
+        }
       }
-      </script>
+    </script>
   </body>
 </html>

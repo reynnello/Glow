@@ -10,7 +10,7 @@ Date: 25/02/2026
     <!--topbar start-->
     <header class="topbar">
       <!--Anchor for main page also classifies brand-->
-      <a class="brand" href="mainPage.html.php" aria-label="Go to Main Page">
+      <a class="brand" href="../../mainPage.html" aria-label="Go to Main Page">
         <!--Logo-->
         <div class="logo">
           <img src="../../resources/img/logo.jpeg" alt="Glow Jobs Logo" />
@@ -112,6 +112,16 @@ Date: 25/02/2026
     <!--footer-->
     <footer class="footer">
       <span>© 2026 Glow Jobs Agency - "We are the best at what we do!"</span>
+      <span class="github-link">
+        <a
+          href="https://github.com/reynnello/Glow"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="View the project on GitHub"
+        >
+          <img src="../../resources/img/github.svg" alt="GitHub" />
+        </a>
+      </span>
     </footer>
 
     <script>
