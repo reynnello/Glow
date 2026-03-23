@@ -98,11 +98,7 @@
             <div style="margin-top: 14px;">
                 <input type="submit" value="Delete Company" class="btn primary">
                 <a href="../companyPage.html" class="btn">Back</a>
-            </div>
-            <div style="margin-top: 14px;">
-            <input type="submit" value="Delete Client" class="btn primary">
-            <a href="../clientPage.html" class="btn">Back</a>
-            </div>
+
         </form>
 
         <p id="display" style="margin-top: 12px;"></p>

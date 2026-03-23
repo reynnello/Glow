@@ -15,7 +15,7 @@ $today       = date('Y-m-d');
 
 // 1. Mark enrolment as cancelled
 $sql1 = "UPDATE enrolment
-         SET is_cancelled = 1, date_cancelled = '$today'
+         SET date_cancelled = '$today', is_deleted = '1'
          WHERE enrolment_id = '$enrolmentId'";
 
 if (!mysqli_query($con, $sql1))
