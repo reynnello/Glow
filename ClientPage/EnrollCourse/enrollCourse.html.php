@@ -157,17 +157,7 @@ Date: 19/03/2026
 </main>
 
 <footer class="footer">
-    <span>© 2026 Glow Jobs Agency - "We are the best at what we do!"</span>
-    <span class="github-link">
-        <a
-            href="https://github.com/reynnello/Glow"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="View the project on GitHub"
-        >
-            <img src="../../resources/img/github.svg" alt="GitHub" />
-        </a>
-    </span>
+    <span>&copy; 2026 Glow Jobs Agency - "We are the best at what we do!"</span>
 </footer>
 
 <script>
