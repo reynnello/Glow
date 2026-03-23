@@ -31,31 +31,23 @@ if (! mysqli_query($con,$sql))
 }
 else
 {
-    if (mysqli_affected_rows($con) != 0) //if rows affected
-    {   
-        // print the details of the updated record
-        echo mysqli_affected_rows($con)." record(s) updated <br>"; 
-        echo "Job Id: ". $_POST['amendId']."<br>"
-            ."; Company Id: ". $_POST['amendCompanyId']."<br>"
-            ."; Company Name: ". $_POST['amendCompanyName']."<br>"
-            ."; Job Title: ". $_POST['amendTitle']."<br>"
-            ."; Job Description: ". $_POST['amendDescription']."<br>"
-            ."; Qualification Required: ". $_POST['amendQual']."<br>"
-            ."; Type of Work: ". $_POST['amendType']."<br>"
-            ."; Annual Salary: ". $_POST['amendAnnualSalary']."<br>"
-            ."; Drivers License Required: ". $_POST['amendDriverLic']."<br>"
-            ."; Location: ". $_POST['amendLocation']."<br>"
-            ." has been updated";
-    }
-    else
-    {
-        echo "No records were changed"; //else print
-    }
+    $rows = mysqli_affected_rows($con);
 }
 
 mysqli_close($con); //close connection
 ?>
-<form action = "amendJobPage.html.php" method = "post">
 
-<input type = "submit" value = "Return to Previous Screen"><!--Return to the previous page-->
-</form>
+<!-- result Modal -->
+<?php
+$rows = $rows ?? 0;
+$modalTitle = 'Job Updated';
+if ($rows != 0) {
+    $modalMessage = 'Job record for ' . $_POST['amendTitle'] . ' has been updated.';
+} else {
+    $modalMessage = 'No records were changed.';
+}
+$returnHref = 'amendJobPage.html.php';
+$returnLabel = 'Return to Previous Screen';
+$cssHref = '../../Main.css';
+require_once __DIR__ . '/../../resultModal.inc.php';
+?>

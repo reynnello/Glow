@@ -15,7 +15,7 @@ Date: 22/02/2026
 
 <header class="topbar">
     <!--Logo-->
-    <a class="brand" href="mainPage.html.php" aria-label="Go to Main Page">
+    <a class="brand" href="../../mainPage.html" aria-label="Go to Main Page">
         <div class="logo">
             <img src="../../resources/img/logo.jpeg" alt="Glow Jobs Logo">
         </div>
@@ -29,7 +29,7 @@ Date: 22/02/2026
     <nav class="tabs" aria-label="Primary navigation">
         <a class="tab active" href="../clientPage.html">Client</a>
         <a class="tab" href="../../JobPage/jobPage.html">Job</a>
-        <a class="tab" href="../../TrainingCoursePage/trainingcoursepage.html">Training Course</a>
+        <a class="tab" href="../../TrainingCourse/coursePage.html">Training Course</a>
         <a class="tab" href="../../CompanyPage/companyPage.html">Company</a>
     </nav>
 </header>
@@ -40,11 +40,6 @@ Date: 22/02/2026
         <h1>Amend/View Client</h1>
         <p class="hint">Please select a client and then click the amend button if you wish to update.</p>
 
-        <!-- Listbox -->
-        <div class="field">
-            <?php include 'clientListbox.php'; ?>
-        </div>
-
         <!-- Actions row -->
         <div style="display:flex; gap:10px; flex-wrap:wrap; margin-bottom: 12px;">
             <input type="button" value="Amend Details" id="amendViewbutton" onclick="toggleLock()" class="btn">
@@ -53,6 +48,10 @@ Date: 22/02/2026
         <!-- Form -->
         <form name="myForm" action="clientPagePost.php" onsubmit="return confirmCheck()" method="post">
             <div class="form-grid">
+                <div class="field field-big">
+                    <label for="clientListbox">Client</label>
+                    <?php include 'clientListbox.php'; ?>
+                </div>
                 <div class="field">
                     <label for="amendId">Client Id</label>
                     <input type="text" name="amendId" id="amendId" disabled>
@@ -134,6 +133,16 @@ Date: 22/02/2026
 
 <footer class="footer">
     <span>© 2026 Glow Jobs Agency - "We are the best at what we do!"</span>
+    <span class="github-link">
+        <a
+            href="https://github.com/reynnello/Glow"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="View the project on GitHub"
+        >
+            <img src="../../resources/img/github.svg" alt="GitHub" />
+        </a>
+    </span>
 </footer>
 
 <script>

@@ -31,30 +31,23 @@ if (! mysqli_query($con,$sql)) //if connection is not successful
 }
 else
 {
-    if (mysqli_affected_rows($con) != 0) //if rows affected
-    {
-        echo mysqli_affected_rows($con)." record(s) updated <br>"; // print the details
-        echo "Company Id: ". $_POST['amendId']."<br>"
-            ."; Company Name: ". $_POST['amendName']."<br>"
-            ."; Company Address: ". $_POST['amendAddress']."<br>"
-            ."; Company Eircode: ".$_POST['amendEircode']."<br>"
-            ."; Company Telephone: ".$_POST['amendPhone']."<br>"
-            ."; Company Website: ".$_POST['amendWebsite']."<br>"
-            ."; Company Business Description: ".$_POST['amendDescription']."<br>"
-            ."; Contact Name: ".$_POST['amendContactName']."<br>"
-            ."; Contact Phone: ".$_POST['amendContactPhone']."<br>"
-            ."; Contact Email: ".$_POST['amendContactEmail'] ."<br>"
-            ." has been updated";
-    }
-    else
-    {
-        echo "No records were changed";//else print
-    }
+    $rows = mysqli_affected_rows($con);
 }
 
 mysqli_close($con);//close connection
 ?>
-<form action = "companyPageAmend.html.php" method = "post">
 
-<input type = "submit" value = "Return to Previous Screen"><!--Return to the previous page-->
-</form>
+<!-- result Modal -->
+<?php
+$rows = $rows ?? 0;
+$modalTitle = 'Company Updated';
+if ($rows != 0) {
+    $modalMessage = 'Company record for ' . $_POST['amendName'] . ' has been updated.';
+} else {
+    $modalMessage = 'No records were changed.';
+}
+$returnHref = 'companyPageAmend.html.php';
+$returnLabel = 'Return to Previous Screen';
+$cssHref = '../../Main.css';
+require_once __DIR__ . '/../../resultModal.inc.php';
+?>

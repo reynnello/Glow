@@ -25,23 +25,33 @@ $endTime = $_POST['addEndTime'];
 
 //
 $status = "taking_bookings";
+
+$rows = 0;
+$sqlError = '';
 //sql query for insert
 $sql = "INSERT INTO training_course (course_title, course_provider, course_description, fee, venue, places_total, places_remaining, start_date, num_days, start_time, end_time, status)
          VALUES('$title', '$provider', '$description', '$fee', '$venue', '$places_total', '$places_left', '$startDate', '$numOfDays', '$startTime', '$endTime', '$status')";
 
 //if connection failed or sql query is wrong
-if(!mysqli_query($con, $sql))
-{
-    die("Ann Error in the SQL Query ". mysqli_error($con));
+if (!mysqli_query($con, $sql)) {
+    $sqlError = mysqli_error($con);
+} else {
+    $rows = mysqli_affected_rows($con);
 }
-//else
-echo "<br>A record has been added for   " .
-    $title;
 //closing connection
 mysqli_close($con);
 ?>
-<!--Button for return back-->
-<form action="../coursePage.html" method="POST">
-    <br>
-    <input type="submit" value="Return to Company Page"/>
-</form>
+<!-- result Modal -->
+<?php
+$rows = $rows ?? 0;
+    $modalTitle = 'Add Result';
+    if ($rows != 0) {
+        $modalMessage = 'Course record for ' . $title . ' has been added.';
+    } else {
+        $modalMessage = 'No records were changed.';
+    }
+$returnHref = 'coursePage.html.php';
+$returnLabel = 'Return to Previous Screen';
+$cssHref = '../../Main.css';
+require_once __DIR__ . '/../../resultModal.inc.php';
+?>

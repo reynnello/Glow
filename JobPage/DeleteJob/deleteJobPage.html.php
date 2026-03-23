@@ -14,7 +14,7 @@ Date: 15/03/2026
 <body>
 
 <header class="topbar">
-  <a class="brand" href="mainPage.html.php" aria-label="Go to Main Page">
+  <a class="brand" href="../../mainPage.html" aria-label="Go to Main Page">
     <div class="logo">
       <img src="../../resources/img/logo.jpeg" alt="Glow Jobs Logo">
     </div>
@@ -26,7 +26,7 @@ Date: 15/03/2026
   <nav class="tabs" aria-label="Primary navigation">
     <a class="tab" href="../../ClientPage/clientPage.html">Client</a>
     <a class="tab active" href="../../JobPage/jobPage.html">Job</a>
-    <a class="tab" href="../../TrainingCoursePage/trainingcoursepage.html">Training Course</a>
+    <a class="tab" href="../../TrainingCourse/coursePage.html">Training Course</a>
     <a class="tab" href="../../CompanyPage/companyPage.html">Company</a>
   </nav>
 </header>
@@ -36,12 +36,13 @@ Date: 15/03/2026
     <h1>Delete Job</h1>
     <p class="hint">Please select a job and then click the delete button. Please make sure that you chose the correct job and double-check the information</p>
 
-    <div class="field">
-      <?php include 'deleteJobListbox.php'; ?>
-    </div>
-
+    
     <form name="myForm" action="deleteJobPagePost.php" onsubmit="return confirmCheck()" method="post">
       <div class="form-grid">
+        <div class="field field-big">
+          <label for="deleteJobListbox">Job</label>
+          <?php include 'deleteJobListbox.php'; ?>
+        </div>
         <div class="field">
           <label for="deleteId">Job Id</label>
           <input type="text" name="deleteId" id="deleteId" disabled>
@@ -132,6 +133,16 @@ Date: 15/03/2026
 
 <footer class="footer">
   <span>© 2026 Glow Jobs Agency - "We are the best at what we do!"</span>
+  <span class="github-link">
+    <a
+      href="https://github.com/reynnello/Glow"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="View the project on GitHub"
+    >
+      <img src="../../resources/img/github.svg" alt="GitHub" />
+    </a>
+  </span>
 </footer>
 
 <script>

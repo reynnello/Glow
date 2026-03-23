@@ -27,7 +27,7 @@ Date: 15/03/2026
     <nav class="tabs" aria-label="Primary navigation">
         <a class="tab" href="../../ClientPage/clientPage.html">Client</a>
         <a class="tab active" href="../../JobPage/jobPage.html">Job</a>
-        <a class="tab" href="../../TrainingCoursePage/trainingcoursepage.html">Training Course</a>
+        <a class="tab" href="../../TrainingCourse/coursePage.html">Training Course</a>
         <a class="tab" href="../../CompanyPage/companyPage.html">Company</a>
     </nav>
 </header>
@@ -37,16 +37,17 @@ Date: 15/03/2026
         <h1>Amend/View Job</h1>
         <p class="hint">Please select a job and then click the amend button if you wish to update.</p>
 
-        <div class="field">
-            <?php include 'amendJobListbox.php'; ?>
-        </div>
-
+        
         <div style="display:flex; gap:10px; flex-wrap:wrap; margin-bottom: 12px;">
             <input type="button" value="Amend Details" id="amendViewbutton" onclick="toggleLock()" class="btn">
         </div>
-
+        
         <form name="myForm" action="amendJobPost.php" onsubmit="return confirmCheck()" method="post">
             <div class="form-grid">
+                <div class="field field-big">
+                    <label for="amendJobListbox">Job</label>
+                    <?php include 'amendJobListbox.php'; ?>
+                </div>
                 <div class="field">
                     <label for="amendId">Job Id</label>
                     <input type="text" name="amendId" id="amendId" disabled>
@@ -64,27 +65,27 @@ Date: 15/03/2026
 
                 <div class="field">
                     <label for="amendTitle">Job Title</label>
-                    <input type="text" name="amendTitle" id="amendTitle" disabled>
+                    <input type="text" name="amendTitle" id="amendTitle" disabled placeholder="Cool Job">
                 </div>
 
                 <div class="field field-big">
                     <label for="amendDescription">Brief Description</label>
-                    <input type="text" name="amendDescription" id="amendDescription" disabled>
+                    <input type="text" name="amendDescription" id="amendDescription" disabled placeholder="Description">
                 </div>
 
                 <div class="field">
                     <label for="amendQual">Qualification Required</label>
-                    <input type="text" name="amendQual" id="amendQual" disabled>
+                    <input type="text" name="amendQual" id="amendQual" disabled placeholder="Junior Web Developer">
                 </div>
 
                 <div class="field">
                     <label for="amendType">Type of Work</label>
-                    <input type="text" name="amendType" id="amendType" disabled>
+                    <input type="text" name="amendType" id="amendType" disabled placeholder="Full-time">
                 </div>
 
                 <div class="field">
                     <label for="amendAnnualSalary">Annual Salary</label>
-                    <input type="number" name="amendAnnualSalary" id="amendAnnualSalary" disabled>
+                    <input type="number" name="amendAnnualSalary" id="amendAnnualSalary" disabled placeholder="50000">
                 </div>
 
                 <div class="radio-group" role="group" aria-labelledby="driverLicLabel">
@@ -105,7 +106,7 @@ Date: 15/03/2026
 
                 <div class="field">
                     <label for="amendLocation">Location</label>
-                    <input type="text" name="amendLocation" id="amendLocation" disabled>
+                    <input type="text" name="amendLocation" id="amendLocation" disabled placeholder="Location">
                 </div>
 
             </div>
@@ -139,6 +140,16 @@ Date: 15/03/2026
 
 <footer class="footer">
     <span>© 2026 Glow Jobs Agency - "We are the best at what we do!"</span>
+    <span class="github-link">
+        <a
+            href="https://github.com/reynnello/Glow"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="View the project on GitHub"
+        >
+            <img src="../../resources/img/github.svg" alt="GitHub" />
+        </a>
+    </span>
 </footer>
 
 <script>

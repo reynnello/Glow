@@ -11,7 +11,18 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 // Fetch all vacant and non-deleted jobs
-$sql = "SELECT job_id, company_id, job_title, job_description, qualification_required, work_type, annual_salary, drivers_license_required, location FROM job WHERE is_deleted = 0 AND status = 'vacant' ORDER BY job_title";
+$sql = "SELECT job_id,
+               company_id, 
+               job_title, 
+               job_description, 
+               qualification_required, 
+               work_type, 
+               annual_salary, 
+               drivers_license_required, 
+               location 
+        FROM job 
+        WHERE is_deleted = 0 AND status = 'vacant' 
+        ORDER BY job_title";
 
 // Execute the query and check for errors
 $result = mysqli_query($con, $sql);

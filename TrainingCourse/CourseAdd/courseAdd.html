@@ -1,7 +1,7 @@
 <!--Name: Dzheffriei Ihesinulo-->
 <!--Student ID: C00311856-->
 <!--Date: 17.02.26-->
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -14,7 +14,7 @@
     <!--topbar start-->
     <header class="topbar">
       <!--Anchor for main page also classifies brand-->
-      <a class="brand" href="mainPage.html.php" aria-label="Go to Main Page">
+      <a class="brand" href="../../mainPage.html" aria-label="Go to Main Page">
         <!--Logo-->
         <div class="logo">
           <img src="../../resources/img/logo.jpeg" alt="Glow Jobs Logo" />
@@ -29,137 +29,137 @@
         <a class="tab" href="../../ClientPage/clientPage.html">Client</a>
         <a class="tab" href="../../JobPage/jobPage.html">Job</a>
         <a class="tab active" href="../coursePage.html">Training Course</a>
-        <a class="tab " href="../../CompanyPage/companyPage.html">Company</a>
+        <a class="tab" href="../../CompanyPage/companyPage.html">Company</a>
       </nav>
     </header>
     <!--Main page-->
     <main class="page page--center">
       <section class="card">
         <h1>Add Training Course</h1>
-        <p class="hint">Please fill the information and add the Training Course</p>
+        <p class="hint">
+          Please fill the information and add the Training Course
+        </p>
         <!--fields for data-->
         <form
           name="addCompanyForm"
           action="courseAdd.php"
-          onsubmit="return confirmCheck()"
+          onsubmit="return confirmCheck();"
           method="post"
         >
           <!--Form submitting-->
           <div class="form-grid">
-
             <div class="field">
               <label for="addTitle">Course Title</label>
               <input
-                      type="text"
-                      name="addTitle"
-                      id="addTitle"
-                      placeholder="e.g. Web Development"
-                      required
+                type="text"
+                name="addTitle"
+                id="addTitle"
+                placeholder="e.g. Web Development"
+                required
               />
             </div>
 
             <div class="field">
               <label for="addProvider">Course Provider</label>
               <input
-                      type="text"
-                      name="addProvider"
-                      id="addProvider"
-                      placeholder="e.g. SETU"
-                      required
+                type="text"
+                name="addProvider"
+                id="addProvider"
+                placeholder="e.g. SETU"
+                required
               />
             </div>
 
             <div class="field">
               <label for="addDescription">Course Description</label>
               <input
-                      type="text"
-                      name="addDescription"
-                      id="addDescription"
-                      placeholder="e.g. Description to HTML"
-                      required
+                type="text"
+                name="addDescription"
+                id="addDescription"
+                placeholder="e.g. Description to HTML"
+                required
               />
             </div>
 
             <div class="field">
               <label for="addFee">Course Fee</label>
               <input
-                      type="number"
-                      step="0.01"
-                      name="addFee"
-                      id="addFee"
-                      placeholder="250.00"
-                      required
+                type="number"
+                step="0.01"
+                name="addFee"
+                id="addFee"
+                placeholder="250.00"
+                required
               />
             </div>
 
             <div class="field">
               <label for="addVenue">Course Venue</label>
               <input
-                      type="text"
-                      name="addVenue"
-                      id="addVenue"
-                      placeholder="e.g. Carlow Campus"
+                type="text"
+                name="addVenue"
+                id="addVenue"
+                placeholder="e.g. Carlow Campus"
               />
             </div>
 
             <div class="field">
               <label for="addPlaces">Course Total Places</label>
               <input
-                      type="number"
-                      name="addPlaces"
-                      id="addPlaces"
-                      placeholder="e.g. 12"
-                      required
+                type="number"
+                name="addPlaces"
+                id="addPlaces"
+                placeholder="e.g. 12"
+                required
               />
             </div>
 
             <div class="field">
               <label for="addStartDate">Start Date</label>
               <input
-                      type="date"
-                      name="addStartDate"
-                      id="addStartDate"
-                      placeholder="e.g. #"
-                      required
+                type="date"
+                name="addStartDate"
+                id="addStartDate"
+                placeholder="e.g. #"
+                required
               />
             </div>
 
             <div class="field">
               <label for="addNumberOfDays">Course Number Of Days</label>
               <input
-                      type="number"
-                      name="addNumberOfDays"
-                      id="addNumberOfDays"
-                      placeholder="e.g. 5"
-                      required
+                type="number"
+                name="addNumberOfDays"
+                id="addNumberOfDays"
+                placeholder="e.g. 5"
+                required
               />
             </div>
 
             <div class="field">
               <label for="addStartTime">Course Start Time</label>
               <input
-                      type="time"
-                      name="addStartTime"
-                      id="addStartTime"
-                      placeholder="e.g. 10:00"
-                      required
+                type="time"
+                name="addStartTime"
+                id="addStartTime"
+                placeholder="e.g. 10:00"
+                required
               />
             </div>
 
             <div class="field">
               <label for="addEndTime">Course End Time</label>
               <input
-                      type="time"
-                      name="addEndTime"
-                      id="addEndTime"
-                      placeholder="e.g. 13:00"
-                      required
+                type="time"
+                name="addEndTime"
+                id="addEndTime"
+                placeholder="e.g. 13:00"
+                required
               />
             </div>
-
           </div>
 
-          <br/><br/>
+          <br /><br />
           <!--Submit and return buttons -->
           <div style="margin-top: 14px">
             <input type="submit" value="Add Company" class="btn primary" />
@@ -171,44 +171,56 @@
     <!--footer-->
     <footer class="footer">
       <span>© 2026 Glow Jobs Agency - "We are the best at what we do!"</span>
+      <span class="github-link">
+        <a
+          href="https://github.com/reynnello/Glow"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="View the project on GitHub"
+        >
+          <img src="../../resources/img/github.svg" alt="GitHub" />
+        </a>
+      </span>
     </footer>
 
     <script>
-      function confirmCheck() //function that ask for confirmation in case everything is empty or filled with spaces
-      {
-          var title = document.getElementById("addTitle").value.trim();
-          var provider = document.getElementById("addProvider").value.trim();
-          var description = document.getElementById("addDescription").value.trim();
-          var fee = document.getElementById("addFee").value.trim();
-          var venue = document.getElementById("addVenue").value.trim;
-          var placesTotal = document.getElementById("addPlacesTotal").value.trim();
-          var numOfDays = document.getElementById("addNumOfDays").value.trim();
-          var startDate = document.getElementById("addStartDate").value.trim();
+      function confirmCheck() {
+        //function that ask for confirmation in case everything is empty or filled with spaces
+        var title = document.getElementById("addTitle").value.trim();
+        var provider = document.getElementById("addProvider").value.trim();
+        var description = document
+          .getElementById("addDescription")
+          .value.trim();
+        var fee = document.getElementById("addFee").value.trim();
+        var venue = document.getElementById("addVenue").value.trim;
+        var placesTotal = document
+          .getElementById("addPlacesTotal")
+          .value.trim();
+        var numOfDays = document.getElementById("addNumOfDays").value.trim();
+        var startDate = document.getElementById("addStartDate").value.trim();
         var startTime = document.getElementById("addStarTime").value.trim();
-          var endTime = document.getElementById("addEndTime").value.trim();
-      
-          if (
-              title === "" ||
-              provider === "" ||
-              description === "" ||
-              fee === "" ||
-              venue === "" ||
-              placesTotal === "" ||
-              numOfDays === "" ||
-              startDate === "" ||
-              startTime === "" ||
-              endTime === ""
-          )
-          {
-              alert("Please fill out required information");//if the information is incomplete or empty
-              return false;
-          }
-          else{
-              var response;
-              response = confirm('Are you sure you want to save these changes?');//asks for confirmation
-            return response;
-          }
+        var endTime = document.getElementById("addEndTime").value.trim();
+
+        if (
+          title === "" ||
+          provider === "" ||
+          description === "" ||
+          fee === "" ||
+          venue === "" ||
+          placesTotal === "" ||
+          numOfDays === "" ||
+          startDate === "" ||
+          startTime === "" ||
+          endTime === ""
+        ) {
+          alert("Please fill out required information"); //if the information is incomplete or empty
+          return false;
+        } else {
+          var response;
+          response = confirm("Are you sure you want to save these changes?"); //asks for confirmation
+          return response;
+        }
       }
-      </script>
+    </script>
   </body>
 </html>

@@ -14,7 +14,7 @@ Date: 19/03/2026
 <body>
 
 <header class="topbar">
-    <a class="brand" href="mainPage.html.php" aria-label="Go to Main Page">
+    <a class="brand" href="../../mainPage.html" aria-label="Go to Main Page">
         <div class="logo">
             <img src="../../resources/img/logo.jpeg" alt="Glow Jobs Logo">
         </div>

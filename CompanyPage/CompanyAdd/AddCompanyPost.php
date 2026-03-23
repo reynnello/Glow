@@ -31,13 +31,14 @@ if(!mysqli_query($con, $sql))
     die("Ann Error in the SQL Query ". mysqli_error($con));
 }
 //else
-echo "<br>A record has been added for   " .
-    $name;
-//closing connection
 mysqli_close($con);
 ?>
-<!--Button for return back-->
-<form action="../companyPage.html" method="POST">
-    <br>
-    <input type="submit" value="Return to Company Page"/>
-</form>
+
+<?php
+$modalTitle = 'Company Added';
+$modalMessage = 'A record has been added for <b>' . $name . '</b>.';
+$returnHref = '../companyPage.html';
+$returnLabel = 'Return to Company Page';
+$cssHref = '../../Main.css';
+require_once __DIR__ . '/../../resultModal.inc.php';
+?>

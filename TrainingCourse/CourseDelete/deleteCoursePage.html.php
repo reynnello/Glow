@@ -12,7 +12,7 @@
 <body>
 
 <header class="topbar">
-    <a class="brand" href="../../mainPage.html.php" aria-label="Go to Main Page">
+    <a class="brand" href="../../mainPage.html" aria-label="Go to Main Page">
         <div class="logo">
             <img src="../../resources/img/logo.jpeg" alt="Glow Jobs Logo">
         </div>
@@ -40,7 +40,9 @@
 
 
         <form name="myForm" action="deleteCoursePagePost.php" onsubmit="return confirmCheck()" method="post">
+            <div class="form-grid">
             <div class="field">
+                <label for="deleteCourseListbox">Select Course</label>
                 <?php include 'deleteCourseListbox.php'; ?>
             </div>
             <div class="field">
@@ -107,6 +109,7 @@
                 <input type="submit" value="Delete Course" class="btn primary">
                 <a href="../coursePage.html" class="btn">Back</a>
             </div>
+            </div>
         </form>
 
         <p id="display" style="margin-top: 12px;"></p>
@@ -131,6 +134,16 @@
 
 <footer class="footer">
     <span>© 2026 Glow Jobs Agency - "We are the best at what we do!"</span>
+    <span class="github-link">
+        <a
+            href="https://github.com/reynnello/Glow"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="View the project on GitHub"
+        >
+            <img src="../../resources/img/github.svg" alt="GitHub" />
+        </a>
+    </span>
 </footer>
 
 <script>
