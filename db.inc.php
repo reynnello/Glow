@@ -3,7 +3,7 @@
 $host = "localhost:3306"; //host
 $user = "jeff"; //username
 $pass = "StrongPass123!"; //password
-$db   = "Employment Agency System"; //db name
+$db   = "EmploymentAgency"; //db name
 
 $con = new mysqli($host, $user, $pass, $db); //connection
 
