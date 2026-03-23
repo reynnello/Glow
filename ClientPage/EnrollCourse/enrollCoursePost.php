@@ -9,12 +9,37 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-$clientId     = $_POST['clientId'];
-$courseId     = $_POST['courseId'];
+$clientId      = $_POST['clientId'];
+$courseId      = $_POST['courseId'];
 $depositAmount = $_POST['depositAmount'];
-$today        = date('Y-m-d');
+$today         = date('Y-m-d');
 
 $rows = 0;
+
+// 0. Check if client is already actively enrolled on this course
+$sqlCheck = "SELECT enrolment_id FROM enrolment WHERE client_id = '$clientId' AND course_id = '$courseId' AND is_deleted = 0";
+
+$checkResult = mysqli_query($con, $sqlCheck);
+
+if (!$checkResult)
+{
+    echo "Error checking enrolment: " . mysqli_error($con);
+    mysqli_close($con);
+    exit;
+}
+
+if (mysqli_num_rows($checkResult) > 0)
+{
+    mysqli_close($con);
+    $rows = 0;
+    $modalTitle   = 'Enrolment Result';
+    $modalMessage = 'This client is already enrolled on this course.';
+    $returnHref   = 'enrollCourse.html.php';
+    $returnLabel  = 'Return to Previous Screen';
+    $cssHref      = '../../Main.css';
+    require_once __DIR__ . '/../../resultModal.inc.php';
+    exit;
+}
 
 // 1. Insert new enrolment record
 $sql = "INSERT INTO enrolment (client_id, course_id, date_enrolled, deposit_amount, is_deleted)
