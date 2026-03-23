@@ -100,6 +100,10 @@
                 <input type="submit" value="Delete Company" class="btn primary">
                 <a href="../companyPage.html" class="btn">Back</a>
             </div>
+            <div style="margin-top: 14px;">
+            <input type="submit" value="Delete Client" class="btn primary">
+            <a href="../clientPage.html" class="btn">Back</a>
+            </div>
         </form>
 
         <p id="display" style="margin-top: 12px;"></p>
@@ -110,7 +114,7 @@
         <div class="info-card">
             <h2>How it works</h2>
             <p>
-                Select a company from the list. Double-check the information. Click <b>Delete Company</b> to delete the records.
+                Select a course from the list. Double-check the information. Click <b>Delete Company</b> to delete the records.
             </p>
         </div>
 
