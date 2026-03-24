@@ -1,3 +1,6 @@
+<!--Name: Dzheffriei Ihesinulo, Anton Opria, Oleksandr Storozhuk -->
+<!--Student ID: C00311856, C00309433, C00313344 -->
+<!--Date: 17.02.26-->
 <?php
 /** @var mysqli $con */ //connection to db necessary for phpstorm
 require_once __DIR__ . '/../../db.inc.php';

@@ -1,10 +1,7 @@
+<!--Name: Dzheffriei Ihesinulo, Anton Opria, Oleksandr Storozhuk -->
+<!--Student ID: C00311856, C00309433, C00313344 -->
+<!--Date: 17.02.26-->
 <?php
-/*
-     * Name: Dzheffriei Iheisnulo
-     * Student ID: C00311856
-     * Date: 17.02.2026
-     */
-
 /** @var mysqli $con */
 require_once __DIR__ . '/../../db.inc.php';//connection to db necessary for phpstorm
 ini_set('display_errors', 1); //display error
