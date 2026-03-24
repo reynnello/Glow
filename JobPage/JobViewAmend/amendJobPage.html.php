@@ -107,12 +107,10 @@ Date: 15/03/2026
                     <label for="amendLocation">Location</label>
                     <input type="text" name="amendLocation" id="amendLocation" disabled placeholder="Location">
                 </div>
-
-            </div>
-
-            <div style="margin-top: 14px;">
-                <input type="submit" value="Save Changes" class="btn primary">
-                <a href="../jobPage.html" class="btn">Back</a>
+                <div style="margin-top: 14px;">
+                    <input type="submit" value="Save Changes" class="btn primary">
+                    <a href="../jobPage.html" class="btn">Back</a>
+                </div>
             </div>
         </form>
 

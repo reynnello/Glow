@@ -102,11 +102,10 @@ Date: 15/03/2026
           <label for="deleteLocation">Location</label>
           <input type="text" name="deleteLocation" id="deleteLocation" disabled>
         </div>
-      </div>
-
-      <div style="margin-top: 14px;">
+        <div style="margin-top: 14px;">
         <input type="submit" value="Delete Job" class="btn primary">
         <a href="../jobPage.html" class="btn">Back</a>
+      </div>
       </div>
     </form>
 
