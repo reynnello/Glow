@@ -114,7 +114,7 @@ body {
   justify-content: space-between; /* Pushes logo left and tabs right */
   gap: 18px; /* Space between elements */
 
-  padding: 14px 18px; /* Inner spacing */
+  padding: 2px 18px; /* Inner spacing (keeps bar height stable with larger logo) */
   backdrop-filter: blur(10px); /* Glass blur effect */
   background: var(--glass-10); /* Transparent background */
   border-bottom: 1px solid var(--glass-14); /* Bottom border */
@@ -131,18 +131,18 @@ body {
 }
 
 .logo {
-  height: 44px; /* Fixed logo height */
-  width: auto; /* Auto width */
+  height: 64px;
+  width: 64px;
+  flex: 0 0 64px;
+  display: grid;
+  place-items: center;
 }
 
 .logo img {
-  height: 44px; /* Image height */
-  width: auto; /* Keeps aspect ratio */
-}
-
-.brand-title {
-  font-weight: 800; /* Bold title */
-  letter-spacing: 0.2px; /* Slight letter spacing */
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
 }
 
 .brand-subtitle {

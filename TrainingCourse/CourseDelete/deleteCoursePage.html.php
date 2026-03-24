@@ -14,10 +14,9 @@
 <header class="topbar">
     <a class="brand" href="../../mainPage.html" aria-label="Go to Main Page">
         <div class="logo">
-            <img src="../../resources/img/logo.jpeg" alt="Glow Jobs Logo">
+            <img src="../../resources/img/logo.png" alt="Glow Logo">
         </div>
         <div class="brand-text">
-            <div class="brand-title">Glow Jobs</div>
             <div class="brand-subtitle">Delete Course</div>
         </div>
     </a>
@@ -133,7 +132,7 @@
 </main>
 
 <footer class="footer">
-    <span>© 2026 Glow Jobs Agency - "We are the best at what we do!"</span>
+    <span>© 2026 - "We are the best at what we do!"</span>
     <span class="github-link">
         <a
             href="https://github.com/reynnello/Glow"
