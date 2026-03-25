@@ -9,14 +9,6 @@ Date: 19/03/2026
     <meta charset="UTF-8">
     <title>Enroll on a Training Course</title>
     <link rel="stylesheet" type="text/css" href="../../Main.css">
-    <style>
-        /*
-         * Bug fix: the enrol card has a lot of content which caused it to stretch
-         * to full page height, covering the gradient background behind the info cards.
-         * align-items: start stops the grid columns from stretching to equal height.
-         */
-        .page { align-items: start; }
-    </style>
 </head>
 
 <body>
