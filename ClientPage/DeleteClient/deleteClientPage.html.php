@@ -13,6 +13,7 @@ Date: 22/02/2026
 
 <body>
 
+<!-- Top bar: logo links back to main page, tabs navigate between sections -->
 <header class="topbar">
     <a class="brand" href="../../mainPage.html" aria-label="Go to Main Page">
         <div class="logo">
@@ -23,7 +24,7 @@ Date: 22/02/2026
         </div>
     </a>
 
-    <!-- Tabs placeholders -->
+    <!-- Client tab is marked active since we are on this section -->
     <nav class="tabs" aria-label="Primary navigation">
         <a class="tab active" href="../clientPage.html">Client</a>
         <a class="tab" href="../../JobPage/jobPage.html">Job</a>
@@ -32,19 +33,24 @@ Date: 22/02/2026
     </nav>
 </header>
 
+<!-- Two-column layout: form on left, info cards on right -->
 <main class="page">
-    <!-- Main card -->
+
     <section class="card">
         <h1>Delete Client</h1>
-        <p class="hint">Please select a client and then click the delete button. Please make sure that you chose the correct client and double-check the information</p>
+        <p class="hint">Please select a client and then click the delete button. Please make sure that you chose the correct client and double-check the information.</p>
 
-        <!-- Form -->
+        <!-- Form posts to deleteClientPagePost.php; confirmCheck() asks for confirmation -->
         <form name="myForm" action="deleteClientPagePost.php" onsubmit="return confirmCheck()" method="post">
             <div class="form-grid">
+
+                <!-- Listbox included from PHP; selecting a client fires populate() -->
                 <div class="field field-big">
                     <label for="deleteClientListbox">Client</label>
                     <?php include 'deleteClientListbox.php'; ?>
                 </div>
+
+                <!-- All fields are read-only display; they get enabled in confirmCheck() before submit -->
                 <div class="field">
                     <label for="deleteId">Client Id</label>
                     <input type="text" name="deleteId" id="deleteId" disabled>
@@ -94,6 +100,7 @@ Date: 22/02/2026
                     <label for="deleteMinimumAnnualSalary">Minimum Annual Salary</label>
                     <input type="text" name="deleteMinimumAnnualSalary" id="deleteMinimumAnnualSalary" disabled>
                 </div>
+
             </div>
 
             <div style="margin-top: 14px;">
@@ -110,7 +117,7 @@ Date: 22/02/2026
         <div class="info-card">
             <h2>How it works</h2>
             <p>
-                Select a client from the list. Double-check the information. Click <b>Delete Client</b> to delete the records.
+                Select a client from the list. Double-check the information. Click <b>Delete Client</b> to delete the record.
             </p>
         </div>
 
@@ -121,66 +128,53 @@ Date: 22/02/2026
             </p>
         </div>
     </section>
+
 </main>
 
 <footer class="footer">
     <span>© 2026 - "We are the best at what we do!"</span>
     <span class="github-link">
-        <a
-            href="https://github.com/reynnello/Glow"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="View the project on GitHub"
-        >
+        <a href="https://github.com/reynnello/Glow" target="_blank" rel="noopener noreferrer" aria-label="View the project on GitHub">
             <img src="../../resources/img/github.svg" alt="GitHub" />
         </a>
     </span>
 </footer>
-<script>
-    function populate() //populate function for fields of data to be visable
-    {
-        var sel = document.getElementById("deleteClientListbox");
-        var result;
-        result = sel.options[sel.selectedIndex].value;
-        var clientDetails = result.split('|');
 
-        document.getElementById("deleteId").value = clientDetails[0];
-        document.getElementById("deleteName").value = clientDetails[1];
-        document.getElementById("deleteAddress").value = clientDetails[2];
-        document.getElementById("deleteEircode").value = clientDetails[3];
-        document.getElementById("deletePhone").value = clientDetails[4];
-        document.getElementById("deleteDob").value = clientDetails[5];
-        document.getElementById("deleteDriverLicense").value = clientDetails[6];
-        document.getElementById("deleteJobTitleInterest").value = clientDetails[7];
-        document.getElementById("deleteQualifications").value = clientDetails[8];
+<script>
+    // Splits the selected listbox value on '|' and fills all display fields
+    function populate() {
+        var sel = document.getElementById("deleteClientListbox");
+        var clientDetails = sel.options[sel.selectedIndex].value.split('|');
+
+        document.getElementById("deleteId").value                  = clientDetails[0];
+        document.getElementById("deleteName").value                = clientDetails[1];
+        document.getElementById("deleteAddress").value             = clientDetails[2];
+        document.getElementById("deleteEircode").value             = clientDetails[3];
+        document.getElementById("deletePhone").value               = clientDetails[4];
+        document.getElementById("deleteDob").value                 = clientDetails[5];
+        document.getElementById("deleteDriverLicense").value       = clientDetails[6];
+        document.getElementById("deleteJobTitleInterest").value    = clientDetails[7];
+        document.getElementById("deleteQualifications").value      = clientDetails[8];
         document.getElementById("deleteMinimumAnnualSalary").value = clientDetails[9];
     }
 
-
-    function confirmCheck() //checking the conformation from user
-    {
+    // Asks for confirmation; if confirmed, enables all fields so the POST data is submitted
+    function confirmCheck() {
         var clientName = document.getElementById("deleteName").value;
-        var response;
-        response = confirm('Are you sure you want to delete "'+ clientName+'" record from the list?');
-        if (response)
-        {
-            document.getElementById("deleteId").disabled = false;
-            document.getElementById("deleteName").disabled = false;
-            document.getElementById("deleteAddress").disabled = false;
-            document.getElementById("deleteEircode").disabled = false;
-            document.getElementById("deletePhone").disabled = false;
-            document.getElementById("deleteDob").disabled = false;
-            document.getElementById("deleteDriverLicense").disabled = false;
-            document.getElementById("deleteJobTitleInterest").disabled = false;
-            document.getElementById("deleteQualifications").disabled = false;
-            document.getElementById("deleteMinimumAnnualSalary").disabled = false;
+        var response   = confirm('Are you sure you want to delete "' + clientName + '" record from the list?');
+
+        if (response) {
+            var fields = ["deleteId","deleteName","deleteAddress","deleteEircode",
+                          "deletePhone","deleteDob","deleteDriverLicense",
+                          "deleteJobTitleInterest","deleteQualifications","deleteMinimumAnnualSalary"];
+            fields.forEach(function(id) {
+                document.getElementById(id).disabled = false;
+            });
             return true;
         }
-        else
-        {
-            return false;
-        }
+        return false;
     }
 </script>
+
 </body>
 </html>

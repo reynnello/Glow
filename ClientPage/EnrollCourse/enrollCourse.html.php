@@ -9,10 +9,19 @@ Date: 19/03/2026
     <meta charset="UTF-8">
     <title>Enroll on a Training Course</title>
     <link rel="stylesheet" type="text/css" href="../../Main.css">
+    <style>
+        /*
+         * Bug fix: the enrol card has a lot of content which caused it to stretch
+         * to full page height, covering the gradient background behind the info cards.
+         * align-items: start stops the grid columns from stretching to equal height.
+         */
+        .page { align-items: start; }
+    </style>
 </head>
 
 <body>
 
+<!-- Top bar: logo links back to main page, tabs navigate between sections -->
 <header class="topbar">
     <a class="brand" href="../../mainPage.html" aria-label="Go to Main Page">
         <div class="logo">
@@ -23,7 +32,7 @@ Date: 19/03/2026
         </div>
     </a>
 
-    <!-- Tabs placeholders -->
+    <!-- Client tab is marked active since we are on this section -->
     <nav class="tabs" aria-label="Primary navigation">
         <a class="tab active" href="../clientPage.html">Client</a>
         <a class="tab" href="../../JobPage/jobPage.html">Job</a>
@@ -32,27 +41,29 @@ Date: 19/03/2026
     </nav>
 </header>
 
+<!-- Two-column layout: form on left, info cards on right -->
 <main class="page">
-    <!-- Main card -->
+
     <section class="card">
         <h1>Enroll on a Training Course</h1>
-        <p class="hint">Please select a client you wish to enroll and then click the enroll button. Please make sure that you chose the correct client and double-check the information</p>
+        <p class="hint">Select a client and a course, then confirm the enrolment.</p>
 
+        <!-- Form posts to enrollCoursePost.php; confirmCheck() shows deposit and asks confirmation -->
         <form name="enrolForm" action="enrollCoursePost.php" method="post" onsubmit="return confirmCheck()">
 
-            <!-- Client listbox -->
+            <!-- Client listbox: onchange populates hidden client fields -->
             <div class="field">
                 <label for="clientListbox">Select Client</label>
                 <?php include 'enrollClientListbox.php'; ?>
             </div>
 
-            <!-- Course listbox -->
+            <!-- Course listbox: onchange fills all course detail fields below -->
             <div class="field">
                 <label for="courseListbox">Select Training Course</label>
                 <?php include 'enrollCourseListbox.php'; ?>
             </div>
 
-            <!-- Course info fields (read-only, populated by JS) -->
+            <!-- Read-only course detail fields populated by populateCourse() -->
             <div class="form-grid">
                 <div class="field">
                     <label for="courseId">Course ID</label>
@@ -110,25 +121,27 @@ Date: 19/03/2026
                 </div>
             </div>
 
-            <!-- Deposit info -->
+            <!-- Deposit panel shown once a course is selected; hidden by default -->
             <div id="depositInfo" style="display:none; margin: 14px 0; padding: 12px; border: 1px solid #ccc; background: #f9f9f9;">
                 <strong>Deposit Required (10%):</strong>
                 <span id="depositDisplay"></span>
                 <br>
                 <small>You must pay this deposit amount to confirm your place on the course.</small>
-                <!-- Hidden fields passed to POST -->
+                <!-- Hidden fields that carry client/deposit data through to POST -->
                 <input type="hidden" name="depositAmount" id="depositAmount">
-                <input type="hidden" name="clientId" id="clientId">
-                <input type="hidden" name="clientName" id="clientName">
+                <input type="hidden" name="clientId"     id="clientId">
+                <input type="hidden" name="clientName"   id="clientName">
             </div>
 
             <div style="margin-top: 14px;">
+                <!-- Confirm button starts disabled; enabled by checkReady() once both lists are selected -->
                 <input type="submit" value="Confirm Enrolment" class="btn primary" id="enrolBtn" disabled>
                 <a href="../clientPage.html" class="btn">Back</a>
             </div>
 
         </form>
 
+        <!-- Error message area (e.g. "No places remaining") -->
         <p id="display" style="margin-top: 12px; color: red;"></p>
     </section>
 
@@ -158,25 +171,19 @@ Date: 19/03/2026
 <footer class="footer">
     <span>&copy; 2026 - "We are the best at what we do!"</span>
     <span class="github-link">
-        <a
-            href="https://github.com/reynnello/Glow"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="View the project on GitHub"
-        >
+        <a href="https://github.com/reynnello/Glow" target="_blank" rel="noopener noreferrer" aria-label="View the project on GitHub">
             <img src="../../resources/img/github.svg" alt="GitHub" />
         </a>
     </span>
 </footer>
 
 <script>
-    function populateClient()
-    {
-        var sel = document.getElementById("clientListbox");
+    // Fired when the client listbox changes; stores client id/name in hidden fields
+    function populateClient() {
+        var sel    = document.getElementById("clientListbox");
         var result = sel.options[sel.selectedIndex].value;
 
-        if (result === '')
-        {
+        if (result === '') {
             document.getElementById("clientId").value   = '';
             document.getElementById("clientName").value = '';
             checkReady();
@@ -184,20 +191,18 @@ Date: 19/03/2026
         }
 
         var details = result.split('|');
-
         document.getElementById("clientId").value   = details[0];
         document.getElementById("clientName").value = details[1];
 
         checkReady();
     }
 
-    function populateCourse()
-    {
-        var sel = document.getElementById("courseListbox");
+    // Fired when the course listbox changes; fills all course detail fields and calculates deposit
+    function populateCourse() {
+        var sel    = document.getElementById("courseListbox");
         var result = sel.options[sel.selectedIndex].value;
 
-        if (result === '')
-        {
+        if (result === '') {
             clearCourseFields();
             checkReady();
             return;
@@ -217,75 +222,57 @@ Date: 19/03/2026
         document.getElementById("courseStartTime").value   = details[9];
         document.getElementById("courseEndTime").value     = details[10];
 
-        // Calculate 10% deposit
+        // Calculate and display the 10% deposit
         var fee     = parseFloat(details[4]);
         var deposit = (fee * 0.10).toFixed(2);
-
-        document.getElementById("depositAmount").value  = deposit;
+        document.getElementById("depositAmount").value        = deposit;
         document.getElementById("depositDisplay").textContent = '€' + deposit;
-        document.getElementById("depositInfo").style.display = 'block';
+        document.getElementById("depositInfo").style.display  = 'block';
 
         checkReady();
     }
 
-    function clearCourseFields()
-    {
-        document.getElementById("courseId").value          = '';
-        document.getElementById("courseTitle").value       = '';
-        document.getElementById("courseProvider").value    = '';
-        document.getElementById("courseDescription").value = '';
-        document.getElementById("courseFee").value         = '';
-        document.getElementById("courseVenue").value       = '';
-        document.getElementById("coursePlaces").value      = '';
-        document.getElementById("courseStartDate").value   = '';
-        document.getElementById("courseNumDays").value     = '';
-        document.getElementById("courseStartTime").value   = '';
-        document.getElementById("courseEndTime").value     = '';
+    // Resets all course detail fields and hides the deposit panel
+    function clearCourseFields() {
+        ["courseId","courseTitle","courseProvider","courseDescription","courseFee",
+         "courseVenue","coursePlaces","courseStartDate","courseNumDays",
+         "courseStartTime","courseEndTime"].forEach(function(id) {
+            document.getElementById(id).value = '';
+        });
         document.getElementById("depositInfo").style.display = 'none';
     }
 
-    function checkReady()
-    {
+    // Enables or disables the confirm button based on selections and available places
+    function checkReady() {
         var clientSelected = document.getElementById("clientListbox").value !== '';
-        var courseSelected = document.getElementById("courseListbox").value !== '';
+        var courseSelected = document.getElementById("courseListbox").value  !== '';
         var places         = parseInt(document.getElementById("coursePlaces").value) || 0;
+        var btn            = document.getElementById("enrolBtn");
 
-        var btn = document.getElementById("enrolBtn");
-
-        if (clientSelected && courseSelected && places > 0)
-        {
+        if (clientSelected && courseSelected && places > 0) {
             btn.disabled = false;
             document.getElementById("display").textContent = '';
-        }
-        else if (clientSelected && courseSelected && places <= 0)
-        {
+        } else if (clientSelected && courseSelected && places <= 0) {
             btn.disabled = true;
             document.getElementById("display").textContent = 'No places remaining on this course.';
-        }
-        else
-        {
+        } else {
             btn.disabled = true;
             document.getElementById("display").textContent = '';
         }
     }
 
-    function confirmCheck()
-    {
-        var response = confirm('You are about to enrol this client. A deposit of €' + document.getElementById("depositAmount").value + ' will be required. Proceed?');
-
-        if (response)
-        {
-            // Enable hidden fields so they are submitted
+    // Asks for confirmation with deposit amount; enables hidden fields so they are submitted
+    function confirmCheck() {
+        var response = confirm('You are about to enrol this client. A deposit of €' +
+                               document.getElementById("depositAmount").value + ' will be required. Proceed?');
+        if (response) {
             document.getElementById("clientId").disabled    = false;
             document.getElementById("clientName").disabled  = false;
             document.getElementById("courseId").disabled    = false;
             document.getElementById("courseTitle").disabled = false;
             return true;
         }
-        else
-        {
-            return false;
-        }
+        return false;
     }
 </script>
 

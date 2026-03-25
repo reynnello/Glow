@@ -13,8 +13,8 @@ Date: 22/02/2026
 
 <body>
 
+<!-- Top bar: logo links back to main page, tabs navigate between sections -->
 <header class="topbar">
-    <!--Logo-->
     <a class="brand" href="../../mainPage.html" aria-label="Go to Main Page">
         <div class="logo">
             <img src="../../resources/img/logo.png" alt="Glow Logo">
@@ -24,7 +24,7 @@ Date: 22/02/2026
         </div>
     </a>
 
-    <!-- Tabs placeholders -->
+    <!-- Client tab is marked active since we are on this section -->
     <nav class="tabs" aria-label="Primary navigation">
         <a class="tab active" href="../clientPage.html">Client</a>
         <a class="tab" href="../../JobPage/jobPage.html">Job</a>
@@ -33,24 +33,29 @@ Date: 22/02/2026
     </nav>
 </header>
 
+<!-- Two-column layout: form on left, info cards on right -->
 <main class="page">
-    <!-- Main card -->
+
     <section class="card">
         <h1>Amend/View Client</h1>
         <p class="hint">Please select a client and then click the amend button if you wish to update.</p>
 
-        <!-- Actions row -->
+        <!-- Toggles fields between locked (view) and unlocked (edit) -->
         <div style="display:flex; gap:10px; flex-wrap:wrap; margin-bottom: 12px;">
             <input type="button" value="Amend Details" id="amendViewbutton" onclick="toggleLock()" class="btn">
         </div>
 
-        <!-- Form -->
+        <!-- Form posts to clientPagePost.php; confirmCheck() asks for confirmation before submit -->
         <form name="myForm" action="clientPagePost.php" onsubmit="return confirmCheck()" method="post">
             <div class="form-grid">
+
+                <!-- Listbox included from PHP; selecting a client fires populate() -->
                 <div class="field field-big">
                     <label for="clientListbox">Client</label>
                     <?php include 'clientListbox.php'; ?>
                 </div>
+
+                <!-- All fields start disabled; toggleLock() enables them for editing -->
                 <div class="field">
                     <label for="amendId">Client Id</label>
                     <input type="text" name="amendId" id="amendId" disabled>
@@ -100,6 +105,7 @@ Date: 22/02/2026
                     <label for="amendMinAnnualSalary">Minimum Annual Salary</label>
                     <input type="text" name="amendMinAnnualSalary" id="amendMinAnnualSalary" disabled>
                 </div>
+
             </div>
 
             <div style="margin-top: 14px;">
@@ -128,99 +134,72 @@ Date: 22/02/2026
             </p>
         </div>
     </section>
+
 </main>
 
 <footer class="footer">
     <span>© 2026 - "We are the best at what we do!"</span>
     <span class="github-link">
-        <a
-            href="https://github.com/reynnello/Glow"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="View the project on GitHub"
-        >
+        <a href="https://github.com/reynnello/Glow" target="_blank" rel="noopener noreferrer" aria-label="View the project on GitHub">
             <img src="../../resources/img/github.svg" alt="GitHub" />
         </a>
     </span>
 </footer>
 
 <script>
-    function populate() //populate function is used to fill the html fields with data
-    {
+    // Splits the selected listbox value on '|' and fills all form fields
+    function populate() {
         var sel = document.getElementById("clientListbox");
-        var result;
-        result = sel.options[sel.selectedIndex].value;
-        var clientDetails = result.split('|');
+        var clientDetails = sel.options[sel.selectedIndex].value.split('|');
 
-        document.getElementById("amendId").value = clientDetails[0];
-        document.getElementById("amendName").value = clientDetails[1];
-        document.getElementById("amendAddress").value = clientDetails[2];
-        document.getElementById("amendEircode").value = clientDetails[3];
-        document.getElementById("amendPhone").value = clientDetails[4];
-        document.getElementById("amendDob").value = clientDetails[5];
-        document.getElementById("amendDriverLicense").value = clientDetails[6];
-        document.getElementById("amendJobTitle").value = clientDetails[7];
+        document.getElementById("amendId").value             = clientDetails[0];
+        document.getElementById("amendName").value           = clientDetails[1];
+        document.getElementById("amendAddress").value        = clientDetails[2];
+        document.getElementById("amendEircode").value        = clientDetails[3];
+        document.getElementById("amendPhone").value          = clientDetails[4];
+        document.getElementById("amendDob").value            = clientDetails[5];
+        document.getElementById("amendDriverLicense").value  = clientDetails[6];
+        document.getElementById("amendJobTitle").value       = clientDetails[7];
         document.getElementById("amendQualifications").value = clientDetails[8];
         document.getElementById("amendMinAnnualSalary").value = clientDetails[9];
     }
 
-    function toggleLock()//function that unlock/locks the data and changes the button depending on the button state
-    {
-        if (document.getElementById("amendViewbutton").value == "Amend Details")
-        {
-            document.getElementById("amendName").disabled = false;
-            document.getElementById("amendAddress").disabled = false;
-            document.getElementById("amendEircode").disabled = false;
-            document.getElementById("amendPhone").disabled = false;
-            document.getElementById("amendDob").disabled = false;
-            document.getElementById("amendDriverLicense").disabled = false;
-            document.getElementById("amendJobTitle").disabled = false;
-            document.getElementById("amendQualifications").disabled = false;
-            document.getElementById("amendMinAnnualSalary").disabled = false;
+    // Toggles all editable fields between disabled and enabled,
+    // and swaps the button label between "Amend Details" / "View Details"
+    function toggleLock() {
+        var btn     = document.getElementById("amendViewbutton");
+        var locking = btn.value === "Amend Details"; // true = unlocking fields
 
-            document.getElementById("amendViewbutton").value = "View Details";
-        }
-        else
-        {
-            document.getElementById("amendName").disabled = true;
-            document.getElementById("amendAddress").disabled = true;
-            document.getElementById("amendEircode").disabled = true;
-            document.getElementById("amendPhone").disabled = true;
-            document.getElementById("amendDob").disabled = true;
-            document.getElementById("amendDriverLicense").disabled = true;
-            document.getElementById("amendJobTitle").disabled = true;
-            document.getElementById("amendQualifications").disabled = true;
-            document.getElementById("amendMinAnnualSalary").disabled = true;
+        var fields = ["amendName","amendAddress","amendEircode","amendPhone",
+                      "amendDob","amendDriverLicense","amendJobTitle",
+                      "amendQualifications","amendMinAnnualSalary"];
 
-            document.getElementById("amendViewbutton").value = "Amend Details";
-        }
+        fields.forEach(function(id) {
+            document.getElementById(id).disabled = !locking;
+        });
+
+        btn.value = locking ? "View Details" : "Amend Details";
     }
 
-    function confirmCheck() //confirm check function that asks the user for confirmation
-    {
-        var response;
-        response = confirm('Are you sure you want to save these changes?');
-        if (response)
-        {
-            document.getElementById("amendId").disabled = false;
-            document.getElementById("amendName").disabled = false;
-            document.getElementById("amendAddress").disabled = false;
-            document.getElementById("amendEircode").disabled = false;
-            document.getElementById("amendPhone").disabled = false;
-            document.getElementById("amendDob").disabled = false;
-            document.getElementById("amendDriverLicense").disabled = false;
-            document.getElementById("amendJobTitle").disabled = false;
-            document.getElementById("amendQualifications").disabled = false;
-            document.getElementById("amendMinAnnualSalary").disabled = false;
+    // Asks for confirmation; if confirmed, re-enables all fields so they submit
+    function confirmCheck() {
+        var response = confirm('Are you sure you want to save these changes?');
+        if (response) {
+            var fields = ["amendId","amendName","amendAddress","amendEircode","amendPhone",
+                          "amendDob","amendDriverLicense","amendJobTitle",
+                          "amendQualifications","amendMinAnnualSalary"];
+            fields.forEach(function(id) {
+                document.getElementById(id).disabled = false;
+            });
             return true;
-        }
-        else
-        {
+        } else {
+            // Reset fields and re-lock on cancel
             populate();
             toggleLock();
             return false;
         }
     }
 </script>
+
 </body>
 </html>

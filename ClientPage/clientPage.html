@@ -13,7 +13,8 @@ Date: 22/02/2026
 </head>
 
 <body>
-<!-- Top bar -->
+
+<!-- Top bar: logo links back to main page, tabs navigate between sections -->
 <header class="topbar">
     <a class="brand" href="../mainPage.html" aria-label="Go to Main Page">
         <div class="logo">
@@ -24,6 +25,7 @@ Date: 22/02/2026
         </div>
     </a>
 
+    <!-- Client tab is marked active since we are on this section -->
     <nav class="tabs" aria-label="Primary navigation">
         <a class="tab active" href="#">Client</a>
         <a class="tab" href="../JobPage/jobPage.html">Job</a>
@@ -32,8 +34,10 @@ Date: 22/02/2026
     </nav>
 </header>
 
-<!-- Page content -->
+<!-- Two-column layout: action menu left, info cards right -->
 <main class="page">
+
+    <!-- Action menu card -->
     <section class="card">
         <h1>Client</h1>
         <p class="hint">Choose an action below.</p>
@@ -45,7 +49,8 @@ Date: 22/02/2026
             <a href="EnrollCourse/enrollCourse.html.php">Enroll on a Training Course</a>
         </div>
     </section>
-<!--info-->
+
+    <!-- Side info cards -->
     <section class="info">
         <div class="info-card">
             <h2>Tip</h2>
@@ -65,20 +70,17 @@ Date: 22/02/2026
             </p>
         </div>
     </section>
+
 </main>
 
 <footer class="footer">
     <span>© 2026 - "We are the best at what we do!"</span>
     <span class="github-link">
-        <a
-            href="https://github.com/reynnello/Glow"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="View the project on GitHub"
-        >
+        <a href="https://github.com/reynnello/Glow" target="_blank" rel="noopener noreferrer" aria-label="View the project on GitHub">
             <img src="../resources/img/github.svg" alt="GitHub" />
         </a>
     </span>
 </footer>
+
 </body>
 </html>
