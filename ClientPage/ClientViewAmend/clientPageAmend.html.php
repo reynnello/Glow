@@ -88,7 +88,12 @@ Date: 22/02/2026
 
                 <div class="field">
                     <label for="amendDriverLicense">Driver License Type</label>
-                    <input type="text" name="amendDriverLicense" id="amendDriverLicense" disabled>
+                    <select name="amendDriverLicense" id="amendDriverLicense" disabled>
+						<option hidden>Select</option>
+						<option value="Full">Full</option>
+						<option value="Provisional">Provisional</option>
+						<option value="None">None</option>
+					</select>
                 </div>
 
                 <div class="field">
