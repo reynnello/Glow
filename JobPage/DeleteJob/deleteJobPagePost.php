@@ -36,13 +36,16 @@ mysqli_close($con);
 
 <!-- result Modal -->
 <?php
+// Prepare the modal content based on the result of the delete operation
 $rows = $rows ?? 0;
 $modalTitle = 'Job Deleted';
+// Display a different message if no records were changed (e.g., if the job was already deleted)
 if ($rows != 0) {
     $modalMessage = 'Job record for ' . $_POST['deleteTitle'] . ' has been deleted.';
 } else {
     $modalMessage = 'No records were changed.';
 }
+// Set the return link and label for the modal
 $returnHref = 'deleteJobPage.html.php';
 $returnLabel = 'Return to Previous Screen';
 $cssHref = '../../Main.css';

@@ -9,7 +9,7 @@ require_once __DIR__ . '/../../db.inc.php';
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
-
+// Fetch all jobs that are not deleted, regardless of their status
 $sql = "SELECT job_id,
                company_id,
                job_title,
@@ -48,9 +48,11 @@ while ($row = mysqli_fetch_assoc($result))
     $companyName = 'Unknown Company';
     $companySql = "SELECT company_name FROM Company WHERE company_id = $companyId AND is_deleted = 0";
     $companyResult = mysqli_query($con, $companySql);
+    // Check if the company query was successful and fetch the company name
     if ($companyResult && ($companyRow = mysqli_fetch_assoc($companyResult))) {
         $companyName = $companyRow['company_name'];
     }
+    // Free the company result set if it was successful
     if ($companyResult) {
         mysqli_free_result($companyResult);
     }
@@ -58,7 +60,9 @@ while ($row = mysqli_fetch_assoc($result))
     $allText = "$jobId|$companyId|$companyName|$jobTitle|$jobDescription|$qualificationRequired|$workType|$annualSalary|$driversLicenseRequired|$location";
     $label = $companyName . " - " . $jobTitle;
 
-    echo "<option value='$allText'>$label</option>";
+    $safeLabel = htmlspecialchars($label, ENT_QUOTES, 'UTF-8');
+    $safeText = htmlspecialchars($allText, ENT_QUOTES, 'UTF-8');
+    echo "<option value='$safeText'>$safeLabel</option>";
 }
 echo "</select>";
 mysqli_close($con);

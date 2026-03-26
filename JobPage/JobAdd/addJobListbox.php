@@ -17,6 +17,7 @@ $sql = "SELECT company_id,
         WHERE is_deleted = 0 
         ORDER BY company_name";
 
+// Execute the query and check for errors
 $result = mysqli_query($con, $sql);
 if (!$result) {
     die('Error in querying the database: ' . mysqli_error($con));
@@ -31,7 +32,10 @@ while ($row = mysqli_fetch_assoc($result)) {
     $companyName = $row['company_name'];
 
     $allText = "$companyId|$companyName";
-    echo "<option value='$allText'>$companyName</option>";
+
+    $safeText = htmlspecialchars($companyName, ENT_QUOTES, 'UTF-8');
+    $safeValue = htmlspecialchars($allText, ENT_QUOTES, 'UTF-8');
+    echo "<option value='$safeValue'>$safeText</option>";
 }
 
 echo "</select>";

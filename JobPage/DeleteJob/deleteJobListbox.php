@@ -42,9 +42,11 @@ while ($row = mysqli_fetch_assoc($result)) {
     $companyName = '';
     $companySql = "SELECT company_name FROM Company WHERE company_id = $companyId AND is_deleted = 0";
     $companyResult = mysqli_query($con, $companySql);
+    // Check for errors in the company query
     if ($companyResult && ($companyRow = mysqli_fetch_assoc($companyResult))) {
         $companyName = $companyRow['company_name'];
     }
+    // Free the company result set if it was successful
     if ($companyResult) {
         mysqli_free_result($companyResult);
     }
@@ -56,9 +58,11 @@ while ($row = mysqli_fetch_assoc($result)) {
     $annualSalary = $row['annual_salary'];
     $driversLicenseRequired = $row['drivers_license_required'];
     $location = $row['location'];
+
     $allText = "$jobId|$companyId|$companyName|$jobTitle|$jobDescription|$qualificationRequired|$workType|$annualSalary|$driversLicenseRequired|$location";
     $label = $companyName . " -- " . $jobTitle;
 
+    // Escape the value and label for safe HTML output
     $safeValue = htmlspecialchars($allText, ENT_QUOTES, 'UTF-8');
     $safeLabel = htmlspecialchars($label, ENT_QUOTES, 'UTF-8');
     echo "<option value='$safeValue'>$safeLabel</option>";

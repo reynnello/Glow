@@ -41,6 +41,7 @@ mysqli_close($con); //close connection
 <?php
 $rows = $rows ?? 0;
 $modalTitle = 'Job Updated';
+// Display a different message if no records were changed (e.g., if the job was already updated with the same details)
 if ($rows != 0) {
     $modalMessage = 'Job record for ' . $_POST['amendTitle'] . ' has been updated.';
 } else {

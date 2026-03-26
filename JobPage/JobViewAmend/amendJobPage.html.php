@@ -150,6 +150,7 @@ Date: 15/03/2026
 </footer>
 
 <script>
+  // JavaScript functions to handle form population, toggling edit mode, and confirming changes
     function populate()
     {
         var sel = document.getElementById("amendJobListbox");
@@ -166,6 +167,7 @@ Date: 15/03/2026
         document.getElementById("amendType").value = jobDetails[6];
         document.getElementById("amendAnnualSalary").value = jobDetails[7];
 
+        // Set the radio buttons based on the drivers license requirement
         if (jobDetails[8] === 'Yes') {
             document.getElementById("amendDriverLicYes").checked = true;
         } else {
@@ -175,6 +177,7 @@ Date: 15/03/2026
         document.getElementById("amendLocation").value = jobDetails[9];
     }
 
+    // Toggle the disabled state of the form fields to switch between view and amend modes
     function toggleLock()
     {
         if (document.getElementById("amendViewbutton").value == "Amend Details")
@@ -205,6 +208,7 @@ Date: 15/03/2026
         }
     }
 
+    // Confirmation check before submitting the form to save changes
     function confirmCheck()
     {
         var response;

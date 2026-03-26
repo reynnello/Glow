@@ -25,11 +25,13 @@ if (!$result) {
 echo "<select name='clientId' id='clientId' required>";
 echo "<option value='' disabled selected>Select an unemployed client...</option>";
 
+// Loop through the results and populate the listbox
 while ($row = mysqli_fetch_assoc($result)) {
     $clientId = (int)$row['client_id'];
     $clientName = $row['client_name'];
 
-    echo "<option value='{$clientId}'>{$clientName}</option>";
+    $safeName = htmlspecialchars($clientName, ENT_QUOTES, 'UTF-8');
+    echo "<option value='{$clientId}'>{$safeName}</option>";
 }
 
 echo "</select>";

@@ -142,6 +142,7 @@ Date: 25/02/2026
           var salary = document.getElementById("addAnnualSalary").value.trim();
           var driverLicChecked = document.querySelector('input[name="addDriverLic"]:checked'); // radio buttons need querySelector
 
+          // Check if any required field is empty or if no radio option is selected
           if (
               title === "" ||
               location === "" ||

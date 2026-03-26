@@ -38,6 +38,8 @@ if (!mysqli_query($con, $clientSql)) {
     die("An Error in the SQL Query " . mysqli_error($con));
 }
 
+
+// Insert a record into filled_post to track the filled job(useless)
 $filledPostSql = "INSERT INTO filled_post (job_id, client_id, date_of_offer, salary_accepted, employment_start_date)
                 VALUES ('$jobId', '$clientId', '$offerDate', '$acceptedSalary', '$startDate')";
 
@@ -49,8 +51,14 @@ mysqli_close($con);
 ?>
 <!-- result modal -->
 <?php
+$rows = $rows ?? 0;
 $modalTitle = 'Job Filled';
-$modalMessage = 'The job status was updated to filled, and the client employment status was updated to Employed.';
+// Display a different message if no records were changed (e.g., if the job was already filled or client was already employed)
+if ($rows != 0) {
+    $modalMessage = 'Job record for Job ID ' . $jobId . ' has been filled and client ID ' . $clientId . ' is now employed.';
+} else {
+    $modalMessage = 'No records were changed.';
+}
 $returnHref = '../jobPage.html';
 $returnLabel = 'Return to Job Page';
 $cssHref = '../../Main.css';

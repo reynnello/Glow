@@ -104,11 +104,13 @@ Date: 17/03/2026
 <script>
     // start date cannot be before offer date
 	function syncStartDateMin() {
+    // Get the offer date and start date input elements
 		var offerDateEl = document.getElementById('offerDate');
 		var startDateEl = document.getElementById('startDate');
-		if (!offerDateEl || !startDateEl) return;
+		if (!offerDateEl || !startDateEl) return; // safety check
         // Set the minimum start date to the offer date
 		startDateEl.min = offerDateEl.value;
+    // If the current start date is before the new offer date, clear the start date field
 		if (startDateEl.value && startDateEl.value < offerDateEl.value) {
 			startDateEl.value = '';
 		}
@@ -118,10 +120,12 @@ Date: 17/03/2026
 	function confirmFill() {
 		var jobSel = document.getElementById('jobId');
 		var clientSel = document.getElementById('clientId');
+    // Basic validation to ensure a job and client are selected
 		if (!jobSel || !clientSel || jobSel.selectedIndex < 0 || clientSel.selectedIndex < 0) {
 			return false;
 		}
 
+    // Get the selected job and client text for confirmation message
 		var jobText = jobSel.options[jobSel.selectedIndex].text;
 		var clientText = clientSel.options[clientSel.selectedIndex].text;
 		var offerDate = document.getElementById('offerDate').value;

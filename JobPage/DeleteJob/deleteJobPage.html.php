@@ -148,9 +148,11 @@ Date: 15/03/2026
   function populate() {
     var sel = document.getElementById("deleteJobListbox");
     var result;
+    // Get the value of the selected option and split it into components
     result = sel.options[sel.selectedIndex].value;
     var jobDetails = result.split('|');
 
+    // Populate the form fields with the corresponding job details
     document.getElementById("deleteId").value = jobDetails[0];
     document.getElementById("deleteCompanyId").value = jobDetails[1];
     document.getElementById("deleteCompanyName").value = jobDetails[2];
@@ -160,6 +162,7 @@ Date: 15/03/2026
     document.getElementById("deleteType").value = jobDetails[6];
     document.getElementById("deleteAnnualSalary").value = jobDetails[7];
 
+    // Set the appropriate radio button based on the drivers license requirement
     if (jobDetails[8] === 'Yes') {
       document.getElementById("deleteDriverLicYes").checked = true;
     } else {

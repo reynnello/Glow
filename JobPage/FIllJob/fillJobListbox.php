@@ -46,7 +46,8 @@ while ($row = mysqli_fetch_assoc($result)) {
 	}
 
 	$label = $companyName . " -- " . $jobTitle;
-	echo "<option value='$jobId'>$label</option>";
+  $safeLabel = htmlspecialchars($label, ENT_QUOTES, 'UTF-8');
+	echo "<option value='$jobId'>$safeLabel</option>";
 }
 
 echo "</select>";
