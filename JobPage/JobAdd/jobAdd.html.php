@@ -5,7 +5,12 @@ Date: 25/02/2026
 -->
 <!DOCTYPE html>
 <html lang="en">
-  <link rel="stylesheet" type="text/css" href="../../Main.css" />
+  <head>
+    <meta charset="UTF-8" />
+    <title>Add Job</title>
+    <link rel="stylesheet" type="text/css" href="../../Main.css" />
+    <link rel="icon" type="image/png" href="../../resources/img/logo.png" />
+  </head>
   <body>
     <!--topbar start-->
     <header class="topbar">

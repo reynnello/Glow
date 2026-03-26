@@ -7,6 +7,7 @@
     <meta charset="UTF-8">
     <title>Delete Company</title>
     <link rel="stylesheet" type="text/css" href="../../Main.css">
+    <link rel="icon" type="image/png" href="../../resources/img/logo.png">
 </head>
 
 <body>

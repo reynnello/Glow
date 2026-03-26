@@ -40,6 +40,7 @@ if (!$result) {
     <meta charset="UTF-8">
     <title>Training Courses Report</title>
     <link rel="stylesheet" href="../../Main.css">
+    <link rel="icon" type="image/png" href="../../resources/img/logo.png">
 </head>
 
 <body>

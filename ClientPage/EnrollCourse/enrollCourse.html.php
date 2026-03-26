@@ -9,6 +9,7 @@ Date: 19/03/2026
     <meta charset="UTF-8">
     <title>Enroll on a Training Course</title>
     <link rel="stylesheet" type="text/css" href="../../Main.css">
+    <link rel="icon" type="image/png" href="../../resources/img/logo.png">
 </head>
 
 <body>
